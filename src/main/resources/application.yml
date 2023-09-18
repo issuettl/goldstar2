@@ -1,0 +1,60 @@
+spring.profiles.active: local
+
+sign:
+  user:
+    check: /u/exp/,/u/mypage/
+    pass: /u/exp/index.do
+    request:
+      uri: /u/sign/name.do?a=request
+      encode: utf-8
+    failure:
+      uri: /u/sign/name.do?a=failure
+  manager:
+    check: /m/
+    pass: 
+      uri: /m/staff/,/m/sign/,/m/manager/in,/m/manager/password,/m/manager/out,/m/refresh/answer/action.do,/m/mood/answer/action.do
+      ip: "*,203.251.186.253, 203.251.186.198, 203.251.186.197, 61.40.30.130, 58.180.115.142"
+##   서버실 : 203.251.186.253
+##   3층(1) : 203.251.186.198
+##   3층(2) : 203.251.186.197
+##   김동현 : 61.40.30.130
+##   임종성, 오승미 : 58.180.115.142
+    request:
+      uri: /m/manager/in.do?a=request
+      encode: utf-8
+    failure:
+      uri: /m/manager/in.do?a=failure
+      
+hibernate:
+  dialect: org.hibernate.dialect.MySQLDialect
+  show_sql: true
+  format_sql: false
+  use_sql_comments: false
+  id:
+    new_generator_mappings: false
+
+jdbc:
+  maxWaitMillis: 30000
+  minEvictableIdleTimeMillis: 300000
+  timeBetweenEvictionRunsMillis: 120000
+  validationQuery: SELECT 1
+  testWhileIdle: true
+  testOnReturn: true
+  testOnBorrow: true
+
+#MB
+multipart.size.max:
+      file: 50
+      files: 100
+      
+spring.jackson.serialization.fail-on-empty-beans: false
+spring.main.allow-bean-definition-overriding: true
+server.servlet.register-default-servlet: true
+server.servlet.session.timeout: "300m"
+
+server.session.tracking-modes: cookie
+server.port: 80
+      
+aes:
+  key: "rmatjdwjsvktkqkrwjdrudelzktkgk24"
+  iv: "qkrwjdruddlqslek"

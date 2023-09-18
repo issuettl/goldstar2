@@ -1,0 +1,53 @@
+spring:  
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    jdbc-url: jdbc:mariadb://mariadb.neoflow.co.kr:3306/goldstar_schema?characterEncoding=UTF-8
+    url: jdbc:mariadb://mariadb.neoflow.co.kr:3306/goldstar_schema?characterEncoding=UTF-8
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: "goldstar"
+    password: "goldstar"
+    maximumPoolSize: 2
+    connectionInitSql: SELECT 1
+    connectionTimeout: 30000
+  
+system:
+  domain: http://localhost
+
+multipart.path.event: "c:/my-directory/event"
+  
+#server.servlet.context-path: /test
+
+#https://devmember.lge.co.kr/auth/empLogin.do?client_id=lge-main-integration&state=VchcCEzJ2aaLiUic9BEyD7lV3VauJ+9jjg3qDDjD2Zg=&redirect_uri=http://test.lge.co.kr:81/sso/api/emp/callbackLogin
+lge:
+  url:
+    gnb: "https://www.lge.co.kr/gnb"
+    footer: "https://www.lge.co.kr/footer"
+    domain: "https://www.lge.co.kr/"
+  sso:
+    logingo: "\"https://www.lge.co.kr/sso/api/emp/Login\""
+    logout: "https://www.lge.co.kr/sso/api/emp/Logout"
+    login: 
+      url: "https://devmember.lge.co.kr/auth/empLogin.do"
+      clientId: "lge-main-integration"
+      state: "VchcCEzJ2aaLiUic9BEyD7lV3VauJ+9jjg3qDDjD2Zg="
+      redirectUrl: "https://goldstardev.lge.co.kr/sso/sign/in/action.do"
+    account: 
+      login: "https://accountdev.lge.co.kr/login/initView"
+      logout: "https://accountdev.lge.co.kr/logout/initView"
+      clientId: "lgcom-goldstar-integration"
+      clientSecret: "pdaKWk2K-K6qV-o5pPs-4geS-Yw05IQpJpZyP"
+      state: "VchcCEzJ2aaLiUic9BEyD7lV3VauJ+9jjg3qDDjD2Zg="
+      loginRedirectUrl: "https://goldstardev.lge.co.kr/sso/account/in/action.do"
+      logoutRedirectUrl: "https://goldstardev.lge.co.kr/u/page/index.do"
+      getMember: "https://accountdev.lge.co.kr/session/get"
+  oauth:
+    host: "https://qa-kr.lgeapi.com"
+    appKey: "b753ec52505145f68f4adcc7f46eedb9"
+    secret: "0a1e31e96ce7475796d980a1d5e4033a"
+    uri:
+      datetime: "/oauth/1.0/datetime"
+      token: "/oauth/1.0/oauth2/token"
+      tokenConfirm: "/oauth/1.5/token"
+      userProfile: "/oauth/1.0/users/profile"

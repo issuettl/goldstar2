@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LG 금성전파사 관리자</title>
+	<!-- 홈페이지와 공통공유 css -->
+	<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../css/utility.css" />
+	<!-- admin에서만 사용 css -->
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/slick.css" />
+	<link rel="stylesheet" type="text/css" href="../css/unit.css" />
+	<link rel="stylesheet" type="text/css" href="../css/admin.css" />
+	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/slick.min.js"></script>
+	<script src="../js/admin.js"></script>
+</head>
+<body>
+	<!-- left GNB -->
+	<header class="adm_gnb">
+		<h1 class="adm_logo"><img src="../../admin/images/logo_primary.svg" alt=""></h1>
+		<ul class="adm_menulist">
+			<li><a href="../index.html" class="menu_link01">대시보드</a></li>
+			<li><a href="../member/member_list.html" class="menu_link02">회원리스트</a></li>
+			<li>
+				<!-- 2022-12-19 수정 : 사전문답 하위메뉴 추가 -->
+				<a href="../survey/survey_list.html" class="menu_link03">사전문답 관리</a>
+				<ul class="adm_menulist_sub">
+					<li><a href="../survey/survey_list.html" class="menu_link031">사전문답 리스트</a></li>
+					<li><a href="../survey/survey_data.html" class="menu_link032">사전문답 데이터</a></li>
+				</ul>
+			</li>
+			<li><a href="../event/event_list.html" class="menu_link04">이벤트 관리</a></li>
+			<li><a href="../faq/faq_list.html" class="menu_link05">FAQ 관리</a></li>
+			<li><a href="../board/notice_list.html" class="menu_link06">공지사항 관리</a></li>
+			<li>
+				<a href="../escape/escape_list.html" class="menu_link07">방탈출 관리</a>
+				
+				<ul class="adm_menulist_sub">
+					<li><a href="../escape/escape_list.html" class="menu_link071">예약 확정 리스트</a></li>
+					<li><a href="../escape/escape_draw.html" class="menu_link072">주말 응모 리스트</a></li>
+				</ul>
+			</li>
+			<li><a href="./refresh_list.html" class="active menu_link08">새로고침 코-너 관리</a></li>
+			<li><a href="../admpeople/admpeople_list.html" class="menu_link09">관리자 관리</a></li>
+		</ul>
+		<div class="gnb_login_info">
+			<figure class="profile_img" style="background-image:'';"></figure>
+			<div class="profile_info">
+				<h3 class="profile_name">KKKKKKK</h3>
+				<a href="mainto:KKKKKKK@sample.com;" class="profile_mail">KKKKKKK@sample.com</a>
+			</div>
+		</div>
+	</header>
+	<!-- left GNB end -->
+	<main>
+		<!-- top Menu -->
+		<section class="adm_top_section wrapped_flex">
+			<div class="left">
+				<ul class="top_nav_list">
+					<li class="current_nav">
+						<h2>새로고침 코-너 관리</h2>
+					</li>
+				</ul>
+			</div>
+			<div class="right">
+				<p class="top_profile_text"><strong>KKKKKKKK 님</strong> 안녕하세요.</p>
+				<button onClick="location.href='../login.html'" class="btn_top btn_primary btn">로그아웃</button>
+			</div>
+		</section>
+		<!-- top Menu end -->
+		<!-- contents start -->
+		<section class="faq_section adm_section">
+			<div class="adm_con_page roundbox">
+				<!-- faq list -->
+				<div class="refresh_list page_pb0 adm_part">
+					<h3 class="adm_title">새로고침 코-너 별자리 송출 리스트</h3>
+					<div class="wrapped_flex">
+						<div class="w50per">
+							<ul class="list_num3 adm_list">
+								<li class="adm_list_title">
+									<div class="list_con01">No.</div>
+									<div class="list_con02">닉네임</div>
+									<div class="list_con03 list_con_btn">기능</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="w50per">
+							<ul class="list_num3 adm_list">
+								<li class="adm_list_title">
+									<div class="list_con01">No.</div>
+									<div class="list_con02">닉네임</div>
+									<div class="list_con03 list_con_btn">기능</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+								<li class="adm_list_con">
+									<div class="list_con01">001</div>
+									<div class="list_con02">변*나</div>
+									<div class="list_con03 list_btn_wrap"><button onClick="" class="btn_delete btn_gray btn_m btn">삭제</button>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+				<!-- faq_list end -->
+				<!-- 페이지 네비게이션 Start -->
+				<ul class="pagination">
+					<li><button class="prev disabled"></button></li>
+					<!-- 선택할 수 없는 page는 disabled 클래스 추가
+					<li><button class="first"></button></li>
+					<li><button class="prev"></button></li>
+					-->
+					<!-- 숫자 -->
+					<li><button class="page on">1</li>
+					<li><button class="page">2</li><!-- 해당 페이지일때 on -->
+					<li><button class="page">3</li>
+					<li><button class="page">...</button></li>
+					<li><button class="page">8</button></li>
+					<li><button class="page">9</button></li>
+					<li><button class="page">10</button></li>
+					<!-- 숫자 end -->
+					<li><button class="next"></button></li>
+				</ul>
+				<!-- 페이지 네비게이션 End -->
+			</div>
+		</section>
+		
+	</main>
+	<script>
+	</script>
+</body>
+</html>

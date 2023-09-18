@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+
+	<description>rebel9-tags</description>
+	<display-name>rebel9-tags</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>uctag</short-name>
+	<uri>http://tags.rebel9.co.kr/tags</uri>
+	
+    <tag>
+        <name>pagingHelperHome</name>
+        <tag-class>kr.co.lge.goldstar.core.pagination.PagingHelperHome</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>paging</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>kr.co.lge.goldstar.core.pagination.Paging</type>
+        </attribute>
+        <attribute>
+            <name>context</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>request</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>javax.servlet.http.HttpServletRequest</type>
+        </attribute>
+        <attribute>
+            <name>groups</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.Integer</type>
+        </attribute>
+    </tag>
+    <tag>
+        <name>pagingHelperManager</name>
+        <tag-class>kr.co.lge.goldstar.core.pagination.PagingHelperManager</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>paging</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>kr.co.lge.goldstar.core.pagination.Paging</type>
+        </attribute>
+        <attribute>
+            <name>context</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>request</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>javax.servlet.http.HttpServletRequest</type>
+        </attribute>
+        <attribute>
+            <name>groups</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.Integer</type>
+        </attribute>
+    </tag>
+</taglib>

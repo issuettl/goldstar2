@@ -1,0 +1,2186 @@
+@charset "UTF-8";
+/* VARIABLES
+------------------------------------------------------------------------*/
+/*
+ * clearfix
+ * @include clearfix;
+*/
+/*
+* overflowScrolling
+* @include overflowScrolling;
+*/
+/*
+* calc
+* @include calc('width', 100%, 250px)
+*/
+/*
+* calc-mobile-size
+* @include calc-mobile-size('width', 87px);
+*/
+/*
+* vw
+* @include vw('font-size', 16px);
+*/
+/*
+* textEllipsis 한 줄
+* @include textEllipsis;
+*/
+/*
+* textEllipsis 여러 줄
+* @include textEllipsisClamp;
+*/
+/*
+* textClip
+* @include textClip;
+*/
+/*
+* swiper
+* @include swiper(center);
+*/
+/*
+* translate3D
+* @include translate3D;
+*/
+/*
+* scale
+* @include scale(-1, 1);
+*/
+/*
+* transition
+* @include allTransition();
+*/
+/* component mixin */
+/* 부트스트랩 충돌 추가 */
+.col-lg-12 {
+	padding: 0;
+}
+
+/* //부트스트랩 충돌 추가 */
+.component-wrap .title.title-h1 * {
+	font-size: 52px;
+	line-height: 70px;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h1 * {
+		font-size: 32px;
+		line-height: 42px;
+	}
+}
+
+.component-wrap .title.title-h2 * {
+	font-size: 48px;
+	line-height: 66px;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h2 * {
+		font-size: 32px;
+		line-height: 42px;
+	}
+}
+
+.component-wrap .title.title-h3 * {
+	font-size: 40px;
+	line-height: 56px;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h3 * {
+		font-size: 27px;
+		line-height: 38px;
+	}
+}
+
+.component-wrap .title.title-h4 * {
+	font-size: 32px;
+	line-height: 52px;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h4 * {
+		font-size: 24px;
+		line-height: 33px;
+	}
+}
+
+.component-wrap .title.title-h5 * {
+	font-size: 24px;
+	line-height: 34px;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h5 * {
+		font-size: 20px;
+		line-height: 28px;
+	}
+}
+
+.component-wrap .title.title-h6 * {
+	font-size: 24px;
+	line-height: 34px;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h6 * {
+		font-size: 20px;
+		line-height: 28px;
+	}
+}
+
+.component-wrap .title .logo {
+	float: none;
+	height: 66px;
+	padding: 0;
+	vertical-align: top;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title .logo {
+		height: 42px;
+	}
+}
+
+.component-wrap .fc-white .logo,
+.component-wrap .fc-light-gray .logo {
+	filter: brightness(0) invert(1);
+}
+
+.component-wrap .fc-black .logo,
+.component-wrap .fc-dark .logo {
+	filter: brightness(1) invert(0);
+}
+
+.component-wrap .title.title-h1 .logo {
+	height: 70px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h1 .logo {
+		height: 46px;
+	}
+}
+
+.component-wrap .title.title-h2 .logo {
+	height: 66px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h2 .logo {
+		height: 42px;
+	}
+}
+
+.component-wrap .title.title-h3 .logo {
+	height: 56px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h3 .logo {
+		height: 38px;
+	}
+}
+
+.component-wrap .title.title-h4 .logo {
+	height: 52px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h4 .logo {
+		height: 33px;
+	}
+}
+
+.component-wrap .title.title-h5 .logo {
+	height: 34px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h5 .logo {
+		height: 28px;
+	}
+}
+
+.component-wrap .title.title-h6 .logo {
+	height: 34px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .title.title-h6 .logo {
+		height: 28px;
+	}
+}
+
+.component-wrap .page-header {
+	max-width: 1460px;
+	margin: 0 auto;
+	padding: 24px 40px 64px;
+	text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header {
+		padding: 32px 16px 40px;
+	}
+}
+
+.component-wrap .page-header.type2 {
+	padding-bottom: 24px;
+}
+
+.component-wrap .page-header .title {
+	font-size: 24px;
+	line-height: 34px;
+	font-weight: 700;
+	color: #000;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header .title {
+		font-size: 24px;
+		line-height: 31px;
+	}
+}
+
+.component-wrap .page-header .desc {
+	margin-top: 8px;
+}
+
+.component-wrap .page-header .desc .txt {
+	display: inline-block;
+	font-size: 16px;
+	line-height: 26px;
+	vertical-align: middle;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header .desc .txt {
+		font-size: 14px;
+		line-height: 22px;
+	}
+}
+
+.component-wrap .page-header .btn-desc {
+	margin-top: 24px;
+	font-size: 0;
+	/* display: flex;
+            justify-content: center; */
+}
+
+.component-wrap .page-header .btn-desc .btn {
+	margin: 0 4px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header .btn-desc {
+		margin-top: 18px;
+	}
+}
+
+.component-wrap .page-header .link-desc {
+	margin-top: 8px;
+}
+
+.component-wrap .page-header .link-desc .btn-link {
+	color: #000;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.component-wrap .page-header .link-desc .btn-link:after {
+	width: 16px;
+	height: 16px;
+}
+
+.component-wrap .page-header .link-desc.arrow-left .btn-link {
+	padding-right: 0;
+	padding-left: 22px;
+}
+
+.component-wrap .page-header .link-desc.arrow-left .btn-link:hover {
+	text-decoration: underline;
+}
+
+.component-wrap .page-header .link-desc.arrow-left .btn-link:after {
+	right: auto;
+	left: 0;
+	transform: rotate(180deg);
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header .link-desc {
+		display: none;
+	}
+}
+
+.component-wrap .page-header .tabs-wrap {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.component-wrap .page-header .tabs-wrap.btn-type {
+	padding-top: 20px;
+	padding-bottom: 24px;
+}
+
+.component-wrap .page-header .tabs-wrap.btn-type:only-child {
+	padding-top: 24px;
+	padding-bottom: 12px;
+}
+
+.component-wrap .page-header.no-title {
+	padding: 48px 0 24px;
+	background: #f4f4f4;
+}
+
+.component-wrap .page-header.border.wide {
+	padding: 10px 0 0;
+	border-bottom: 8px solid #f4f4f4;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header.border.wide {
+		border-bottom: 0;
+	}
+}
+
+.component-wrap .page-header.border.wide .tabs-wrap.btn-type {
+	padding-bottom: 24px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header.border.wide .tabs-wrap.btn-type {
+		padding-bottom: 12px;
+	}
+}
+
+.component-wrap .page-header.wide {
+	max-width: 100%;
+	margin-bottom: 48px;
+	padding: 10px 0 8px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header.wide {
+		margin-bottom: 32px;
+		padding: 0;
+	}
+}
+
+.component-wrap .page-header.wide h2 {
+	max-width: 1380px;
+	margin: 0 auto;
+	padding: 0 40px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header.wide h2 {
+		padding: 0 16px;
+	}
+}
+
+.component-wrap .page-header .step-wrap {
+	margin-top: 12px;
+}
+
+.component-wrap .page-header .step-wrap .steps {
+	font-size: 0;
+}
+
+.component-wrap .page-header .step-wrap .steps li {
+	display: inline-block;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 24px;
+	color: #aaa;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header .step-wrap .steps li {
+		font-size: 13px;
+		line-height: 21px;
+	}
+}
+
+.component-wrap .page-header .step-wrap .steps li:not(:last-child):after {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin: 0 14px;
+	background: url("/lg5-common/images/icons/btn-down-16-black.svg") no-repeat 0 0;
+	vertical-align: -3px;
+	opacity: .385;
+	transform: rotate(-90deg);
+	content: '';
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header .step-wrap .steps li:not(:last-child):after {
+		width: 16px;
+		height: 16px;
+		margin: 0 6px;
+		background-size: 100%;
+		vertical-align: -3px;
+	}
+}
+
+.component-wrap .page-header .step-wrap .steps li.current {
+	color: #000;
+}
+
+.component-wrap .page-header .step-wrap .steps li.current:not(:last-child):after {
+	opacity: 1;
+}
+
+.component-wrap .page-header .progress-wrap {
+	margin-top: 36px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 673px;
+}
+
+.component-wrap .page-header .progress-wrap ol {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	counter-reset: counter;
+	position: relative;
+}
+
+.component-wrap .page-header .progress-wrap ol li {
+	display: flex;
+	align-items: center;
+	counter-increment: counter;
+	position: relative;
+	justify-content: center;
+	background-color: #fff;
+	padding: 0 12px;
+}
+
+.component-wrap .page-header .progress-wrap ol li:before {
+	content: counter(counter);
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin-right: 12px;
+	color: #000;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 32px;
+	border-radius: 50%;
+	background-color: #e4e4e4;
+}
+
+.component-wrap .page-header .progress-wrap ol li:first-child {
+	padding-left: 0;
+}
+
+.component-wrap .page-header .progress-wrap ol li:last-child {
+	padding-right: 0;
+}
+
+.component-wrap .page-header .progress-wrap ol li .txt {
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header .progress-wrap ol li .txt {
+		font-size: 13px;
+		line-height: 21px;
+	}
+}
+
+.component-wrap .page-header .progress-wrap ol::before {
+	content: '';
+	position: absolute;
+	top: 15px;
+	left: 33px;
+	right: 33px;
+	display: block;
+	height: 2px;
+	background: #ededed;
+	z-index: -1;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .page-header .progress-wrap {
+		width: 100%;
+		margin-top: 32px;
+	}
+	.component-wrap .page-header .progress-wrap ol {
+		flex-wrap: wrap;
+	}
+	.component-wrap .page-header .progress-wrap ol li {
+		padding: 0 6px;
+	}
+	.component-wrap .page-header .progress-wrap ol li:before {
+		width: 24px;
+		height: 24px;
+		line-height: 24px;
+		margin-right: 6px;
+	}
+	.component-wrap .page-header .progress-wrap ol li:not(:last-child):after {
+		margin: 0 6px;
+		width: 20%;
+	}
+	.component-wrap .page-header .progress-wrap ol li:first-child:nth-last-child(n+4), .component-wrap .page-header .progress-wrap ol li:first-child:nth-last-child(n+4) ~ li {
+		width: 50%;
+	}
+	.component-wrap .page-header .progress-wrap ol li:first-child:nth-last-child(n+4) ~ li:nth-child(2n + 2):after {
+		content: none;
+	}
+	.component-wrap .page-header .progress-wrap ol li:first-child:nth-last-child(n+4) ~ li:nth-child(n + 3) {
+		margin-top: 16px;
+	}
+	.component-wrap .page-header .progress-wrap ol::before {
+		top: 11px;
+	}
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.component-wrap .page-header .progress-wrap {
+		/* ie 호환성 이슈 */
+	}
+	.component-wrap .page-header .progress-wrap ol li {
+		margin: 0 auto;
+	}
+	.component-wrap .page-header .progress-wrap ol li:first-child {
+		margin-right: auto;
+		margin-left: 0;
+	}
+	.component-wrap .page-header .progress-wrap ol li:last-child {
+		margin-left: auto;
+		margin-right: 0;
+	}
+}
+
+.component-wrap .cont-wrap {
+	max-width: 1460px;
+	margin: 0 auto;
+	padding: 0 40px 120px;
+}
+
+.component-wrap .cont-wrap.narrow {
+	max-width: 1226px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .cont-wrap {
+		padding: 0 0 60px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .cont-wrap.no-bd {
+		border-top: none;
+	}
+}
+
+.component-wrap .cont-wrap .row-wrap:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.component-wrap .cont-wrap .row-wrap .col-left {
+	float: left;
+	width: calc( 100% - 448px);
+}
+
+.component-wrap .cont-wrap .row-wrap .col-right {
+	float: left;
+	width: 400px;
+	margin-left: 48px;
+}
+
+.component-wrap .cont-wrap .row-wrap .col-right.fixed {
+	position: fixed;
+	top: 60px;
+	right: 40px;
+}
+
+@media screen and (min-width: 1460px) {
+	.component-wrap .cont-wrap .row-wrap .col-right.fixed {
+		right: 50%;
+		margin-right: -690px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.component-wrap .cont-wrap .row-wrap .col-left,
+	.component-wrap .cont-wrap .row-wrap .col-right {
+		float: none;
+		width: 100%;
+	}
+	.component-wrap .cont-wrap .row-wrap .col-left .section:first-child {
+		padding-top: 0;
+	}
+	.component-wrap .cont-wrap .row-wrap .col-left .section:last-child {
+		margin-bottom: 0;
+	}
+	.component-wrap .cont-wrap .row-wrap .col-right {
+		margin-left: 0;
+	}
+	.component-wrap .cont-wrap .row-wrap .col-right.fixed {
+		position: static;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .cont-wrap .tabs-wrap.cont-tab {
+		padding-top: 32px;
+		padding-bottom: 10px;
+	}
+}
+
+.component-wrap .cont-wrap .section {
+	position: relative;
+}
+
+.component-wrap .cont-wrap .section .sec-tit {
+	margin-bottom: 16px;
+	color: #000;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 700;
+}
+
+.component-wrap .cont-wrap .section .tit-wrap {
+	position: relative;
+	margin-bottom: 48px;
+}
+
+.component-wrap .cont-wrap .section .tit-wrap.margin-sm {
+	margin-bottom: 16px;
+}
+
+.component-wrap .cont-wrap .section .tit-wrap .tit {
+	padding-bottom: 16px;
+	color: #000;
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 1.63;
+	border-bottom: 2px solid #222;
+}
+
+.component-wrap .cont-wrap .section .tit-wrap .tit .point {
+	color: #ec455a;
+}
+
+.component-wrap .cont-wrap .section .tit-wrap .tit .tooltip-wrap {
+	padding-top: 5px;
+}
+
+.component-wrap .cont-wrap .section .tit-wrap .tit-text {
+	margin-top: 12px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .cont-wrap .section {
+		padding: 40px 16px 0;
+	}
+	.component-wrap .cont-wrap .section .sec-tit {
+		margin-bottom: 32px;
+	}
+	.component-wrap .cont-wrap .section .tit-wrap {
+		margin-bottom: 24px;
+	}
+	.component-wrap .cont-wrap .section .tit-wrap .tit {
+		font-size: 24px;
+		line-height: 1.38;
+	}
+}
+
+.component-wrap .cont-wrap .section + .accordion-section {
+	margin-top: 120px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .cont-wrap .section + .accordion-section {
+		margin-top: 0;
+	}
+}
+
+.iw_placeholder .iw_component {
+	border-top: 1px solid transparent;
+	margin-top: -1px;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-center.text-left, .align-center.text-right {
+	text-align: center !important;
+}
+
+/* font color */
+.fc-black,
+.fc-black * {
+	color: #000 !important;
+}
+
+.fc-black:before,
+.fc-black *:before {
+	background-color: #222 !important;
+}
+
+.fc-dark-gray,
+.fc-dark-gray * {
+	color: #666 !important;
+}
+
+.fc-dark-gray:before,
+.fc-dark-gray *:before {
+	background-color: #666 !important;
+}
+
+.fc-gray,
+.fc-gray * {
+	color: #aaa !important;
+}
+
+.fc-gray:before,
+.fc-gray *:before {
+	background-color: #aaa !important;
+}
+
+.fc-light-gray,
+.fc-light-gray * {
+	color: #ddd !important;
+}
+
+.fc-light-gray:before,
+.fc-light-gray *:before {
+	background-color: #ddd !important;
+}
+
+.fc-white,
+.fc-white * {
+	color: #fff !important;
+}
+
+.fc-white:before,
+.fc-white *:before {
+	background-color: #fff !important;
+}
+
+.fc-pink,
+.fc-pink * {
+	color: #da0f47 !important;
+}
+
+.fc-pink:before,
+.fc-pink *:before {
+	background-color: #da0f47 !important;
+}
+
+.component-wrap {
+	position: relative;
+	width: 100%;
+	clear: both;
+	margin: 0 auto;
+	padding: 80px 0;
+}
+
+.component-wrap:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap {
+		padding: 60px 0;
+	}
+}
+
+.component-wrap.bg-lightgray {
+	background-color: #f4f4f4;
+}
+
+.component-wrap.bg-lightgray .component[class*=bg-] {
+	background-color: transparent !important;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.component-wrap.bg-lightgray .component[class*=bg-] .animation-box {
+		overflow: hidden;
+	}
+	.component-wrap.bg-lightgray .component[class*=bg-] .animation-box video {
+		background-color: transparent !important;
+	}
+}
+
+.component-wrap.bg-lightgray * {
+	color: #000;
+}
+
+.component-wrap.bg-lightgray .bullet-list * {
+	color: #767676;
+}
+
+.component-wrap.bg-lightgray .component .btn.border {
+	border-color: #222 !important;
+	color: #000 !important;
+}
+
+.component-wrap.bg-lightgray .component .btn.border:hover, .component-wrap.bg-lightgray .component .btn.border:active, .component-wrap.bg-lightgray .component .btn.border:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-lightgray .component .text-link {
+	color: #000 !important;
+}
+
+.component-wrap.bg-lightgray .component .btn.border.bc-black {
+	border-color: #222 !important;
+	color: #000 !important;
+}
+
+.component-wrap.bg-lightgray .component .btn.border.bc-black:hover, .component-wrap.bg-lightgray .component .btn.border.bc-black:active, .component-wrap.bg-lightgray .component .btn.border.bc-black:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-lightgray .component .btn.border.bc-white {
+	border-color: #fff !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-lightgray .component .btn.border.bc-white:hover, .component-wrap.bg-lightgray .component .btn.border.bc-white:active, .component-wrap.bg-lightgray .component .btn.border.bc-white:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-lightgray .component .text-link.bc-black {
+	color: #000 !important;
+}
+
+.component-wrap.bg-lightgray .component .text-link.bc-black::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+}
+
+.component-wrap.bg-lightgray .component .text-link.bc-white {
+	color: #fff !important;
+}
+
+.component-wrap.bg-lightgray .component .text-link.bc-white::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+}
+
+.component-wrap.bg-lightgray .component .fc-black,
+.component-wrap.bg-lightgray .component .fc-black * {
+	color: #000 !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-black:before,
+.component-wrap.bg-lightgray .component .fc-black *:before {
+	background-color: #222 !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-dark-gray,
+.component-wrap.bg-lightgray .component .fc-dark-gray * {
+	color: #666 !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-dark-gray:before,
+.component-wrap.bg-lightgray .component .fc-dark-gray *:before {
+	background-color: #666 !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-gray,
+.component-wrap.bg-lightgray .component .fc-gray * {
+	color: #aaa !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-gray:before,
+.component-wrap.bg-lightgray .component .fc-gray *:before {
+	background-color: #aaa !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-light-gray,
+.component-wrap.bg-lightgray .component .fc-light-gray * {
+	color: #ddd !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-light-gray:before,
+.component-wrap.bg-lightgray .component .fc-light-gray *:before {
+	background-color: #ddd !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-white,
+.component-wrap.bg-lightgray .component .fc-white * {
+	color: #fff !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-white:before,
+.component-wrap.bg-lightgray .component .fc-white *:before {
+	background-color: #fff !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-pink,
+.component-wrap.bg-lightgray .component .fc-pink * {
+	color: #da0f47 !important;
+}
+
+.component-wrap.bg-lightgray .component .fc-pink:before,
+.component-wrap.bg-lightgray .component .fc-pink *:before {
+	background-color: #da0f47 !important;
+}
+
+.component-wrap.bg-dark {
+	background-color: #333;
+}
+
+.component-wrap.bg-dark .component[class*=bg-] {
+	background-color: transparent !important;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.component-wrap.bg-dark .component[class*=bg-] .animation-box {
+		overflow: hidden;
+	}
+	.component-wrap.bg-dark .component[class*=bg-] .animation-box video {
+		background-color: transparent !important;
+	}
+}
+
+.component-wrap.bg-dark * {
+	color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap.bg-dark * {
+		color: #fff;
+	}
+}
+
+.component-wrap.bg-dark .component .btn.border {
+	border-color: #fff !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-dark .component .btn.border:hover, .component-wrap.bg-dark .component .btn.border:active, .component-wrap.bg-dark .component .btn.border:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-dark .component .text-link {
+	color: #fff !important;
+}
+
+.component-wrap.bg-dark .component .text-link::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+}
+
+.component-wrap.bg-dark .component .btn.border.bc-black {
+	border-color: #222 !important;
+	color: #000 !important;
+}
+
+.component-wrap.bg-dark .component .btn.border.bc-black:hover, .component-wrap.bg-dark .component .btn.border.bc-black:active, .component-wrap.bg-dark .component .btn.border.bc-black:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-dark .component .btn.border.bc-white {
+	border-color: #fff !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-dark .component .btn.border.bc-white:hover, .component-wrap.bg-dark .component .btn.border.bc-white:active, .component-wrap.bg-dark .component .btn.border.bc-white:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-dark .component .text-link.bc-black {
+	color: #000 !important;
+}
+
+.component-wrap.bg-dark .component .text-link.bc-black::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+}
+
+.component-wrap.bg-dark .component .text-link.bc-white {
+	color: #fff !important;
+}
+
+.component-wrap.bg-dark .component .text-link.bc-white::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+}
+
+.component-wrap.bg-dark .component .fc-black,
+.component-wrap.bg-dark .component .fc-black * {
+	color: #000 !important;
+}
+
+.component-wrap.bg-dark .component .fc-black:before,
+.component-wrap.bg-dark .component .fc-black *:before {
+	background-color: #222 !important;
+}
+
+.component-wrap.bg-dark .component .fc-dark-gray,
+.component-wrap.bg-dark .component .fc-dark-gray * {
+	color: #666 !important;
+}
+
+.component-wrap.bg-dark .component .fc-dark-gray:before,
+.component-wrap.bg-dark .component .fc-dark-gray *:before {
+	background-color: #666 !important;
+}
+
+.component-wrap.bg-dark .component .fc-gray,
+.component-wrap.bg-dark .component .fc-gray * {
+	color: #aaa !important;
+}
+
+.component-wrap.bg-dark .component .fc-gray:before,
+.component-wrap.bg-dark .component .fc-gray *:before {
+	background-color: #aaa !important;
+}
+
+.component-wrap.bg-dark .component .fc-light-gray,
+.component-wrap.bg-dark .component .fc-light-gray * {
+	color: #ddd !important;
+}
+
+.component-wrap.bg-dark .component .fc-light-gray:before,
+.component-wrap.bg-dark .component .fc-light-gray *:before {
+	background-color: #ddd !important;
+}
+
+.component-wrap.bg-dark .component .fc-white,
+.component-wrap.bg-dark .component .fc-white * {
+	color: #fff !important;
+}
+
+.component-wrap.bg-dark .component .fc-white:before,
+.component-wrap.bg-dark .component .fc-white *:before {
+	background-color: #fff !important;
+}
+
+.component-wrap.bg-dark .component .fc-pink,
+.component-wrap.bg-dark .component .fc-pink * {
+	color: #da0f47 !important;
+}
+
+.component-wrap.bg-dark .component .fc-pink:before,
+.component-wrap.bg-dark .component .fc-pink *:before {
+	background-color: #da0f47 !important;
+}
+
+.component-wrap.bg-black {
+	background-color: #000;
+}
+
+.component-wrap.bg-black .component[class*=bg-] {
+	background-color: transparent !important;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.component-wrap.bg-black .component[class*=bg-] .animation-box {
+		overflow: hidden;
+	}
+	.component-wrap.bg-black .component[class*=bg-] .animation-box video {
+		background-color: transparent !important;
+	}
+}
+
+.component-wrap.bg-black * {
+	color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap.bg-black * {
+		color: #fff;
+	}
+}
+
+.component-wrap.bg-black .component .btn.border {
+	border-color: #fff !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-black .component .btn.border:hover, .component-wrap.bg-black .component .btn.border:active, .component-wrap.bg-black .component .btn.border:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-black .component .text-link {
+	color: #fff !important;
+}
+
+.component-wrap.bg-black .component .text-link::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+}
+
+.component-wrap.bg-black .component .btn.border.bc-black {
+	border-color: #222 !important;
+	color: #000 !important;
+}
+
+.component-wrap.bg-black .component .btn.border.bc-black:hover, .component-wrap.bg-black .component .btn.border.bc-black:active, .component-wrap.bg-black .component .btn.border.bc-black:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-black .component .btn.border.bc-white {
+	border-color: #fff !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-black .component .btn.border.bc-white:hover, .component-wrap.bg-black .component .btn.border.bc-white:active, .component-wrap.bg-black .component .btn.border.bc-white:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-black .component .text-link.bc-black {
+	color: #000 !important;
+}
+
+.component-wrap.bg-black .component .text-link.bc-black::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+}
+
+.component-wrap.bg-black .component .text-link.bc-white {
+	color: #fff !important;
+}
+
+.component-wrap.bg-black .component .text-link.bc-white::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+}
+
+.component-wrap.bg-black .component .fc-black,
+.component-wrap.bg-black .component .fc-black * {
+	color: #000 !important;
+}
+
+.component-wrap.bg-black .component .fc-black:before,
+.component-wrap.bg-black .component .fc-black *:before {
+	background-color: #222 !important;
+}
+
+.component-wrap.bg-black .component .fc-dark-gray,
+.component-wrap.bg-black .component .fc-dark-gray * {
+	color: #666 !important;
+}
+
+.component-wrap.bg-black .component .fc-dark-gray:before,
+.component-wrap.bg-black .component .fc-dark-gray *:before {
+	background-color: #666 !important;
+}
+
+.component-wrap.bg-black .component .fc-gray,
+.component-wrap.bg-black .component .fc-gray * {
+	color: #aaa !important;
+}
+
+.component-wrap.bg-black .component .fc-gray:before,
+.component-wrap.bg-black .component .fc-gray *:before {
+	background-color: #aaa !important;
+}
+
+.component-wrap.bg-black .component .fc-light-gray,
+.component-wrap.bg-black .component .fc-light-gray * {
+	color: #ddd !important;
+}
+
+.component-wrap.bg-black .component .fc-light-gray:before,
+.component-wrap.bg-black .component .fc-light-gray *:before {
+	background-color: #ddd !important;
+}
+
+.component-wrap.bg-black .component .fc-white,
+.component-wrap.bg-black .component .fc-white * {
+	color: #fff !important;
+}
+
+.component-wrap.bg-black .component .fc-white:before,
+.component-wrap.bg-black .component .fc-white *:before {
+	background-color: #fff !important;
+}
+
+.component-wrap.bg-black .component .fc-pink,
+.component-wrap.bg-black .component .fc-pink * {
+	color: #da0f47 !important;
+}
+
+.component-wrap.bg-black .component .fc-pink:before,
+.component-wrap.bg-black .component .fc-pink *:before {
+	background-color: #da0f47 !important;
+}
+
+.component-wrap.bg-white {
+	background-color: #fff;
+}
+
+.component-wrap.bg-white .component[class*=bg-] {
+	background-color: transparent !important;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.component-wrap.bg-white .component[class*=bg-] .animation-box {
+		overflow: hidden;
+	}
+	.component-wrap.bg-white .component[class*=bg-] .animation-box video {
+		background-color: transparent !important;
+	}
+}
+
+.component-wrap.bg-white * {
+	color: #000;
+}
+
+.component-wrap.bg-white .bullet-list * {
+	color: #767676;
+}
+
+.component-wrap.bg-white .component .btn.border {
+	border-color: #222 !important;
+	color: #000 !important;
+}
+
+.component-wrap.bg-white .component .btn.border:hover, .component-wrap.bg-white .component .btn.border:active, .component-wrap.bg-white .component .btn.border:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-white .component .text-link {
+	color: #000 !important;
+}
+
+.component-wrap.bg-white .component .btn.border.bc-black {
+	border-color: #222 !important;
+	color: #000 !important;
+}
+
+.component-wrap.bg-white .component .btn.border.bc-black:hover, .component-wrap.bg-white .component .btn.border.bc-black:active, .component-wrap.bg-white .component .btn.border.bc-black:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-white .component .btn.border.bc-white {
+	border-color: #fff !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-white .component .btn.border.bc-white:hover, .component-wrap.bg-white .component .btn.border.bc-white:active, .component-wrap.bg-white .component .btn.border.bc-white:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-white .component .text-link.bc-black {
+	color: #000 !important;
+}
+
+.component-wrap.bg-white .component .text-link.bc-black::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+}
+
+.component-wrap.bg-white .component .text-link.bc-white {
+	color: #fff !important;
+}
+
+.component-wrap.bg-white .component .text-link.bc-white::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+}
+
+.component-wrap.bg-white .component .fc-black,
+.component-wrap.bg-white .component .fc-black * {
+	color: #000 !important;
+}
+
+.component-wrap.bg-white .component .fc-black:before,
+.component-wrap.bg-white .component .fc-black *:before {
+	background-color: #222 !important;
+}
+
+.component-wrap.bg-white .component .fc-dark-gray,
+.component-wrap.bg-white .component .fc-dark-gray * {
+	color: #666 !important;
+}
+
+.component-wrap.bg-white .component .fc-dark-gray:before,
+.component-wrap.bg-white .component .fc-dark-gray *:before {
+	background-color: #666 !important;
+}
+
+.component-wrap.bg-white .component .fc-gray,
+.component-wrap.bg-white .component .fc-gray * {
+	color: #aaa !important;
+}
+
+.component-wrap.bg-white .component .fc-gray:before,
+.component-wrap.bg-white .component .fc-gray *:before {
+	background-color: #aaa !important;
+}
+
+.component-wrap.bg-white .component .fc-light-gray,
+.component-wrap.bg-white .component .fc-light-gray * {
+	color: #ddd !important;
+}
+
+.component-wrap.bg-white .component .fc-light-gray:before,
+.component-wrap.bg-white .component .fc-light-gray *:before {
+	background-color: #ddd !important;
+}
+
+.component-wrap.bg-white .component .fc-white,
+.component-wrap.bg-white .component .fc-white * {
+	color: #fff !important;
+}
+
+.component-wrap.bg-white .component .fc-white:before,
+.component-wrap.bg-white .component .fc-white *:before {
+	background-color: #fff !important;
+}
+
+.component-wrap.bg-white .component .fc-pink,
+.component-wrap.bg-white .component .fc-pink * {
+	color: #da0f47 !important;
+}
+
+.component-wrap.bg-white .component .fc-pink:before,
+.component-wrap.bg-white .component .fc-pink *:before {
+	background-color: #da0f47 !important;
+}
+
+.component-wrap.bg-gray {
+	background-color: #f4f4f4;
+}
+
+.component-wrap.bg-gray .component[class*=bg-] {
+	background-color: transparent !important;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.component-wrap.bg-gray .component[class*=bg-] .animation-box {
+		overflow: hidden;
+	}
+	.component-wrap.bg-gray .component[class*=bg-] .animation-box video {
+		background-color: transparent !important;
+	}
+}
+
+.component-wrap.bg-gray * {
+	color: #000;
+}
+
+.component-wrap.bg-gray .bullet-list * {
+	color: #767676;
+}
+
+.component-wrap.bg-gray .component .btn.border {
+	border-color: #222 !important;
+	color: #000 !important;
+}
+
+.component-wrap.bg-gray .component .btn.border:hover, .component-wrap.bg-gray .component .btn.border:active, .component-wrap.bg-gray .component .btn.border:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-gray .component .text-link {
+	color: #000 !important;
+}
+
+.component-wrap.bg-gray .component .btn.border.bc-black {
+	border-color: #222 !important;
+	color: #000 !important;
+}
+
+.component-wrap.bg-gray .component .btn.border.bc-black:hover, .component-wrap.bg-gray .component .btn.border.bc-black:active, .component-wrap.bg-gray .component .btn.border.bc-black:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-gray .component .btn.border.bc-white {
+	border-color: #fff !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-gray .component .btn.border.bc-white:hover, .component-wrap.bg-gray .component .btn.border.bc-white:active, .component-wrap.bg-gray .component .btn.border.bc-white:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap.bg-gray .component .text-link.bc-black {
+	color: #000 !important;
+}
+
+.component-wrap.bg-gray .component .text-link.bc-black::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+}
+
+.component-wrap.bg-gray .component .text-link.bc-white {
+	color: #fff !important;
+}
+
+.component-wrap.bg-gray .component .text-link.bc-white::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+}
+
+.component-wrap.bg-gray .component .fc-black,
+.component-wrap.bg-gray .component .fc-black * {
+	color: #000 !important;
+}
+
+.component-wrap.bg-gray .component .fc-black:before,
+.component-wrap.bg-gray .component .fc-black *:before {
+	background-color: #222 !important;
+}
+
+.component-wrap.bg-gray .component .fc-dark-gray,
+.component-wrap.bg-gray .component .fc-dark-gray * {
+	color: #666 !important;
+}
+
+.component-wrap.bg-gray .component .fc-dark-gray:before,
+.component-wrap.bg-gray .component .fc-dark-gray *:before {
+	background-color: #666 !important;
+}
+
+.component-wrap.bg-gray .component .fc-gray,
+.component-wrap.bg-gray .component .fc-gray * {
+	color: #aaa !important;
+}
+
+.component-wrap.bg-gray .component .fc-gray:before,
+.component-wrap.bg-gray .component .fc-gray *:before {
+	background-color: #aaa !important;
+}
+
+.component-wrap.bg-gray .component .fc-light-gray,
+.component-wrap.bg-gray .component .fc-light-gray * {
+	color: #ddd !important;
+}
+
+.component-wrap.bg-gray .component .fc-light-gray:before,
+.component-wrap.bg-gray .component .fc-light-gray *:before {
+	background-color: #ddd !important;
+}
+
+.component-wrap.bg-gray .component .fc-white,
+.component-wrap.bg-gray .component .fc-white * {
+	color: #fff !important;
+}
+
+.component-wrap.bg-gray .component .fc-white:before,
+.component-wrap.bg-gray .component .fc-white *:before {
+	background-color: #fff !important;
+}
+
+.component-wrap.bg-gray .component .fc-pink,
+.component-wrap.bg-gray .component .fc-pink * {
+	color: #da0f47 !important;
+}
+
+.component-wrap.bg-gray .component .fc-pink:before,
+.component-wrap.bg-gray .component .fc-pink *:before {
+	background-color: #da0f47 !important;
+}
+
+.component-wrap .component-inner {
+	max-width: 1460px;
+	margin: 0 auto;
+	padding: 0 40px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .component-inner {
+		padding: 0 16px;
+	}
+}
+
+.component-wrap .text-wrap sup,
+.component-wrap .title sup,
+.component-wrap .sub-title sup,
+.component-wrap .head sup {
+	font-size: initial !important;
+	line-height: initial !important;
+	vertical-align: top;
+}
+
+.component-wrap.zero-top {
+	padding-top: 0;
+}
+
+.component-wrap.zero-btm {
+	padding-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap.zero-top-mob {
+		padding-top: 0;
+	}
+}
+
+.component-wrap .component {
+	position: relative;
+	margin: 0 auto;
+}
+
+.component-wrap .component.component-outer-box,
+.component-wrap .component .component-outer-box {
+	max-width: 1444px;
+	margin: 0 auto;
+	padding-left: 80px;
+	padding-right: 80px;
+}
+
+.component-wrap .component.component-outer-box .component-inner-box,
+.component-wrap .component .component-outer-box .component-inner-box {
+	position: relative;
+	overflow: visible;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.component-wrap .component.component-outer-box .slick-prev,
+.component-wrap .component.component-outer-box .slick-next,
+.component-wrap .component .component-outer-box .slick-prev,
+.component-wrap .component .component-outer-box .slick-next {
+	position: absolute;
+	top: 50%;
+	margin-top: -12px;
+	border: 0;
+	background: none;
+	padding: 0;
+	width: 23px;
+	height: 40px;
+	cursor: pointer;
+}
+
+.component-wrap .component.component-outer-box .slick-prev svg,
+.component-wrap .component.component-outer-box .slick-next svg,
+.component-wrap .component .component-outer-box .slick-prev svg,
+.component-wrap .component .component-outer-box .slick-next svg {
+	display: block;
+}
+
+.component-wrap .component.component-outer-box .slick-prev,
+.component-wrap .component .component-outer-box .slick-prev {
+	left: -50px;
+}
+
+[dir="rtl"] .component-wrap .component.component-outer-box .slick-prev, [dir="rtl"]
+.component-wrap .component .component-outer-box .slick-prev {
+	left: auto;
+	right: -50px;
+	transform: rotate(180deg);
+}
+
+.component-wrap .component.component-outer-box .slick-next,
+.component-wrap .component .component-outer-box .slick-next {
+	right: -50px;
+}
+
+[dir="rtl"] .component-wrap .component.component-outer-box .slick-next, [dir="rtl"]
+.component-wrap .component .component-outer-box .slick-next {
+	right: auto;
+	left: -50px;
+	transform: rotate(180deg);
+}
+
+.component-wrap .component .slick-slider .slick-arrow.slick-disabled {
+	opacity: 0.3;
+}
+
+.component-wrap .component .ui_carousel_slider.slide-solo {
+	padding-bottom: 0 !important;
+}
+
+.component-wrap .slide-controls {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+}
+
+.component-wrap .slide-controls .btn-arrow {
+	position: absolute;
+	transform: translateY(-50%);
+}
+
+.component-wrap .slide-controls .btn-arrow.prev {
+	left: -24px;
+}
+
+.component-wrap .slide-controls .btn-arrow.right {
+	right: -24px;
+}
+
+.component-wrap .indi-wrap {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	font-size: 0;
+	text-align: center;
+	z-index: 10;
+}
+
+.component-wrap .indi-wrap .indi-conts,
+.component-wrap .indi-wrap .ui_carousel_dots {
+	display: inline-block;
+	vertical-align: middle !important;
+}
+
+.component-wrap .indi-wrap .ui_carousel_play {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .indi-wrap .ui_carousel_play {
+		margin-left: 4px;
+	}
+}
+
+.component-wrap .indi-wrap .ui_carousel_play .btn-play {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .indi-wrap .ui_carousel_play .btn-play {
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.component-wrap .indi-wrap .ui_carousel_play.play .btn-play {
+	background-image: url("/lg5-common/images/icons/btn-carousel-play.svg");
+}
+
+.component-wrap .indi-wrap .ui_carousel_play.stop .btn-play {
+	background-image: url("/lg5-common/images/icons/btn-carousel-pause.svg");
+}
+
+.component-wrap .indi-wrap li {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.component-wrap .indi-wrap li .btn-indi {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	font-size: 0;
+	text-align: center;
+}
+
+.component-wrap .indi-wrap li .btn-indi:before {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #aaa;
+	content: '';
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .indi-wrap li .btn-indi {
+		width: 16px;
+		height: 16px;
+	}
+	.component-wrap .indi-wrap li .btn-indi:before {
+		width: 8px;
+		height: 8px;
+	}
+}
+
+.component-wrap .indi-wrap li.on .btn-indi {
+	width: 40px;
+}
+
+.component-wrap .indi-wrap li.on .btn-indi:before {
+	width: 28px;
+	border-radius: 6px;
+	background: #da0f47;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .indi-wrap li.on .btn-indi:before {
+		width: 22px;
+		border-radius: 4px;
+	}
+}
+
+.component-wrap .bc-black {
+	color: #000;
+}
+
+.component-wrap .bc-white {
+	color: #fff;
+}
+
+.component-wrap .text-link {
+	display: inline-block;
+	position: relative;
+	padding-right: 20px;
+	color: #000;
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .text-link {
+		font-size: 13px;
+		line-height: 21px;
+	}
+}
+
+.component-wrap .text-link::after {
+	content: ' ';
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 16px;
+	height: 16px;
+	margin-top: -8px;
+	background: url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+}
+
+.component-wrap .text-link span {
+	color: inherit;
+}
+
+.component-wrap .text-link.bc-black {
+	color: #000;
+}
+
+.component-wrap .text-link.bc-black::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-bk.svg") center no-repeat;
+}
+
+.component-wrap .text-link.bc-white {
+	color: #fff;
+}
+
+.component-wrap .text-link.bc-white::after {
+	background: url("/lg5-common/images/icons/icon-arr-16-wt.svg") center no-repeat;
+}
+
+.component-wrap .btn.border {
+	padding: 11px 31px !important;
+	color: #000;
+	border-color: #222 !important;
+	border-radius: 26px !important;
+}
+
+.component-wrap .btn.border.size {
+	padding: 3px 11px !important;
+	border-radius: 16px !important;
+}
+
+.component-wrap .btn.border.size-m {
+	padding: 7px 15px !important;
+	border-radius: 20px !important;
+}
+
+.component-wrap .btn.border.arrow {
+	padding-right: 40px !important;
+}
+
+.component-wrap .btn.border span {
+	color: inherit;
+}
+
+.component-wrap .btn.border.bc-black {
+	color: #000;
+	border-color: #222 !important;
+}
+
+.component-wrap .btn.border.bc-white {
+	color: #fff;
+	border-color: #fff !important;
+}
+
+.component-wrap .btn.border:hover, .component-wrap .btn.border:active, .component-wrap .btn.border:focus {
+	border-color: #fa263e !important;
+	background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+	color: #fff !important;
+}
+
+.component-wrap .bullet-list {
+	margin-top: 12px;
+}
+
+.component-wrap .bullet-list .b-txt {
+	padding-left: 0;
+}
+
+.component-wrap .bullet-list .b-txt::before {
+	display: none !important;
+}
+
+.component-wrap img.lazyload.mobile,
+.component-wrap img.lazyloaded.mobile {
+	display: none;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap img.lazyload.pc,
+	.component-wrap img.lazyloaded.pc {
+		display: none;
+	}
+	.component-wrap img.lazyload.mobile,
+	.component-wrap img.lazyloaded.mobile {
+		display: inline-block;
+	}
+}
+
+.component-wrap .font-regular {
+	font-style: normal;
+	font-weight: 400;
+}
+
+.component-wrap .font-bold {
+	font-style: normal;
+	font-weight: 700;
+}
+
+.component-wrap .font-regular-italic {
+	font-style: italic;
+	font-weight: 400;
+}
+
+.component-wrap .font-bold-italic {
+	font-style: italic;
+	font-weight: 700;
+}
+
+.component-wrap .font-underline {
+	text-decoration: underline;
+}
+
+.component-wrap [data-bv-rating] .bv_main_container,
+.component-wrap [data-bv-show=inline_rating] .bv_main_container {
+	display: inline-block !important;
+}
+
+.component-wrap [data-bv-rating] .bv_main_container .bv_averageRating_component_container,
+.component-wrap [data-bv-rating] .bv_main_container .bv_numReviews_component_container,
+.component-wrap [data-bv-show=inline_rating] .bv_main_container .bv_averageRating_component_container,
+.component-wrap [data-bv-show=inline_rating] .bv_main_container .bv_numReviews_component_container,
+.component-wrap .bv_stars_component_container {
+	display: inline-block !important;
+	vertical-align: middle !important;
+}
+
+.component-wrap .hidden {
+	position: absolute;
+	width: 0;
+	height: 0;
+	line-height: 1px;
+	left: -9999px;
+	top: auto;
+	overflow: hidden;
+}
+
+.component-wrap .sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.component-wrap.full {
+	max-width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+	.component-wrap .pc-only {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.component-wrap .mo-only {
+		display: none;
+	}
+}
+
+/* 메인 성능 개선 체트 */
+html.modal-open {
+	overflow: hidden;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	display: none;
+	overflow: hidden;
+	outline: 0;
+}
+
+.modal.fade .modal-dialog {
+	-webkit-transition: -webkit-transform .3s ease-out;
+	transition: -webkit-transform .3s ease-out;
+	-webkit-transform: translate(0, -25%);
+	-ms-transform: translate(0, -25%);
+	transform: translate(0, -25%);
+}
+
+.modal.show .modal-dialog {
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
+}
+
+.modal.modal-scroll .modal-body {
+	max-height: 400px;
+}
+
+.modal.modal-scroll .modal-lg .modal-body {
+	max-height: 600px;
+}
+
+.modal.modal-fix:before {
+	vertical-align: top;
+}
+
+.modal.modal-fix .modal-dialog {
+	top: 40px;
+}
+
+.modal.modal-locked {
+	overflow-y: hidden;
+}
+
+.modal.modal-simple .modal-header {
+	padding-top: 32px;
+}
+
+.modal.modal-simple .modal-header + .modal-body {
+	padding-top: 0;
+}
+
+.modal.modal-simple .modal-body {
+	padding: 32px 40px 0 !important;
+}
+
+.modal.modal-simple .modal-footer {
+	padding: 23px 40px 40px;
+}
+
+.modal.modal-simple .modal-dialog {
+	width: 400px;
+	margin-left: -200px;
+}
+
+.modal.modal-simple .simple-content-box {
+	text-align: center;
+	font-size: 16px;
+}
+
+.modal.modal-simple .simple-content-box p {
+	margin: 0;
+}
+
+.modal.modal-simple .simple-content-box .content-paragraph:not(:first-child) {
+	margin-top: 17px;
+}
+
+.modal .modal-dialog {
+	max-width: 100%;
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+	left: 50%;
+}
+
+.modal .modal-dialog.modal-sm {
+	width: 480px;
+	max-width: 480px;
+	margin-left: -240px;
+}
+
+.modal .modal-dialog.modal-md {
+	width: 560px;
+	max-width: 560px;
+	margin-left: -280px;
+}
+
+.modal .modal-dialog.modal-lg {
+	width: 710px;
+	max-width: 710px;
+	margin-left: -355px;
+}
+
+.modal .modal-dialog .mCSB_container .question-section .star-rates + .caution {
+	margin-top: 5px !important;
+}
+
+.modal .modal-content {
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.modal .modal-content .modal-close {
+	overflow: hidden;
+	position: absolute;
+	top: 60px;
+	right: 44px;
+	width: 16px;
+	height: 16px;
+	background-size: 36px 36px;
+	white-space: nowrap;
+	text-indent: 200%;
+	border: 0;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.modal .modal-content .modal-close:before, .modal .modal-content .modal-close:after {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: calc( 50% - 1px);
+	width: 2px;
+	height: 16px;
+	background-color: #222;
+	content: '';
+}
+
+.modal .modal-content .modal-close:before {
+	transform: rotate(45deg);
+}
+
+.modal .modal-content .modal-close:after {
+	transform: rotate(-45deg);
+}
+
+.modal .modal-content > .modal-body:first-child {
+	padding-top: 60px;
+}
+
+.modal .modal-header {
+	padding: 22px 40px 10px 0;
+	margin: 0 30px 18px;
+}
+
+.modal .modal-header + .modal-body {
+	padding-top: 0;
+}
+
+.modal .modal-title {
+	font-size: 28px;
+	line-height: 32px;
+}
+
+.modal .modal-body {
+	padding: 0 30px;
+}
+
+.modal .modal-body p {
+	margin: 0;
+}
+
+.modal .modal-footer {
+	border: 0;
+	padding: 20px 30px 30px;
+	text-align: center;
+	display: block;
+	justify-content: center;
+}
+
+.modal .modal-footer .btn {
+	margin: 0 5px;
+}
+
+.modal .modal-footer .btn.btn-block {
+	margin: 0;
+}
+
+.modal .modal-footer .btn.btn-block + .btn-block {
+	margin-top: 10px;
+}
+
+.crema_product_reviews_score_star_wrapper {
+	width: 14px;
+	height: 23px;
+}
+
+.crema-product-reviews-score {
+	height: 23px;
+	line-height: 23px;
+}
+
+.crema-product-reviews-score svg {
+	fill: #FFB019 !important;
+	vertical-align: middle;
+	margin-top: -6px;
+}
+
+/* BTOCSITE-2150 add */
+@media screen and (max-width: 767px) {
+	.pc-only {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.mo-only {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.mo-only-zero-top {
+		padding-top: 0px;
+	}
+}
+
+/* //BTOCSITE-2150 add */

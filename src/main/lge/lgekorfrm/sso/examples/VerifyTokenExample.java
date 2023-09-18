@@ -1,0 +1,13 @@
+package lgekorfrm.sso.examples;
+
+import lgekorfrm.sso.util.JwtUtils;
+
+public class VerifyTokenExample {
+    public static void main(String[] args) throws Exception {
+
+        String token = "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJsZ2NvbS1zc28iLCJjb250ZXh0Ijp7ImNsaWVudEtleSI6Im15YXBwIiwic2NvcGVzIjpbIm1rdCJdLCJ0eXBlIjoidXNlciIsInVzZXIiOnsiaWQiOjQ4ODEzNjMsImVtYWlsIjoiZGFya2dvZGFya2dvMkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiU2V1bmdwaWwiLCJsYXN0X25hbWUiOiJQYXJrIn0sInNpZCI6IjQ3YzkxYjcwLTM3MDctNGZiMC1hYjFjLTE5MWU3ODg0ZWNhZiIsInVzZXJuYW1lIjoiZGFya2dvZGFya2dvMkBnbWFpbC5jb20iLCJzdG9yYWdlSWQiOjF9LCJleHAiOjE1NDcwMzE3MzksImlhdCI6MTU0NzAyODEzOX0.IRs80otluVm7fbjrPmKsgV-tJk75HzmRQ63OfMj6JkDPHGHinv6dKVaWegRNyAYpCTmL80oe9aO5IiCUOxD6HTZgWDr1SHfjmkUyRgSrou2AvU6Nb3Bgv3NLp4f3VJBJw6ETnR5jH-vDvAgFIRevQPUUKS47I4L1xdjXuYh_Zh4";
+        String rs256PublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCBN/I6dyajxN40/k7HV85V1S0HDDbaBjX5DMlJvwIv41XJCl12rsGo83zHhxdcgaCKl1UWxrDzH7/6Q8/reh8Ex65xZOToyNN8XOP5penrq5XzBF51OHW6aDgceg6r0puifX901HtbXYzqHjh7V6zepLV10tdMgPSmC7R9OidWGQIDAQAB";
+
+        boolean isValid = JwtUtils.verifyToken(token, rs256PublicKey);
+    }
+}

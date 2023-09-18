@@ -1,0 +1,45 @@
+spring:  
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    jdbc-url: jdbc:mariadb://mariadb.neoflow.co.kr:3306/goldstar_schema?characterEncoding=UTF-8
+    url: jdbc:mariadb://mariadb.neoflow.co.kr:3306/goldstar_schema?characterEncoding=UTF-8
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: "goldstar"
+    password: "goldstar"
+    maximumPoolSize: 2
+    connectionInitSql: SELECT 1
+    connectionTimeout: 30000
+  
+system:
+  domain: https://goldstar.lge.co.kr
+
+multipart.path.event: "/my-directory/event"
+  
+lge:
+  url:
+    gnb: "https://www.lge.co.kr/gnb"
+    footer: "https://www.lge.co.kr/footer"
+    domain: "https://www.lge.co.kr/"
+  sso:
+    logingo: "\"https://www.lge.co.kr/sso/api/emp/Login\""
+    logout: "https://www.lge.co.kr/sso/api/emp/Logout"
+    login: 
+      url: "https://member.lge.co.kr/auth/empLogin.do"
+      clientId: "lge-main-integration"
+      state: "VchcCEzJ2aaLiUic9BEyD7lV3VauJ+9jjg3qDDjD2Zg="
+      redirectUrl: "https://goldstar.lge.co.kr/sso/sign/in/action.do"
+    host: "https://kr.lgeapi.com"
+    appKey: "6c20d5b71f304c85b84eb1a7282bd4ce"
+    secret: "f79d632450d548268d1ed8a7f025aa61"
+  oauth:
+    host: "https://qa-kr.lgeapi.com"
+    appKey: "b753ec52505145f68f4adcc7f46eedb9"
+    secret: "0a1e31e96ce7475796d980a1d5e4033a"
+    uri:
+      datetime: "/oauth/1.0/datetime"
+      token: "/oauth/1.0/oauth2/token"
+      tokenConfirm: "/oauth/1.5/token"
+      userProfile: "/oauth/1.0/users/profile"
+      

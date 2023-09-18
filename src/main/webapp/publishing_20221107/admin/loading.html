@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<link rel="stylesheet" type="text/css" href="./css/utility.css" />
+	<link rel="stylesheet" type="text/css" href="./css/slick.css" />
+	<link rel="stylesheet" type="text/css" href="./css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="./css/unit.css" />
+	<link rel="stylesheet" type="text/css" href="./css/main.css" />
+	<link rel="stylesheet" type="text/css" href="./css/popup.css" />
+	<link rel="stylesheet" type="text/css" href="./css/contents.css" />
+	<style>
+		/* LG 로딩바 애니메이션 임시 구현, utility에도 동일하게 넣었기 때문에 아래 div만 복사해서 사용하시면 됩니다 */
+		.dim_loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	z-index: 0;
+	cursor: pointer;
+	z-index: 999999;
+}
+.lds-grid-center {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+.lds-grid {
+	display: inline-block;
+	position: relative;
+	width: 48px;
+	height: 48px;
+}
+.lds-grid div {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #fff;
+	animation: lds-grid 0.9s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+	top: 20px;
+	left: 2px;
+	animation-delay: -0.6s;
+}
+.lds-grid div:nth-child(2) {
+	top: 20px;
+	left: 20px;
+	animation-delay: -0.3s;
+}
+.lds-grid div:nth-child(3) {
+	top: 20px;
+	left: 38px;
+	animation-delay: 0s;
+}
+@keyframes lds-grid {
+0%, 100% {
+	opacity: 1;
+}
+50% {
+	background: #DA0F47;
+}
+}
+	</style>
+</head>
+<body>
+	<!-- LG 로딩바 시작 -->
+	<div class="dim_loading">
+		<div class="lds-grid-center">
+			<!-- LG 로딩바 모양 -->
+			<div class="lds-grid">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<!-- LG 로딩바 모양 end -->
+		</div>
+	</div>
+	<!-- LG 로딩바 end -->
+</body>
+</html>

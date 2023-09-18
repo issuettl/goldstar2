@@ -1,0 +1,35 @@
+금성전파사 > LG 통합로그인 호출
+    redirection to login page (금성전파사 to LGE) 
+    params : client_id, state, redirect_uri
+        client_id :  lge-main-integration  (고정값)  이게 알려주신대로 고정값이 아니라 금성전파사 APP_ID 이어야 하지 않을까요?
+        -> 대표사이트 client_id 공유하여 사용하셔야 합니다.
+        state : 암호화된 값(?) 무엇을 암호화 해야할까요?
+        -> 필요에 따라 사용하시면 됩니다. 통합회원은 받은 값 그대로 돌려주기만 할 뿐이며, 대표사이트에서는 특정 url로 최종 랜딩시키기 위해 사용하고 있습니다.
+        redirect_uri : 금성전파사 APP 등록할 때 등록해놓은 값. 금성전파사 > https://goldstardev.lge.co.kr/sso/sign/in/action.do
+
+로그인 처리 이후 LGE 통합회원 > 금성전파사
+    redirection to redirect_uri (LGE to 금성전파사)  : 1.b.iii 의 redirect_uri 호출 (https://goldstardev.lge.co.kr/sso/sign/in/action.do)
+    params : authorization code, user_number
+
+LGE Accecss 토큰 발급 : back-side API 호출  (OTH.133.1)
+    headers : 
+        x-lge-oauth-signature
+        x-lge-oauth-date
+        Accept : application/json (고정값)
+    params : grant_type, code, redirect_uri, sso_id
+        grant_type : authorization_code  (고정값)
+        code : 2.b 에서 받은 authorization code 값
+        redirect_uri : OAuth_연동규격서-v.0.2.0.6.docx 파일 안에서는 http://sample 로 되어있습니다. 해당 값은 무슨값을 넘겨야 하나요?
+        -> 발급된 authorization code를 리턴해주는 url 입니다.
+        sso_id : 2.b 에서 받은 user_number
+        response : access-token, refresh_token
+
+LGE 회원정보 호출 : back-side API 호출   (OTH.161 또는 OTH.162)
+    headers
+        x-lge-oauth-signature
+        x-lge-oauth-date
+        Authorization : 3.c 의 response access-token
+        Accept : application/json (고정값)
+    response 
+        LG 회원정보 (전화번호 없음)  전화번호 획득방법 가이드 요청드립니다.
+        -> 필요한 사유 회신 요청드립니다. 금성전파사 자체적으로 회원 정보 저장하지 않는 것으로 협의되었습니다.

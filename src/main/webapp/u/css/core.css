@@ -1,0 +1,28 @@
+#ajax_loading_bg{
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    /*background: #000;*/
+    opacity: 0.5;
+     /* IE 8 */
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+     /* IE 5-7 */
+     filter: alpha(opacity=70);
+     /* Netscape */
+     -moz-opacity: 0.5;
+     /* Safari 1.x */
+     -khtml-opacity: 0.5;
+    z-index:999998;
+}
+
+#ajax_loading_bg .blank{display:inline-block;height:100%;vertical-align:middle}
+#ajax_loading_center {
+   width: 100px;
+   height: 100px;
+   display: inline-block;
+   vertical-align: middle;
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="320px" height="162px" viewBox="0 0 320 162" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>EFBE7E2F-72E5-4F37-9CCD-94C2D202BA14</title>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#ECE8E5" offset="0%"></stop>
+            <stop stop-color="#DBD6D2" offset="21.7896312%"></stop>
+            <stop stop-color="#E9E8E4" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="320" height="162" rx="16"></rect>
+        <linearGradient x1="23.5365728%" y1="7.56455206%" x2="83.6207466%" y2="85.8855826%" id="linearGradient-4">
+            <stop stop-color="#C9C6C0" offset="0%"></stop>
+            <stop stop-color="#F6F6F6" offset="49.0368996%"></stop>
+            <stop stop-color="#B5B1AD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="20.1494217%" y1="10.0216136%" x2="85.2212018%" y2="85.9353882%" id="linearGradient-5">
+            <stop stop-color="#BDBDBD" offset="0%"></stop>
+            <stop stop-color="#D1D1D1" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-6" cx="57" cy="57" r="57"></circle>
+        <filter x="-17.1%" y="-11.8%" width="134.2%" height="134.2%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="6" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.628661225   0 0 0 0 0.618400997   0 0 0 0 0.604720693  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="20.1494217%" y1="10.0216136%" x2="72.6496569%" y2="95.5456283%" id="linearGradient-8">
+            <stop stop-color="#000000" offset="0%"></stop>
+            <stop stop-color="#323234" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="23.3392661%" y1="7.36593039%" x2="62.2892158%" y2="58.5031146%" id="linearGradient-9">
+            <stop stop-color="#FFFFFF" stop-opacity="0.2" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Menu_Style-B2_브랜드-홈-없음_220623" transform="translate(-368.000000, -2216.000000)">
+            <g id="Group-3" transform="translate(0.000000, 1924.000000)">
+                <g id="마이-베스트샵-copy-18" transform="translate(0.000000, 16.000000)">
+                    <g id="BG" transform="translate(368.000000, 276.000000)">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <use id="Mask" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                        <g id="upappliance_bi_w" mask="url(#mask-3)" fill-rule="nonzero">
+                            <g transform="translate(24.000000, 71.000000)">
+                                <polygon id="패스_1-path" fill="#000000" points="3.83167321 1.26676458 0 1.26676458 0 17.7332354 11.6764225 17.7332354 11.6764225 14.4763653 3.83167321 14.4763653"></polygon>
+                                <path d="M20.2519663,3.98388281 C21.7663602,3.84866072 23.2348271,4.54212362 24.0836395,5.79333668 L26.4529833,3.62184517 C24.9936156,1.63173965 22.4391668,0.904726935 20.0668613,0.904726935 C14.7758204,0.904726935 12.0392283,3.80029374 12.0392283,9.409307 C12.0392283,14.838403 14.5936771,17.9146214 20.0668613,17.9146214 C22.6213101,17.9146214 25.1757589,17.1905461 26.4529833,16.2858192 L26.4529833,8.32392842 L19.8869393,8.32392842 L19.8869393,11.4001469 L22.9885584,11.4001469 L22.9885584,14.2957137 C22.0968934,14.5425743 21.1747286,14.664193 20.2490046,14.657017 C16.7823584,14.657017 15.6880178,12.8475631 15.6880178,9.409307 C15.6880178,5.9710509 16.7853201,3.98094539 20.2519663,3.98094539 L20.2519663,3.98388281 Z" id="패스_1-path" fill="#000000"></path>
+                                <path d="M46.5242872,13.0289491 C46.6105734,13.6270979 46.4078639,14.2306302 45.9771467,14.6579645 C45.5464294,15.0852988 44.9379823,15.2865523 44.3348654,15.201175 L41.2332463,15.201175 C40.6302765,15.2864971 40.0219858,15.0853331 39.5913043,14.6581787 C39.1606229,14.2310243 38.9577978,13.6277152 39.0438245,13.0296835 L39.0438245,1.26676458 L36.3042707,1.26676458 L36.3042707,13.2096007 C36.3042707,15.7431299 37.9465221,17.7332354 41.0481413,17.7332354 L44.5147874,17.7332354 C47.7985499,17.7332354 49.258658,15.5624783 49.258658,13.0289491 L49.258658,1.26676458 L46.5191042,1.26676458 L46.5242872,13.0289491 Z" id="패스_1-path" fill="#A50024"></path>
+                                <path d="M58.9307638,1.44741623 C62.2152666,1.44741623 64.2218047,3.43752174 64.2218047,6.69512619 C64.2218047,9.95273065 62.3974099,11.9428362 58.9307638,11.9428362 L58.9307638,11.9428362 L54.1876336,11.9428362 L54.1876336,17.7332354 L51.2681578,17.7332354 L51.2681578,1.44741623 Z M58.7486204,3.80029374 L54.1876336,3.80029374 L54.1876336,9.409307 L58.7486204,9.409307 C60.5730152,9.409307 61.3030693,8.32392842 61.3030693,6.51741197 C61.3030693,4.88567232 60.3908719,3.80029374 58.7486204,3.80029374 L58.7486204,3.80029374 Z" id="Combined-Shape" fill="#A50024"></path>
+                                <polygon id="패스_1-path" fill="#000000" points="85.203825 0 82.4642712 0 82.4642712 19 85.203825 19 85.203825 9.409307 87.7582738 9.409307 87.7582738 7.05716384 85.203825 7.05716384"></polygon>
+                                <path d="M69.6957293,3.61890774 L76.2632542,3.61890774 C76.2632542,8.32392842 75.3510568,9.77134464 68.9649348,13.0289491 L70.425043,15.3788892 C78.0883894,11.2194952 79.002808,9.590693 79.002808,2.71711823 L79.002808,1.26676458 L69.8778726,1.26676458 L69.6957293,3.61890774 Z" id="패스_1-path" fill="#000000"></path>
+                                <polygon id="패스_1-path" fill="#000000" points="99.0681885 6.87651219 102.717718 6.87651219 102.717718 13.5716384 105.457272 13.5716384 105.457272 0 102.717718 0 102.717718 4.52363468 99.0681885 4.52363468"></polygon>
+                                <path d="M95.6037636,16.6478568 C95.4208798,16.6478568 95.4208798,16.4672052 95.4208798,16.2858192 L95.4208798,12.1242222 L92.6813261,12.1242222 L92.6813261,17.7332354 C92.6813261,18.4573107 93.2284964,18.8193484 93.9585505,18.8193484 L104.905659,18.8193484 L106,16.6478568 L95.6037636,16.6478568 Z" id="패스_1-path" fill="#000000"></path>
+                                <path d="M94.5086825,7.59985313 C95.0558528,8.68596607 96.3330772,9.590693 98.7053827,10.8574576 L99.9818667,8.86661771 C96.1509339,6.87651219 95.7859069,6.33308855 95.7859069,3.98094539 L95.7859069,3.2568701 L99.4346964,3.2568701 L99.4346964,0.906930004 L89.4005253,0.906930004 L89.4005253,3.2568701 L93.0493148,3.2568701 L93.0493148,3.98094539 C93.0493148,6.33088548 92.6842877,7.05716384 88.6704712,9.409307 L90.1298389,11.4001469 C92.866431,9.77134464 93.9592909,8.86661771 94.5086825,7.59985313 L94.5086825,7.59985313 Z" id="패스_1-path" fill="#000000"></path>
+                            </g>
+                        </g>
+                        <g id="Group-29" mask="url(#mask-3)">
+                            <g transform="translate(187.000000, 23.000000)">
+                                <g id="Oval" stroke="none" fill="none">
+                                    <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                                    <circle stroke="url(#linearGradient-5)" stroke-width="0.558823529" stroke-linejoin="square" fill="url(#linearGradient-4)" fill-rule="evenodd" cx="57" cy="57" r="56.7205882"></circle>
+                                </g>
+                                <circle id="Oval" stroke="url(#linearGradient-8)" stroke-width="0.558823529" fill="#131313" fill-rule="evenodd" cx="57" cy="57" r="51.1323529"></circle>
+                                <text id="LG-ThinQ-앱에서-새로운-업그레" stroke="none" fill="none" opacity="0.704787481" font-family="LGSmHaTSB, LG Smart_H2.0" font-size="7.82352941" font-weight="500" line-spacing="10.0588235" letter-spacing="-0.0920415262">
+                                    <tspan x="29.3579256" y="48.9117647" fill="#FFFFFF">LG ThinQ 앱에서</tspan>
+                                    <tspan x="15.1260052" y="58.9705882" fill="#FFFFFF">새로운 업그레이드 기능을</tspan>
+                                    <tspan x="34.6199395" y="69.0294118" fill="#FFFFFF">체험해보세요.</tspan>
+                                </text>
+                                <circle id="Oval" stroke="none" fill="url(#linearGradient-9)" fill-rule="evenodd" opacity="0.57111177" cx="57" cy="57" r="51.4117647"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

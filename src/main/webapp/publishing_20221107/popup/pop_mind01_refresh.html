@@ -1,0 +1,309 @@
+<!-- 본 페이지는 사전 문답 팝업에 들어가는 내용만 정리한 페이지입니다.
+인터랙션 스크립트는 팝업 내부의 이동 스크립트밖에 없습니다. -->
+<!-- pop_start -->
+<!-- 2022-11-03 신규 팝업 추가 : 사전문답 최초 참여시 추가되는 약관동의 화면 팝업이 추가되었습니다.
+어느 사전문답이든 최초 참여시에만 나타납니다. -->
+<!-- pop_booking2 popup start -->
+<section id="pop_booking2" class="pop_booking pop_agree pop_mini modal">
+	<div class="popBg">
+		<div class="popContent">
+			<div class="popTitle_wrap">
+				<h2>개인정보 수집·이용 및 제공에 대한 안내</h2>
+				<button onClick="popClose()" class="popup_close"></button>
+			</div>
+			<div class="con_store">
+				<div class="pop_agree_title">
+					<p>LG전자(이 하 “회사”)는 이벤트 참가와 관련하여 아래와 같이 개인정보의 수집·이용하고자 합니다. <br />
+						내용을 자세히 읽으신 후 동의 여부를 결정하여 주시기 바랍니다.</p>
+				</div>
+				<div class="booking_wrap">
+					<div class="booking_agree">
+						<div class="agree_wrap">
+							<h3>개인정보의 수집 · 이용 동의서(필수)</h3>
+							<table class="pop_agree_table2 mo_hidden">
+								<thead>
+									<tr>
+										<th class="w30per">수집항목</th>
+										<th class="w30per">수집·이용 목적</th>
+										<th class="w30per">보유·이용기간</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="w30per">필수 : 이름, 휴대전화번호, 닉네임, <br class="pc_br" />현재 고민, 체험 완료 코너, <br class="pc_br" />증정 받은 리워드</td>
+										<td class="w30per">금성전파사 새로고침센터 체험</td>
+										<td class="w30per">이벤트 종료일로부터<br />
+											3개월</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="pop_agree_table2 pc_hidden">
+								<tr>
+									<th>수집항목</th>
+								</tr>
+								<tr>
+									<td>이름, 휴대전화번호, 예약일,<br />
+										예약시간, 동반인원 수</td>
+								</tr>
+								<tr>
+									<th>수집·이용 목적</th>
+								</tr>
+								<tr>
+									<td>ThinQ 방탈출 참여 및 본인확인</td>
+								</tr>
+								<tr>
+									<th>보유·이용기간</th>
+								</tr>
+								<tr>
+									<td>이벤트 종료일로부터<br />
+										3개월</td>
+								</tr>
+							</table>
+							<p class="agree_bottom_txt">* 위의 개인정보 수집·이용에 대한 동의를 거부할 권리가 있습니다. <br class="pc_br" />
+								그러나 동의를 거부할 경우 이벤트 참가에 제약사항이 발생할 수 있습니다.</p>
+						</div>
+					</div>
+				</div>
+				<!-- 기존 동의, 비동의 버튼이 그대로 가고 class명이 변경되었습니다. -->
+				<div class="agree_chkbtn_wrap pc_view">
+					<button onclick="javascript:$('.pop_store').fadeOut('.pop_store');$('#pop_mindTest1').show();" class="btn_check"><span class="checkmark"></span><span>동의</span></button>
+					<button onclick="popClose()" class="btn_check"><span class="checkmark"></span><span>미동의</span></button>
+				</div>
+				<div class="booking_wrap">
+					<div class="booking_agree">
+						<div class="agree_wrap">
+							<h3>개인정보 취급업무 위탁 내역(고지사항)</h3>
+							<table class="pop_agree_table2">
+								<tr>
+									<th class="w50per">위탁받는 자(수탁업체)</th>
+									<th class="w50per">위탁 업무 내용</th>
+								</tr>
+								<tr>
+									<td class="w50per">㈜LG CNS</td>
+									<td class="w50per">LGE.COM 서버 운영 및 관리</td>
+								</tr>
+								<tr>
+									<td class="w50per">㈜에이치에스애드</td>
+									<td class="w50per">금성전파사 새로고침센터 플래폼 운영 및 관리, <br class="pc_br" />리워드 증정</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mo_view btn_wrap w100per tac">
+				<button onclick="popClose()" class="btn_pop_s btn_lightgray btn">동의하지 않습니다</button>
+				<button onclick="javascript:$('.pop_store').fadeOut('.pop_store');$('#pop_mindTest1').show();" class="btn_pop_s btn_primary btn">동의합니다</button>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>
+</section>
+<!-- popup end -->
+<!-- popup start -->
+<section id="pop_mindTest1" class="pop_mindTest modal">
+	<div class="popBg">
+		<div class="popContent">
+			<div class="popTitle_wrap">
+				<h2>마음고침 코-너</h2>
+				<button onClick="popClose()" class="popup_close"></button>
+			</div>
+			<!-- 질문 start -->
+			<div id="mind_Q_02_full" class="con_mindTest">
+				<div class="mindTest_about">
+					<figure><img src="../../images/sub/img_character_03.png" alt=""></figure>
+					<div class="test_about_right">
+						<h3>마음고침 코-너에 온 것을 환영합니다!</h3>
+						
+						<p>여긴 지친 마음까지 힐링되는 <br class="mo_br" />LG틔운 반려식물이 준비되어 있죠<br />
+							시작하기 전에 4가지 질문에 답해주시겠어요?</p>
+					</div>
+					
+				</div>
+				<!-- 질문지 Q1 -->
+				<div id="mind_Q_011" class="mind_Q1 mindTest_q" style="display:block;">
+					<h4><b>Q1</b>자네는 왜 식물을 키우려고 하지?</h4>
+					<ul class="mindTest_list number3">
+						<li>
+							<label for="test_01_radio1_1" class="test_radio">
+								<input type="radio" name="test_01_radio1" id="test_01_radio1_1">
+								<span class="mindTest_option">건강한 식재료로 활용하려고</span>
+							</label>
+						</li>
+						<li>
+							<label for="test_01_radio1_2" class="test_radio">
+								<input type="radio" name="test_01_radio1" id="test_01_radio1_2" checked>
+								<span class="mindTest_option">정서 발달과 휴식을 위해</span>
+							</label>
+						</li>
+						<li>
+							<label for="test_01_radio1_3" class="test_radio">
+								<input type="radio" name="test_01_radio1" id="test_01_radio1_3">
+								<span class="mindTest_option">플렌테리어 아이템으로 활용하려고</span>
+							</label>
+						</li>
+					</ul>
+					<div class="btn_wrap">
+						<button onClick="next_q1()" class="full btn_primary btn_pop_s">다음</button>
+					</div>
+				</div>
+				<!-- Q1 end -->
+				<!-- 질문지 Q2 -->
+				<div id="mind_Q_012" class="mind_Q2 mindTest_q" style="display:none;">
+					<h4><b>Q2</b>식물을 기를 때 가장 어려운 것이 뭔가?</h4>
+					<ul class="mindTest_list number3">
+						<li>
+							<label for="test_01_radio2_1" class="test_radio">
+								<input type="radio" name="test_01_radio2" id="test_01_radio2_1">
+								<span class="mindTest_option">적정 온도 유지</span>
+							</label>
+						</li>
+						<li>
+							<label for="test_01_radio2_2" class="test_radio">
+								<input type="radio" name="test_01_radio2" id="test_01_radio2_2" checked>
+								<span class="mindTest_option">적정 습도 유지 (물)</span>
+							</label>
+						</li>
+						<li>
+							<label for="test_01_radio2_3" class="test_radio">
+								<input type="radio" name="test_01_radio2" id="test_01_radio2_3">
+								<span class="mindTest_option">적절한 조명 유지 (빛)</span>
+							</label>
+						</li>
+					</ul>
+					<div class="btn_wrap">
+						<button onClick="next_q1()" class="half btn_gray btn_pop_s">뒤로가기</button>
+						<button onClick="next_q2()" class="half btn_primary btn_pop_s">다음</button>
+					</div>
+				</div>
+				<!-- Q2 end -->
+				<!-- 질문지 Q3 -->
+				<div id="mind_Q_013" class="mind_Q3 mindTest_q" style="display:none;">
+					<h4><b>Q3</b>다음 중 선물 받고 싶은 화분이 있는가?</h4>
+					<ul class="mindTest_list number3">
+						<li>
+							<label for="test_01_radio3_1" class="test_radio">
+								<input type="radio" name="test_01_radio3" id="test_01_radio3_1">
+								<span class="mindTest_option">싱싱한 로메인 화분</span>
+							</label>
+						</li>
+						<li>
+							<label for="test_01_radio3_2" class="test_radio">
+								<input type="radio" name="test_01_radio3" id="test_01_radio3_2" checked>
+								<span class="mindTest_option">향긋한 페퍼민트 화분</span>
+							</label>
+						</li>
+						<li>
+							<label for="test_01_radio3_3" class="test_radio">
+								<input type="radio" name="test_01_radio3" id="test_01_radio3_3">
+								<span class="mindTest_option">아름다운 메리골드 화분</span>
+							</label>
+						</li>
+					</ul>
+					<div class="btn_wrap">
+						<button onClick="next_q2()" class="half btn_gray btn_pop_s">뒤로가기</button>
+						<button onClick="next_q3()" class="half btn_primary btn_pop_s">다음</button>
+					</div>
+				</div>
+				<!-- Q3 end -->
+				<!-- 질문지 Q4 -->
+				<div id="mind_Q_014" class="mind_Q4 mindTest_q" style="display:none;">
+					<h4><b>Q4</b>무드업 냉장고의 어떤 점이 가장 매력적인가?</h4>
+					<ul class="mindTest_list number3">
+						<li>
+							<label for="test_01_radio4_1" class="test_radio">
+								<input type="radio" name="test_01_radio4" id="test_01_radio4_1">
+								<span class="mindTest_option">컬러 컬렉션</span>
+							</label>
+						</li>
+						<li>
+							<label for="test_01_radio4_2" class="test_radio">
+								<input type="radio" name="test_01_radio4" id="test_01_radio4_2" checked>
+								<span class="mindTest_option">뮤직 컬렉션</span>
+							</label>
+						</li>
+						<li>
+							<label for="test_01_radio4_3" class="test_radio">
+								<input type="radio" name="test_01_radio4" id="test_01_radio4_3">
+								<span class="mindTest_option">컬러 알람</span>
+							</label>
+						</li>
+					</ul>
+					<div class="btn_wrap">
+						<button onClick="next_q3()" class="half btn_gray btn_pop_s">뒤로가기</button>
+						<button onClick="next_a1()" class="half btn_primary btn_pop_s">다음</button>
+					</div>
+				</div>
+				<!-- Q4 end -->
+			</div>
+			<!-- 질문 end -->
+			<!-- 결과 A1 엽채류 start -->
+			<div id="mind_A_011" class="con_mindResult">
+				<div class="mindReslut_about tac">
+					<!-- 결과 이미지 변경 예정. -->
+					<figure class="refresh01_result1"><img src="../../images/sub/mind_result_11.png" alt=""></figure>
+					<div class="mindReslut_text">
+						<h3>자네에게는 푸릇한 엽채류를 추천하네</h3>
+						<p>자라나는 채소들로 몸도 마음도 쑥쑥! <br />
+							더 건강하게 키워보세요.</p>
+					</div>
+				</div>
+				<div class="qr_wrap">
+					<figure class="qr_figure">
+						<img src="../../images/sub/img_qr_test.png" alt="">
+					</figure>
+					<p>QR을 STAFF에게 보여주게! <br />당신에게 엽채류를 선물해주겠네!</p>
+					
+				</div>
+				<div class="btn_wrap tac">
+					<button onClick="popMindClose()" class="btn_primary btn_pop_s">종료</button>
+				</div>
+				<!-- qr end -->
+			</div>
+			<!-- 결과 A1 end -->
+			<!-- 결과 A2 허브류 
+			<div id="mind_A_012" class="con_mindResult" style="display: none;">
+				<div class="mindReslut_about tac">
+					<figure class="refresh02_result1"><img src="../../images/sub/mind_result_11.png" alt=""></figure>
+					<div class="mindReslut_text">
+						<h3>자네에게는 향기로운 허브류를 추천하네</h3>
+						<p>향긋한 허브류와 함께면 마음도 쉴 수 있겠죠?<br />
+							이제 무럭무럭 키워보세요.</p>
+					</div>
+				</div>
+				<div class="qr_wrap">
+					<figure class="qr_figure">
+						<img src="../../images/sub/img_qr_test.png" alt="">
+					</figure>
+					<p>QR을 STAFF에게 보여주게! <br />당신에게 허브류를 선물해주겠네!</p>
+				</div>
+				<div class="btn_wrap">
+					<button onClick="popMindClose()" class="btn_primary btn_pop_s">종료</button>
+				</div>
+			</div>
+			<div id="mind_A_013" class="con_mindResult" style="display: none;">
+				<div class="mindReslut_about tac">
+					<figure class="refresh03_result1"><img src="../../images/sub/mind_result_11.png" alt=""></figure>
+					<div class="mindReslut_text">
+						<h3>자네에게는 아름다운 화훼류를 추천하네</h3>
+						<p>활짝 핀 꽃 한 송이면 금새 기분이 달라지죠!<br />
+							자라나는 꽃들을 보며 마음까지 아름다워지세요</p>
+					</div>
+				</div>
+				<div class="qr_wrap">
+					<figure class="qr_figure roundLine_box">
+						<img src="../../images/sub/img_qr_test.png" alt="">
+					</figure>
+					<p>QR을 STAFF에게 보여주게! <br />당신에게 화훼류를 선물해주겠네!</p>
+				</div>
+				<div class="btn_wrap btn_100per">
+					<button onClick="popMindClose()" class="btn_primary btn_pop_s">종료</button>
+				</div>
+			</div>
+			결과 A3 end -->
+		</div>
+	</div>
+	<div class="dim"></div>
+</section>
+
+<!-- //popup end -->

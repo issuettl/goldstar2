@@ -1,0 +1,469 @@
+/*
+input, btn, tag등 컴포넌트 유닛들을 모은 css
+*/
+/* 
+인풋, 체크박스
+*/
+	input {
+		display: inline-block;
+		border: 0px;
+		outline: none;
+		box-shadow: 0px 0px 0px transparent;
+		border: 1px solid var(--line);
+		color: #000;
+		width: auto;
+		min-width: 130px;
+		height: 48px;
+		padding: 0 1.6rem;
+		font-size: 14px;
+		box-sizing: border-box;
+		border-radius: 1rem;
+	}
+	input:disabled {
+		background-color: transparent;
+	}
+	select {
+		display: inline-block;
+		font-size: 14px;
+		color: #000;
+		text-align: left;
+		border: 0px;
+		outline: none;
+		background-color: #fff;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		-o-border-radius: 0;
+		border-radius: 0;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		word-wrap: normal;
+		background: url("../images/sub/icn_select.svg") no-repeat 99% 50%;
+		padding-right: 20px;
+	}
+	input:focus {
+		outline: none;
+	}
+	input[type="search"] {
+		background: url("") no-repeat right;
+	}
+	input[type="search"]:focus {
+		background: #fff;
+	}
+	input[type="search"]:focus::after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 20px;
+		height: 100%;
+		background: #fff;
+	}
+	input[type="search"]::-webkit-search-cancel-button {
+		-webkit-appearance: none;
+		width: 12px;
+		height: 12px;
+		padding: 5px;
+		background: #fff url("/img/sub/icn-delete-small.png") right no-repeat;
+		cursor: pointer;
+	}
+	input[type="file"] {
+		appearance: none;
+		background-color: initial;
+		cursor: default;
+		text-overflow: ellipsis;
+		white-space: pre;
+		text-align: start !important;
+		padding: initial;
+		border: initial;
+		opacity: 0;
+		overflow: hidden !important;
+	}
+	form {
+		position: relative;
+	}
+	textarea {
+		width: 100%;
+		border: solid 1px var(--input-disable);
+		background-color: #fff;
+		padding: 25px;
+		font-size: var(--font-medium18);
+		box-sizing: border-box;
+	}
+	textarea::placeholder {
+		font-size: var(--font-14);
+	}
+	textarea:read-only,
+	textarea:read-only:focus {
+		border-color: #f2f2f2;
+		background-color: #f2f2f2;
+	}
+	textarea:focus {
+		outline: none;
+		border: solid 1px var(--darkish-purple);
+		box-sizing: border-box;
+	}
+	datalist {
+		position: absolute;
+		top: 5px;
+		left: 0;
+		background-color: #fff;
+		border-radius: 5px;
+		width: 100%;
+		padding: 5px;
+		max-height: 10rem;
+		overflow-y: auto;
+		outline: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+	option {
+		background-color: #fff;
+		padding: 4px;
+		color: #000;
+		margin-bottom: 5px;
+		font-size: var(--font-14);
+		cursor: pointer;
+		outline: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+	datalist option:hover,
+	datalist option:focus {
+		color: var(--main-text-btn);
+		background-color: var(--input-disable);
+		outline: 0 none;
+	}
+	input::-webkit-calendar-picker-indicator {
+		display: none;
+		opacity: 0;
+	}
+	input-datalist::-webkit-calendar-picker-indicator {
+		opacity: 0;
+	}
+	input-datalist {
+		background: url("../images/sub/icn_select.svg") no-repeat 99% 50%;
+	}
+	input.round_input {
+		border-radius: 1rem;
+		margin-top: 1.6rem;
+	}
+/* 체크박스(기본형태) */
+	.customCheck {
+		position: relative;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		display: flex;
+		align-items: center;
+	}
+	.customCheck * {
+		display: inline-block;
+		vertical-align: top;
+	}
+	.checkmark {
+		margin-right: 8px;
+		display: inline-block;
+		width: 2rem;
+		height: 2rem;
+		border: solid 1px var(--line);
+		border-radius: 50%;
+		position: relative;
+		top: 1px;
+		background-color: white;
+		border-color: #000;
+	}
+	.customCheck input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+		display: inline-block;
+	}
+	.customCheck input:checked {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	.customCheck input:checked ~ .checkmark {
+		background-color: white;
+		border-color: #000;
+	}
+	.checkmark:after {
+		content: "";
+		position: absolute;
+		display: none;
+	}
+	.customCheck input:checked ~ .checkmark:after {
+		display: block;
+	}
+	.customCheck .checkmark:after {
+		display: block;
+		left: 6px;
+		top: 3px;
+		width: 6px;
+		height: 9px;
+		border: solid #000;
+		border-width: 0px 1px 1px 0;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+	.customCheck input:checked ~ .checkmark {
+		background-color: #000;
+		border-color: #000;
+	}
+	.customCheck input:checked ~ .checkmark:after {
+		border: solid #fff;
+		border-width: 0px 1px 1px 0;
+	}
+	.customCheck .checkText {
+		line-height: 1em;
+		font-size: var(--font-14);
+		text-align: left;
+		color: #000;
+	}
+	.checkResult {
+		display: inline-block;
+		position: relative;
+		left: 1px;
+		top: -2px;
+		width: 8px;
+		height: 11px;
+		border: solid var(--main-text-btn);
+		border-width: 0px 2.7px 2.7px 0;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+/* 커스텀 셀렉트select박스 */
+	.select {
+		display: inline-block;
+		width: auto;
+	}
+	.select .selected {
+		display: flex;
+		justify-content: space-between;
+	}
+	.select ul li,
+	.select .selected .selected-value {
+		white-space: nowrap;
+		/* 줄바꿈 안함 */
+		overflow: hidden;
+		text-overflow: ellipsis;
+		/* 말줄임 적용 */
+	}
+/* btn (버튼) */
+	.btnWrap,.btn_wrap {
+		display: flex;
+		margin: 0 auto;
+		text-align: center;
+		flex-wrap: nowrap;
+		align-content: center;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+	.btn {
+		position: relative;
+		display: inline-block;
+		width: auto;
+		min-width: 90px;
+		height: 50px;
+		line-height: 48px;
+		text-align: center;
+		object-fit: contain;
+		border-radius: 50px;
+		padding: 0px 2rem;
+		color: #fff;
+		cursor: pointer;
+		border: solid 1px var(--btn-default);
+		font-size: 16px;
+		background: transparent;
+		background-color: var(--btn-default);
+	}
+	.btn:hover,
+	.btn:focus {
+		background-color: var(--btn-hover);
+		color: #fff;
+		border-color: var(--btn-hover);
+		text-decoration: none;
+	}
+	/* btnwrap을 flex로 구조변경 */
+	.btn_full,
+	.btn_100per {
+		width: 100%;
+	}
+	.btn_harf {
+		width: calc(50% - 14px);
+		margin: 0px 5px;
+	}
+	.btn_50per {
+		width: 50%;
+	}
+	.btn.btn_small {
+		min-width: 100px;
+		font-size: var(--font-medium16);
+		height: 36px;
+		line-height: 34px;
+		text-align: center;
+		padding: 0px 20px;
+		color: #fff;
+		border-radius: 10px;
+		cursor: pointer;
+	}
+	.btn_black {
+		background-color: #000;
+		color: #fff;
+		border: solid 1px #000;
+	}
+	.btn_gray {
+		background-color: var(--btn-disable);
+		color: #fff;
+		border: solid 1px var(--btn-disable);
+	}
+	.btn_line {
+		background-color: transparent;
+		color: #000;
+		border: solid 1px var(--btn-line-default);
+	}
+	.btn_line:hover, .btn_line:focus {
+		background-color: var(--btn-line-hover);
+		color: #fff;
+		border: solid 1px var(--btn-line-hover);
+	}
+	.btn_lightgray,.btn_lightgray:hover, .btn_lightgray:focus {
+		background-color: var(--bg);
+		color: #000;
+		border: solid 1px var(--bg);
+	}
+	.btn_primary {
+		background-color: var(--lg-primary);
+		color: #fff;
+		border: solid 1px var(--lg-primary);
+	}
+	.btn_primary:hover,.btn_primary:focus {
+		background-color: #fff;
+		color: var(--lg-primary);
+		border: solid 1px var(--lg-primary);
+	}
+	.btn_ex {
+		display: block;
+		width: 55%;
+		max-width: 444px;
+		margin: 0 auto 1rem;
+		padding: 0 10px;
+		font-weight: 400;
+	}
+	.btn_pass {
+		background-color: #fff;
+		color: #000;
+		border: solid 1px #fff;
+		font-weight: 400;
+	}
+	.btn_pass::after {
+		content: '';
+		display: inline-block;
+		position: relative;
+		margin-left: 0.4rem;
+		top:1px;
+		width: 16px;
+		height: 16px;
+		background: url("../images/sub/ic-right-16.svg");
+	}
+	.btn_pass:hover,.btn_pass:focus {
+		background-color: #fff;
+		color: var(--btn-line-default);
+		border: solid 1px #fff;
+		opacity: 0.7;
+	}
+	.btn_round_l {
+		border-radius: 100rem;
+		font-size: 16px;
+		padding: 0px 5rem;
+		min-width: 200px;
+	}
+	.btn_round_ml {
+		display: inline-block;
+		font-size: 16px;
+		height: 50px;
+		line-height: 48px;
+		border-radius: 25px;
+		margin: 0 12px;
+		width: 210px;
+	}
+	.btn_round_m {
+		display: inline-block;
+		font-size: 16px;
+		height: 56px;
+		line-height: 54px;
+		border-radius: 32px;
+		margin: 0 12px;
+		width: 160px;
+	}
+	.btn_round_s {
+		display: inline-block;
+		font-size: 14px;
+		height: 32px;
+		line-height: 30px;
+		padding: 0 2rem;
+		font-weight: 300;
+	}
+	.btn_pop_s {
+		min-width: 90px;
+		padding: 0rem 3rem;
+		height: 46px;
+		line-height: 44px;
+		border-radius: 22px;
+		margin: 0 4px;
+		border: solid 1px transparent;
+		font-weight: 600;
+	}
+	.btn_pop_s:hover,.btn_pop_s:focus {
+		background-color: #fff;
+		color: var(--btn-hover);
+		border: solid 1px var(--btn-hover);
+	}
+	.btn_pop_s.btn_gray {
+		background: var(--line);
+		color: var(--gray);
+		border: solid 1px var(--line);
+	}
+	.btn_pop_s.btn_lightgray {
+		color: var(--gray);
+		border: solid 1px transparent;
+	}
+	.btn_pop_s.btn_lightgray:hover {
+		color: var(--btn-hover);
+		border: solid 1px var(--btn-hover);
+	}
+	.btn_pop_full {
+		display: block;
+		width: 100%;
+		border-radius: 0;
+		height: 50px;
+		line-height: 48px;
+		font-size: 16px;
+		font-weight: normal;
+		text-align: center;
+		max-width: 680px;
+	}
+@media screen and (min-width : 768px) {
+	.btn_ex {max-width: 210px;}
+}
+@media screen and (max-width : 767px) {
+	input.round_input {font-size: 16px;}
+	.w100per .btn,.btn_round_l,.btn_ex {width: 100%;}
+	.btn_round_ml,.btn_round_m {width: 100%; margin: 0; margin-bottom: 10px;}
+	.exper_page .btn_wrap {width: 100%;}
+	.btn_pop_s {border-radius: 0; width: 100%; margin: 0;height: 50px; line-height: 48px; font-size: 16px; font-weight: 400;}
+	.customCheck .checkText {font-size: 13px;}
+	.checkmark {width: 18px; height: 18px; top:0; margin-right:5px;}
+	.checkmark:after,.customCheck .checkmark:after {left:5px; top:2px;}
+}

@@ -1,0 +1,59 @@
+DEV :
+HOST : https://qa-kr.lgeapi.com
+APP_KEY : b753ec52505145f68f4adcc7f46eedb9
+SECRET : 0a1e31e96ce7475796d980a1d5e4033a
+callback : https://goldstardev.lge.co.kr/sso/sign/in/action.do
+
+PROD :
+HOST : https://kr.lgeapi.com
+APP_KEY : 6c20d5b71f304c85b84eb1a7282bd4ce
+SECRET : f79d632450d548268d1ed8a7f025aa61
+callback : https://goldstar.lge.co.kr/sso/sign/in/action.do
+
+
+
+https://goldstardev.lge.co.kr/sso/sign/in/action.do
+
+리다이렉션 url 등록 또한 완료되었습니다.
+
+
+SSO 가이드 전달 드립니다.
+LGE.COM은 EMP라는 전자 SSO 시스템을 통해 OAuth2.0 기반의 인증 처리 방식으로 구성 되어있습니다.
+금성전파사에서 사용하실 redirect_uri 세팅 후 전달해주시면 EMP 에 등록 처리하겠습니다.
+ 
+https://devmember.lge.co.kr/auth/empLogin.do?client_id=lge-main-integration&state=VchcCEzJ2aaLiUic9BEyD7lV3VauJ+9jjg3qDDjD2Zg=&redirect_uri=https://goldstardev.lge.co.kr/sso/sign/in/action.do 
+
+
+1) 로그인
+ 
+- 회원통합 로그인 페이지 이동 :
+https://devmember.lge.co.kr/auth/empLogin.do?client_id=lge-main-integration&state=VchcCEzJ2aaLiUic9BEyD7lV3VauJ+9jjg3qDDjD2Zg=&redirect_uri=http://test.lge.co.kr:81/sso/api/emp/callbackLogin
+client_id : 기존 SSO 에서 사용하던 id 로 회원통합에서 로그인 요청시스템 구분용.
+redirect_uri : EMP SSO 에 등록된 redirect_uri (현재 회원통합에서 LGE.com APP_KEY, APP_SECRET 를 이용하여 EMP SSO 호출 –> 추후 변경가능)
+ 
+ - 로그인 call back :                  
+회원통합에서 EMP 로그인 후 EMP SSO 에 authorization_code 요청 후 로그인 페이지 요청 파라미터 redirect_uri 로 redirection 처리.
+http://test.lge.co.kr:81/sso/api/emp/callbackLogin?state=VchcCEzJ2aaLiUic9BEyD7lV3VauJ+9jjg3qDDjD2Zg%3D+&code=hFnLWOwe69f6OdbODuoI2IkftfVttE&user_number=KR2110206195177&oauth2_backend_url=https%3A%2F%2Fqa-kr.lgeapi.com%2F
+code : EMP SSO 에서 발급한 authorization code
+user_number: API 규격에 포함된 항목이 아니므로 사용하지 않음.
+unifyId : 현재 미구현으로 추가 예정 (추가 전 - access_token 획득 후 EMP SSO 에 userProfile 조회 후 empUserNo 로 회원통합시스템 호출하여 unifyId)
+code 파라미터를 이용하여 EMP SSO 에 access_token 요청, LGE.com 로그인 처리 후 state 페이지로 redirection 처리.
+ 
+관련 EMP API :
+Request Token : OTH.131
+User Profile : OTH.161
+회원통합 UnifyId 조회 API :
+ 
+2) 로그아웃
+- EMP SSO token expire 요청 후 로그아웃 처리.
+관련 EMP API :
+Expire Token : OTH.134
+ 
+3) 토큰 검증 및 리프레시
+- EMP SSO token validation/refresh 요청
+관련 EMP API :
+Validation Token : OTH.117
+Refresh Token : OTH.131
+ 
+ 
+GNB/FOOTER에 대해서는 차주중으로 전달 드리겠습니다.

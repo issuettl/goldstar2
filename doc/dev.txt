@@ -1,0 +1,72 @@
+안녕하세요, LGE.com 이은 선임입니다.
+ 
+인프라 구성 완료되어 전달 드립니다.
+
+
+https://cmsdev50.lge.co.kr/
+id : kdhh
+pw: brightbell1
+
+[원격PC]
+IP주소 : 10.171.82.80
+서브넷 마스크 : 255.255.255.128
+게이트웨이 : 10.171.82.1
+기본 설정 DNS : 156.147.135.180
+대체 DNS : 156.147.135.181
+노트북 비밀번호 : brightbell
+
+[RealVNC]
+ID : kdh@kpr.co.kr
+PW : brightbell
+접속비밀번호 : 123456
+
+[git] https://gitlab.lge.co.kr/ (원격 PC로만 접속 가능)
+ID : kdh@kpr.co.kr
+PW : brightbell
+ 
+ 
+1. Database – AWS RDS MariaDB 10.3.23
+DEV
+URL : mgrdb.lgekrdev.lge.co.kr:3310/lgecokr_goldstar_publ
+User : Owner - goldstarown, APP - goldstarapp
+Password : Owner - !qusrud82, APP - !qusrud82
+STG
+URL : mgrdb.lgekr.lge.co.kr:4310/lgecokr_goldstar_save
+User : Owner - goldstarown, APP - goldstarapp
+Password : Owner - sv_goldapp2022, APP - sv_goldapp2022
+ 
+PROD
+URL : mgrdb.lgekr.lge.co.kr:4310/lgecokr_goldstar_publ
+User : Owner - goldstarown, APP - goldstarapp
+Password : Owner - sv_goldapp2022, APP - sv_goldapp2022
+ 
+2. Git Repository
+WEB : https://gitlab.lge.co.kr/goldstar/lgekor-goldstar-web
+Openresty 1.13.6
+ 
+WAS : https://gitlab.lge.co.kr/goldstar/lgekor-goldstar
+Springboot v2.7.4 + MyBatis / Maven 빌드
+ 
+WEB / WAS 연동 : “/test” URL 패턴에 대해서만 설정 되어있음.
+ 
+3. CICD
+  CICD-MANAGER : https://cicd.lge.co.kr/#/apps -> lgekor-goldstar(WAS) , lgekor-goldstar-web(WEB) 에서 해당 서비스에 대한 런타임, 배포 정보 확인 가능합니다. (깃 계정과 동일)
+  DEV, STG, PROD 분리되어 있으며, 
+  -DEV : 자동 배포, RECREATE 배포 전략
+  -STG : 수동 배포, RECREATE 배포 전략
+  -PROD : 수동 배포, BLUE-GREEN 배포 전략
+  으로 구성되어 있습니다.
+  수동 배포 시 배포 -> 새 배포 통해 빌드된 이미지 배포하시면 됩니다.
+ 
+ 
+ 
+이전에도 말씀드렸듯이 위의 모든 업무 시스템은 LG 방화벽 해지된 이후에 접근 가능합니다.
+세팅된 전자망 IP 전달해주시면 방화벽 해지 진행해드리도록 하겠습니다.
+ 
+추가로 DNS 생성 완료되면 정보 전달 요청드립니다.
+ 
+
+ 
+이상입니다.
+ 
+감사합니다.

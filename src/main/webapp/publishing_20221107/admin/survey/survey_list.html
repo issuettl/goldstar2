@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LG 금성전파사 관리자</title>
+	<!-- 홈페이지와 공통공유 css -->
+	<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../css/utility.css" />
+	<!-- admin에서만 사용 css -->
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/slick.css" />
+	<link rel="stylesheet" type="text/css" href="../css/unit.css" />
+	<link rel="stylesheet" type="text/css" href="../css/admin.css" />
+	<link rel="stylesheet" type="text/css" href="../css/popup.css" />
+	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/slick.min.js"></script>
+	<script src="../js/admin.js"></script>
+</head>
+<body>
+	<!-- left GNB -->
+	<header class="adm_gnb">
+		<h1 class="adm_logo"><a href="../index.html"><img src="../../admin/images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
+		<ul class="adm_menulist">
+			<li><a href="../index.html" class="menu_link01">대시보드</a></li>
+			<li><a href="../member/member_list.html" class="menu_link02">회원리스트</a></li>
+			<li>
+				<!-- 2022-12-19 수정 : 사전문답 하위메뉴 추가 -->
+				<a href="./survey_list.html" class="active menu_link03">사전문답 관리</a>
+				<ul class="adm_menulist_sub">
+					<li><a href="./survey_list.html" class="active menu_link031">사전문답 리스트</a></li>
+					<li><a href="./survey_data.html" class="menu_link032">사전문답 데이터</a></li>
+				</ul>
+			</li>
+			<li><a href="../event/event_list.html" class="menu_link04">이벤트 관리</a></li>
+			<li><a href="../faq/faq_list.html" class="menu_link05">FAQ 관리</a></li>
+			<li><a href="../board/notice_list.html" class="menu_link06">공지사항 관리</a></li>
+			<li>
+				<a href="../escape/escape_list.html" class="menu_link07">방탈출 관리</a>
+				
+				<ul class="adm_menulist_sub">
+					<li><a href="../escape/escape_list.html" class="menu_link071">예약 확정 리스트</a></li>
+					<li><a href="../escape/escape_draw.html" class="menu_link072">주말 응모 리스트</a></li>
+				</ul>
+			</li>
+			<!-- 2022-11-21 수정 : 새로고침 코-너 관리 삭제
+			<li><a href="../refresh/refresh_list.html" class="menu_link08">새로고침 코-너 관리</a></li> -->
+			<li><a href="../admpeople/admpeople_list.html" class="menu_link09">관리자 관리</a></li>
+		</ul>
+		<div class="gnb_login_info">
+			<figure class="profile_img" style="background-image:'';"></figure>
+			<div class="profile_info">
+				<h3 class="profile_name">KKKKKKK</h3>
+				<a href="mainto:KKKKKKK@sample.com;" class="profile_mail">KKKKKKK@sample.com</a>
+			</div>
+		</div>
+	</header>
+	<!-- left GNB end -->
+	<main>
+		<!-- top Menu -->
+		<section class="adm_top_section wrapped_flex">
+			<div class="left">
+				<ul class="top_nav_list">
+					<li class="current_nav">
+						<h2>사전문답 관리</h2>
+					</li>
+				</ul>
+			</div>
+			<div class="right">
+				<p class="top_profile_text"><strong>KKKKKKKK 님</strong> 안녕하세요.</p>
+				<button onClick="location.href='../login.html'" class="btn_top btn_primary btn">로그아웃</button>
+			</div>
+		</section>
+		<!-- top Menu end -->
+		<!-- contents start -->
+		<section class="survey_section adm_section">
+			<div class="adm_con_page roundbox">
+				<div class="survey_write adm_part">
+					<h3 class="adm_title">사전문답 등록</h3>
+					<div class="adm_write">
+						<div class="row checkbox_corner">
+							<label for="">코-너</label>
+							<label for="check_corner1" class="customCheck customCheck_round">
+								<input type="radio" name="check_corner" id="check_corner1">
+								<span class="checkmark"></span>
+								<span class="checkText">마음고침 코-너</span>
+							</label>
+							<label for="check_corner2" class="customCheck customCheck_round">
+								<input type="radio" name="check_corner" id="check_corner2">
+								<span class="checkmark"></span>
+								<span class="checkText">스타일고침 코-너</span>
+							</label>
+							<label for="check_corner3" class="customCheck customCheck_round">
+								<input type="radio" name="check_corner"id="check_corner3" checked="checked">
+								<span class="checkmark"></span>
+								<span class="checkText">개성고침 코-너</span>
+							</label>
+							<label for="check_corner4" class="customCheck customCheck_round">
+								<input type="radio" name="check_corner" id="check_corner4">
+								<span class="checkmark"></span>
+								<span class="checkText">기분고침 코-너(금성오락실)</span>
+							</label>
+						</div>
+						<div class="row inputBox">
+							<label for="adm_faq_title">질문</label><input type="text" name="" id="adm_faq_title" placeholder="질문을 입력해 주세요">
+						</div>
+						<div class="row_answer row inputBox">
+							<label for="adm_faq_cont">답변</label>
+							<div class="inputs">
+								<!-- 마음고침일때는 input 3개, 스타일고침, 개성고침일때는 4개가 나옵니다 -->
+								<input type="text" name="" id="adm_faq_cont1" placeholder="답변을 입력해 주세요" />
+								<input type="text" name="" id="adm_faq_cont2" placeholder="답변을 입력해 주세요" />
+								<input type="text" name="" id="adm_faq_cont3" placeholder="답변을 입력해 주세요" />
+								<input type="text" name="" id="adm_faq_cont4" placeholder="답변을 입력해 주세요" />
+							</div>
+						</div>
+					</div>
+					<div class="btn_wrap t_center"><button class="btn_m btn_gray btn">등록하기</button></div>
+				</div>
+				
+				<!-- survey_list -->
+				<div class="survey_list adm_part">
+					<div class="adm_title_btns">
+						<h3 class="adm_title">[마음고침 코-너] 사전문답 관리</h3>
+						<button class="btn_bbsfx btn_m btn_gray btn">순서 변경</button>
+					</div>
+					<ul class="list_num5 adm_sortable adm_list">
+						<li class="adm_list_title ui-state-disabled">
+							<div class="list_con01">NO.</div>
+							<div class="list_con02">질문</div>
+							<div class="list_con03">답변</div>
+							<div class="list_con04 list_con_select">상태</div>
+							<div class="list_con05 list_btn_wrap">기능</div>
+						</li>
+						<!-- 2022-11-25 수정 : 수정 삭제시 팝업으로 수정하도록 구조 변경, 숫자 노출 순서 변경 (하단에 팝업 추가되었습니다.) 02,01이 2,1로 숫자 노출도 변경되었습니다. -->
+						<li class="adm_list_con list_line">
+							<div class="list_con01">4</div>
+							<div class="list_con02 list_bbs_view">LG 틔운 구매 연령대는?</div>
+							<div class="list_con03 list_bbs_view">20대/30대/40대/50대이상</div>
+							<div class="list_con04 list_con_select">
+								<select name="" id="">
+									<option value="ON">ON</option>
+									<option value="OFF">OFF</option>
+								</select>
+							</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod1').show();" class="btn_primary btn_s btn">수정</button><button onClick="javascript:$('#pop_survey_del1').show();" class="btn_gray btn_s btn">삭제</button>
+							</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<div class="list_con01">-</div>
+							<div class="list_con02 list_bbs_view">LG 틔운이 매력적인 이유는?</div>
+							<div class="list_con03 list_bbs_view">기능/디자인/새로움/활용성</div>
+							<div class="list_con04 list_con_select">
+								<select name="" id="">
+									<option value="OFF">OFF</option>
+									<option value="ON">ON</option>
+								</select>
+							</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod1').show();" class="btn_primary btn_s btn">수정</button><button onClick="javascript:$('#pop_survey_del1').show();" class="btn_gray btn_s btn">삭제</button>
+							</div>
+						</li>
+					</ul>
+					<ul class="list_num5 adm_sortable adm_list">
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">3</div>
+							<div class="list_con02 list_bbs_view">다음 중 친구가 화분을 선물로 준다면 받고 싶은 것은?</div>
+							<div class="list_con03 list_bbs_view">싱싱한 로메인 화분/향긋한 페퍼민트 화분/아름다운 메리골드 화분</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod1').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">2</div>
+							<div class="list_con02 list_bbs_view">식물을 기를 때 가장 어렵다고 느끼는 점은 무엇인가?</div>
+							<div class="list_con03 list_bbs_view">적정 온도 유지/적정 습도 유지 (물)/적절한 조명 유지 (빛)</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod1').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">1</div>
+							<div class="list_con02 list_bbs_view">자네가 식물을 키우고 싶은 가장 큰 이유는 무엇인가?</div>
+							<div class="list_con03 list_bbs_view">건강한 식재료로 활용하려고/정서 발달과 휴식을 위해/플렌테리어 아이템으로 활용하려고</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod1').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- survey_list end -->
+
+				<!-- survey_list -->
+				<div class="survey_list adm_part">
+					<div class="adm_title_btns">
+						<h3 class="adm_title">[개성고침 코-너] 사전문답 관리</h3>
+						<button class="btn_bbsfx btn_m btn_gray btn">순서 변경</button>
+					</div>
+					<ul class="list_num5 adm_sortable adm_list">
+						<li class="adm_list_title ui-state-disabled">
+							<div class="list_con01">NO.</div>
+							<div class="list_con02">질문</div>
+							<div class="list_con03">답변</div>
+							<div class="list_con04 list_con_select">상태</div>
+							<div class="list_con05 list_btn_wrap">기능</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">3</div>
+							<div class="list_con02 list_bbs_view">새로운 노트북으로 구매하고 싶은 유형은 어떤 것인가?</div>
+							<div class="list_con03 list_bbs_view">휴대하기 간편한 ‘그램 시리즈’/준수한 성능과 합리적인 가격의 ‘울트라PC’/펜 탑재 & 접을 수 있는 ‘그램360’/고사양 ‘울트라기어 게이밍 노트북’</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod3').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">2</div>
+							<div class="list_con02 list_bbs_view">노꾸(노트북 꾸미기)로 자네의 개성을 표현한다면, 어떤 것을 고를 것인가?</div>
+							<div class="list_con03 list_bbs_view">노트북 파우치/키스킨/스티커/노트북 스킨</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod3').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">1</div>
+							<div class="list_con02 list_bbs_view">자네가 노트북을 구매한 이유는 무엇인가?</div>
+							<div class="list_con03 list_bbs_view">언제 어디서나 사용하기 위해/온라인 강의 수강을 위해/취미생활을 위해/게임 및 그래픽 작업을 위해</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod3').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- survey_list end -->
+
+				<!-- survey_list -->
+				<div class="survey_list adm_part">
+					<div class="adm_title_btns">
+						<h3 class="adm_title">[스타일고침 코-너] 사전문답 관리</h3>
+						<button class="btn_bbsfx btn_m btn_gray btn">순서 변경</button>
+					</div>
+					<ul class="list_num5 adm_sortable adm_list">
+						<li class="adm_list_title ui-state-disabled">
+							<div class="list_con01">NO.</div>
+							<div class="list_con02">질문</div>
+							<div class="list_con03">답변</div>
+							<div class="list_con04 list_con_select">상태</div>
+							<div class="list_con05 list_btn_wrap">기능</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">3</div>
+							<div class="list_con02 list_bbs_view">다음 중 자네가 즐겨 입는 의류의 종류는 무엇인가?</div>
+							<div class="list_con03 list_bbs_view">실크 블라우스/면 셔츠/청 자켓/캐시미어 니트</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod2').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">2</div>
+							<div class="list_con02 list_bbs_view">다음 중 자네가 가장 좋아하는 색은 무엇인가?</div>
+							<div class="list_con03 list_bbs_view">블랙 틴트 미러/크림 화이트/미스트 핑크/미스트 베이지</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod2').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">1</div>
+							<div class="list_con02 list_bbs_view">자네가 옷을 관리할 때 가장 신경 쓰는 부분은 무엇인가?</div>
+							<div class="list_con03 list_bbs_view">건조/살균/탈취/구김 제거</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod2').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- survey_list end -->
+
+				<!-- survey_list -->
+				<div class="survey_list adm_part">
+					<div class="adm_title_btns">
+						<h3 class="adm_title">[기분고침 코-너] 사전문답 관리</h3>
+						<button class="btn_bbsfx btn_m btn_gray btn">순서 변경</button>
+					</div>
+					<ul class="list_num5 adm_sortable adm_list">
+						<li class="adm_list_title ui-state-disabled">
+							<div class="list_con01">NO.</div>
+							<div class="list_con02">질문</div>
+							<div class="list_con03">답변</div>
+							<div class="list_con04 list_con_select">상태</div>
+							<div class="list_con05 list_btn_wrap">기능</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">3</div>
+							<div class="list_con02 list_bbs_view">가장 선호하는 LG OLED의 장점은 무엇인가?</div>
+							<div class="list_con03 list_bbs_view">선명한 화질/매끄러운 화면 전환/빠른 응답속도/슬림한 디자인</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod4').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">2</div>
+							<div class="list_con02 list_bbs_view">자네는 평소에 TV를 어떻게 사용하는가?</div>
+							<div class="list_con03 list_bbs_view">영화 감상/스포츠 관람/게임 플레이/공간 인테리어</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod4').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+						<li class="adm_list_con list_line ui-state-disabled default_background">
+							<div class="list_con01">1</div>
+							<div class="list_con02 list_bbs_view">자네가 TV를 구매한다면 어떤 제품을 구매하겠는가?</div>
+							<div class="list_con03 list_bbs_view">세계 판매 1위 제품/선명한 화질과 우수한 디자인/장시간 보아도 눈이 편안한 제품/환경을 생각한 친환경 제품</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05 list_btn_wrap">
+								<button onClick="javascript:$('#pop_survey_mod4').show();" class="btn_primary btn_s btn">수정</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- survey_list end -->
+			</div>
+		</section>
+		
+	</main>
+	<!-- pop_survey_mod1 popup -->
+	<section id="pop_survey_mod1" class="pop_survey modal">
+		<div class="popBg">
+			<!-- 2022-12-20 수정 : 디자인 자체가 바뀌어서 퍼블 다 수정했습니다 다 뜯어보셔야합니다.ㅠ -->
+			<div class="popContent">
+				<div class="popTitle_wrap">
+					<h2>[마음고침 코-너] 사전문답 수정</h2>
+					<button onClick="javascript:$('#pop_survey_mod1').hide();" class="popup_close"></button>
+				</div>
+				<div class="pop_delete_con">
+					<h3 class="d_inline_block">코너</h3>
+					<span class="pop_span">마음고침 코-너</span>
+				</div>
+				<div class="pop_delete_con">
+					<h3>질문</h3>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="LG 틔운이 매력적인 이유는?"/>
+					</div>
+				</div>
+				<div class="pop_survey_con">
+					<h3>답변</h3>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="기능" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="디자인" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="새로움" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="활용성" />
+					</div>
+				</div>
+				<div class="bottom btn_wrap w100per tac">
+					<button onclick="javascript:$('#pop_survey_mod1').hide();" class="btn_pop_s btn_primary btn">완료</button>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</section>
+	<!-- popup end -->
+	<!-- pop_survey_mod2 popup -->
+	<section id="pop_survey_mod2" class="pop_survey modal">
+		<div class="popBg">
+			<!-- 2022-12-20 수정 : 디자인 자체가 바뀌어서 퍼블 다 수정했습니다 다 뜯어보셔야합니다.ㅠ -->
+			<div class="popContent">
+				<div class="popTitle_wrap">
+					<h2>[스타일고침 코-너] 사전문답 수정</h2>
+					<button onClick="javascript:$('#pop_survey_mod2').hide();" class="popup_close"></button>
+				</div>
+				<div class="pop_delete_con">
+					<h3 class="d_inline_block">코너</h3>
+					<span class="pop_span">스타일고침 코-너</span>
+				</div>
+				<div class="pop_delete_con">
+					<h3>질문</h3>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="옷을 관리할 때 가장 신경 쓰이는 게 뭔가?"/>
+					</div>
+				</div>
+				<div class="pop_survey_con">
+					<h3>답변</h3>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="건조" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="살균" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="탈취" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="구김 제거" />
+					</div>
+				</div>
+				<div class="bottom btn_wrap w100per tac">
+					<button onclick="javascript:$('#pop_survey_mod2').hide();" class="btn_pop_s btn_primary btn">완료</button>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</section>
+	<!-- popup end -->
+	<!-- pop_survey_mod3 popup -->
+	<section id="pop_survey_mod3" class="pop_survey modal">
+		<div class="popBg">
+			<!-- 2022-12-20 수정 : 디자인 자체가 바뀌어서 퍼블 다 수정했습니다 다 뜯어보셔야합니다.ㅠ -->
+			<div class="popContent">
+				<div class="popTitle_wrap">
+					<h2>[개성고침 코-너] 사전문답 수정</h2>
+					<button onClick="javascript:$('#pop_survey_mod3').hide();" class="popup_close"></button>
+				</div>
+				<div class="pop_delete_con">
+					<h3 class="d_inline_block">코너</h3>
+					<span class="pop_span">개성고침 코-너</span>
+				</div>
+				<div class="pop_delete_con">
+					<h3>질문</h3>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="당신이 보유하고 있는 노트북 모델은?"/>
+					</div>
+				</div>
+				<div class="pop_survey_con">
+					<h3>답변</h3>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="기능" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="디자인" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="새로움" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="활용성" />
+					</div>
+				</div>
+				<div class="bottom btn_wrap w100per tac">
+					<button onclick="javascript:$('#pop_survey_mod3').hide();" class="btn_pop_s btn_primary btn">완료</button>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</section>
+	<!-- popup end -->
+	<!-- pop_survey_mod4 popup -->
+	<section id="pop_survey_mod4" class="pop_survey modal">
+		<div class="popBg">
+			<!-- 2022-12-20 수정 : 디자인 자체가 바뀌어서 퍼블 다 수정했습니다 다 뜯어보셔야합니다.ㅠ -->
+			<div class="popContent">
+				<div class="popTitle_wrap">
+					<h2>[기분고침 코-너] 사전문답 수정</h2>
+					<button onClick="javascript:$('#pop_survey_mod4').hide();" class="popup_close"></button>
+				</div>
+				<div class="pop_delete_con">
+					<h3 class="d_inline_block">코너</h3>
+					<span class="pop_span">기분고침 코-너</span>
+				</div>
+				<div class="pop_delete_con">
+					<h3>질문</h3>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="LG OLED 화질이 다른 것과 무엇이 다른가?"/>
+					</div>
+				</div>
+				<div class="pop_survey_con">
+					<h3>답변</h3>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="선명도" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="채도" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="대비" />
+					</div>
+					<div class="row inputBox">
+						<input type="text" name="" id="adm_event_title_del" class="w100per line_input" placeholder="" value="명암" />
+					</div>
+				</div>
+				<div class="bottom btn_wrap w100per tac">
+					<button onclick="javascript:$('#pop_survey_mod4').hide();" class="btn_pop_s btn_primary btn">완료</button>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</section>
+	<!-- popup end -->
+
+	<!-- pop_survey_del1 (문답 삭제 팝업) popup -->
+	<section id="pop_survey_del1" class="pop_bbs_del modal">
+		<div class="popBg">
+			<div class="popContent">
+				<div class="popTitle_wrap">
+					<h2>[마음고침 코-너] 사전문답 삭제</h2>
+					<button onClick="javascript:$('#pop_survey_del1').hide();" class="popup_close"></button>
+				</div>
+				<div class="pop_delete_con">
+					<h3 class="d_inline_block">코너</h3>
+					<span class="pop_span">마음고침 코-너</span>
+				</div>
+				<div class="pop_delete_con">
+					<h3 class="d_inline_block">제목</h3>
+					<span class="pop_span">LG 틔운이 매력적인 이유는?</span>
+				</div>
+				<div class="pop_delete_con">
+					<h3 class="d_inline_block">답변</h3>
+					<span class="pop_span">기능</span>
+					<span class="pop_div">디자인</span>
+					<span class="pop_div">새로움</span>
+					<span class="pop_div">답변</span>
+				</div>
+				<div class="bottom btn_wrap w100per tac">
+					<button onclick="javascript:$('#dialog_delete').show();" class="btn_pop_s btn_primary btn">삭제</button>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</section>
+	<!-- popup end -->
+	<!-- pop_survey_del2 (문답 삭제 팝업) popup -->
+	<section id="pop_survey_del2" class="pop_bbs_del modal">
+		<div class="popBg">
+			<div class="popContent">
+				<div class="popTitle_wrap">
+					<h2>[스타일고침 코-너] 사전문답 삭제</h2>
+					<button onClick="javascript:$('#pop_survey_del2').hide();" class="popup_close"></button>
+				</div>
+				<div class="pop_delete_con">
+					<ul class="pop_delete_table">
+						<li class="title">
+							<span class="">질문</span>
+						</li>
+						<li class="content">
+							<span class="">옷을 관리할 때 가장 신경 쓰이는 게 뭔가?</span>
+						</li>
+					</ul>
+				</div>
+				<div class="pop_delete_con">
+					<ul class="pop_delete_table">
+						<li class="title">
+							<span>답변1</span>
+							<span>답변2</span>
+							<span>답변3</span>
+							<span>답변4</span>
+						</li>
+						<li class="content">
+							<span>건조</span>
+							<span>살균</span>
+							<span>탈취</span>
+							<span>구김 제거</span>
+						</li>
+					</ul>
+				</div>
+				<div class="bottom btn_wrap w100per tac">
+					<button onclick="javascript:$('#dialog_delete').show();" class="btn_pop_s btn_primary btn">삭제</button>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</section>
+	<!-- popup end -->
+	<!-- pop_survey_del3 (문답 삭제 팝업) popup -->
+	<section id="pop_survey_del3" class="pop_bbs_del modal">
+		<div class="popBg">
+			<div class="popContent">
+				<div class="popTitle_wrap">
+					<h2>[개성고침 코-너] 사전문답 삭제</h2>
+					<button onClick="javascript:$('#pop_survey_del3').hide();" class="popup_close"></button>
+				</div>
+				<div class="pop_delete_con">
+					<ul class="pop_delete_table">
+						<li class="title">
+							<span class="">질문</span>
+						</li>
+						<li class="content">
+							<span class="">당신이 보유하고 있는 노트북 모델은?</span>
+						</li>
+					</ul>
+				</div>
+				<div class="pop_delete_con">
+					<ul class="pop_delete_table">
+						<li class="title">
+							<span>답변1</span>
+							<span>답변2</span>
+							<span>답변3</span>
+							<span>답변4</span>
+						</li>
+						<li class="content">
+							<span>그램</span>
+							<span>맥북</span>
+							<span>삼성</span>
+							<span>레노버</span>
+						</li>
+					</ul>
+				</div>
+				<div class="bottom btn_wrap w100per tac">
+					<button onclick="javascript:$('#dialog_delete').show();" class="btn_pop_s btn_primary btn">삭제</button>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</section>
+	<!-- popup end -->
+	<!-- pop_survey_del4 (문답 삭제 팝업) popup -->
+	<section id="pop_survey_del4" class="pop_bbs_del modal">
+		<div class="popBg">
+			<div class="popContent">
+				<div class="popTitle_wrap">
+					<h2>[기분고침 코-너] 사전문답 삭제</h2>
+					<button onClick="javascript:$('#pop_survey_del4').hide();" class="popup_close"></button>
+				</div>
+				<div class="pop_delete_con">
+					<ul class="pop_delete_table">
+						<li class="title">
+							<span class="">질문</span>
+						</li>
+						<li class="content">
+							<span class="">LG OLED 화질이 다른 것과 무엇이 다른가?</span>
+						</li>
+					</ul>
+				</div>
+				<div class="pop_delete_con">
+					<ul class="pop_delete_table">
+						<li class="title">
+							<span>답변1</span>
+							<span>답변2</span>
+							<span>답변3</span>
+							<span>답변4</span>
+						</li>
+						<li class="content">
+							<span>선명도</span>
+							<span>채도</span>
+							<span>대비</span>
+							<span>명암</span>
+						</li>
+					</ul>
+				</div>
+				<div class="bottom btn_wrap w100per tac">
+					<button onclick="javascript:$('#dialog_delete').show();" class="btn_pop_s btn_primary btn">삭제</button>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</section>
+	<!-- 삭제 커스텀 다이알로그 -->
+	<section id="dialog_delete" class="pop_mini modal">
+		<div class="popBg">
+			<div class="popContent">
+				<div class="centerCon">
+					<p>삭제하시겠습니까?</p>
+				</div>
+				<div class="btn_wrap w100per tac">
+					<button onclick="popClose()" class="btn_pop_s btn_lightgray btn">취소</button>
+					<button onclick="popClose()" class="btn_pop_s btn_primary btn">삭제</button>
+				</div>
+			</div>
+		</div>
+		<div class="dim"></div>
+	</section>
+	<!-- popup end -->
+	<script>
+		
+	</script>
+</body>
+</html>

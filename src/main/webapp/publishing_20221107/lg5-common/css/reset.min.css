@@ -1,0 +1,246 @@
+@charset "UTF-8";
+/* VARIABLES
+------------------------------------------------------------------------*/
+/*
+ * clearfix
+ * @include clearfix;
+*/
+/*
+* overflowScrolling
+* @include overflowScrolling;
+*/
+/*
+* calc
+* @include calc('width', 100%, 250px)
+*/
+/*
+* calc-mobile-size
+* @include calc-mobile-size('width', 87px);
+*/
+/*
+* vw
+* @include vw('font-size', 16px);
+*/
+/*
+* textEllipsis 한 줄
+* @include textEllipsis;
+*/
+/*
+* textEllipsis 여러 줄
+* @include textEllipsisClamp;
+*/
+/*
+* textClip
+* @include textClip;
+*/
+/*
+* swiper
+* @include swiper(center);
+*/
+/*
+* translate3D
+* @include translate3D;
+*/
+/*
+* scale
+* @include scale(-1, 1);
+*/
+/*
+* transition
+* @include allTransition();
+*/
+/* component mixin */
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-text-size-adjust: none;
+	word-break: keep-all;
+	box-sizing: border-box;
+}
+
+*, *:after, *:before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html, body {
+	/* -webkit-font-smoothing:antialiased; */
+	-webkit-text-size-adjust: none;
+	-webkit-overflow-scrolling: touch;
+}
+
+html {
+	overflow-y: scroll;
+	-ms-overflow-x: hidden;
+	-webkit-tap-highlight-color: unset !important;
+}
+
+html.laypop {
+	overflow-y: hidden;
+}
+
+/* 전체 레이어팝업 일때 */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, textarea, p, blockquote, table, th, td, input, select, textarea, button {
+	margin: 0;
+	padding: 0;
+	word-break: break-all;
+}
+
+body, input, textarea, select, button, table {
+	font-family: 'Noto Sans', sans-serif;
+	color: #000;
+	font-size: 16px;
+	line-height: 1;
+}
+
+em {
+	font-style: normal;
+}
+
+fieldset, img {
+	border: 0 none;
+}
+
+img {
+	vertical-align: middle;
+}
+
+dl, ul, ol, menu, li {
+	list-style: none;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button {
+	border: 0 none;
+	border-radius: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+	background-color: transparent;
+	text-decoration: none;
+	color: inherit;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+a[href^="tel:"] {
+	cursor: text;
+}
+
+/* ios pinch-zoom */
+body {
+	touch-action: pan-x pan-y;
+}
+
+body.pinch-zoom {
+	touch-action: auto;
+}
+
+.blind, legend, caption {
+	position: absolute;
+	z-index: -10;
+	width: 0 !important;
+	height: 0 !important;
+	overflow: hidden !important;
+	font-size: medium;
+	line-height: normal;
+	word-break: break-all;
+}
+
+.ios_no_acc {
+	-webkit-overflow-scrolling: auto;
+}
+
+/* form */
+input, select, textarea, button {
+	vertical-align: middle;
+	border: none;
+	border-radius: 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+label {
+	vertical-align: middle;
+}
+
+textarea {
+	width: 100%;
+	border: 0;
+	overflow-y: auto;
+	resize: none;
+}
+
+/* dimmed */
+.dimmed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #111;
+	opacity: 0.7;
+	z-index: 1000;
+}
+
+.loading_con {
+	width: 100px;
+	margin-left: -50px;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.loading_con .loading_dot {
+	width: 12px;
+	height: 12px;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.loading_con .loading_dot:nth-child(1) {
+	margin-left: 0;
+}
+
+.loading_con .ui-spinner-msg {
+	top: 15px;
+}
+
+@media screen and (max-width: 767px) {
+	.loading_con .loading_dot {
+		width: 17px;
+		height: 17px;
+		display: inline-block;
+		margin-left: 21px;
+	}
+	.loading_con .loading_dot:nth-child(1) {
+		margin-left: 0;
+	}
+}
+
+.scroll-lock {
+	position: fixed;
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+}

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LG 금성전파사 관리자</title>
+	<!-- 홈페이지와 공통공유 css -->
+	<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../css/utility.css" />
+	<!-- admin에서만 사용 css -->
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/slick.css" />
+	<link rel="stylesheet" type="text/css" href="../css/unit.css" />
+	<link rel="stylesheet" type="text/css" href="../css/admin.css" />
+	<link rel="stylesheet" type="text/css" href="../css/popup.css" />
+	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/slick.min.js"></script>
+	<script src="../js/admin.js"></script>
+</head>
+<body>
+	<!-- left GNB -->
+	<header class="adm_gnb">
+		<h1 class="adm_logo"><a href="../index.html"><img src="../../admin/images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
+		<ul class="adm_menulist">
+			<li><a href="../index.html" class="menu_link01">대시보드</a></li>
+			<li><a href="../member/member_list.html" class="menu_link02">회원리스트</a></li>
+			<li>
+				<!-- 2022-12-19 수정 : 사전문답 하위메뉴 추가 -->
+				<a href="./survey_list.html" class="active menu_link03">사전문답 관리</a>
+				<ul class="adm_menulist_sub">
+					<li><a href="./survey_list.html" class="menu_link031">사전문답 리스트</a></li>
+					<li><a href="./survey_data.html" class="active menu_link032">사전문답 데이터</a></li>
+				</ul>
+			</li>
+			<li><a href="../event/event_list.html" class="menu_link04">이벤트 관리</a></li>
+			<li><a href="../faq/faq_list.html" class="menu_link05">FAQ 관리</a></li>
+			<li><a href="../board/notice_list.html" class="menu_link06">공지사항 관리</a></li>
+			<li>
+				<a href="../escape/escape_list.html" class="menu_link07">방탈출 관리</a>
+				<ul class="adm_menulist_sub">
+					<li><a href="../escape/escape_list.html" class="menu_link071">예약 확정 리스트</a></li>
+					<li><a href="../escape/escape_draw.html" class="menu_link072">주말 응모 리스트</a></li>
+				</ul>
+			</li>
+			<!-- 2022-11-21 수정 : 새로고침 코-너 관리 삭제
+			<li><a href="../refresh/refresh_list.html" class="menu_link08">새로고침 코-너 관리</a></li> -->
+			<li><a href="../admpeople/admpeople_list.html" class="menu_link09">관리자 관리</a></li>
+		</ul>
+		<div class="gnb_login_info">
+			<figure class="profile_img" style="background-image:'';"></figure>
+			<div class="profile_info">
+				<h3 class="profile_name">KKKKKKK</h3>
+				<a href="mainto:KKKKKKK@sample.com;" class="profile_mail">KKKKKKK@sample.com</a>
+			</div>
+		</div>
+	</header>
+	<!-- left GNB end -->
+	<main>
+		<!-- top Menu -->
+		<section class="adm_top_section wrapped_flex">
+			<div class="left">
+				<ul class="top_nav_list">
+					<li class="current_nav">
+						<h2>사전문답 관리</h2>
+					</li>
+				</ul>
+			</div>
+			<div class="right">
+				<p class="top_profile_text"><strong>KKKKKKKK 님</strong> 안녕하세요.</p>
+				<button onClick="location.href='../login.html'" class="btn_top btn_primary btn">로그아웃</button>
+			</div>
+		</section>
+		<!-- top Menu end -->
+		<!-- contents start -->
+		<section class="survey_section adm_section">
+			<!-- topsch_area : 어드민 상단 검색 -->
+			<div class="topsch_area wrapped_flex">
+				<h3 class="adm_title mb15">통계 기간</h3>
+				<div class="date_sch_wrap">
+					<input type="datetime" name="" id="dash_date1" class="input_date" placeholder="날짜 선택">
+					<span class="date_during">~</span>
+					<input type="datetime" name="" id="dash_date2" class="input_date" placeholder="날짜 선택">
+					<button class="btn_date btn_gray btn">검색</button>
+				</div>
+			</div>
+			<div class="adm_con_page roundbox">
+				<!-- 마음고침 코너 사전문답 데이터 -->
+				<div class="refresh_data data_wrap">
+					<ul class="data_list">
+						<!-- data_list li -->
+						<li>
+							<!-- 닫힌 dropdown 컨텐츠 -->
+							<div class="adm_dropdown">
+								<button onclick="return dropdown_open(this);" class="dropdownLink more_open">
+									<div class="admdata_title wrapped_flex">
+										<div class="left"><h3 class="qna_title">[마음고침 코-너] 사전문답 데이터</h3></div>
+										<div class="right">
+											<!-- 전체 데이터 수 -->
+											<span class="total_num">500</span>
+											<img src="../images/icn_surveydrop.svg" alt="">
+										</div>
+									</div>
+								</button>
+								<!-- dropdownFull 펼쳐지는 내용 -->
+								<div class="dropdownFull">
+									<div class="admdata_contents">
+										<!-- Q 설문지 ul -->
+										<ul class="survey_survey_refresh1 survey_list">
+											<li class="title"><b class="q_mark">Q1.</b>자네가 식물을 키우고 싶은 가장 큰 이유는 무엇인가?</li>
+											<li class="content wrapped_flex"><span class="left">건강한 식재료로 활용하려고</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">정서 발달과 휴식을 위해</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">플렌테리어 아이템으로 활용하려고</span><span class="right">100</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+										<!-- Q 설문지 ul -->
+										<ul class="survey_refresh2 survey_list">
+											<li class="title"><b class="q_mark">Q2.</b>식물을 기를 때 가장 어렵다고 느끼는 점은 무엇인가?</li>
+											<li class="content wrapped_flex"><span class="left">적정 온도 유지</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">적정 습도 유지 (물)</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">적절한 조명 유지 (빛)</span><span class="right">100</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+										<!-- Q 설문지 ul -->
+										<ul class="survey_refresh3 survey_list">
+											<li class="title"><b class="q_mark">Q3.</b>다음 중 친구가 화분을 선물로 준다면 받고 싶은 것은?</li>
+											<li class="content wrapped_flex"><span class="left">싱싱한 로메인 화분</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">향긋한 페퍼민트 화분</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">아름다운 메리골드 화분</span><span class="right">100</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+									</div>
+								</div>
+								<!-- dropdownFull 펼쳐지는 내용 -->
+							</div>
+							<!-- 닫힌 dropdown 컨텐츠 end -->
+						</li>
+						<!-- // data_list li end -->
+					</ul>
+				</div>
+				<!-- 마음고침 코너 사전문답 데이터 end -->
+				<!-- 개성고침 코너 사전문답 데이터 -->
+				<div class="personality_data data_wrap">
+					<ul class="data_list">
+						<!-- data_list li -->
+						<li>
+							<!-- 닫힌 dropdown 컨텐츠 -->
+							<div class="adm_dropdown">
+								<button onclick="return dropdown_open(this);" class="dropdownLink more_open">
+									<div class="admdata_title wrapped_flex">
+										<div class="left"><h3 class="qna_title">[개성고침 코-너] 사전문답 데이터</h3></div>
+										<div class="right">
+											<!-- 전체 데이터 수 -->
+											<span class="total_num">400</span>
+											<img src="../images/icn_surveydrop.svg" alt="">
+										</div>
+									</div>
+								</button>
+								<!-- dropdownFull 펼쳐지는 내용 -->
+								<div class="dropdownFull">
+									<div class="admdata_contents">
+										<!-- Q 설문지 ul -->
+										<ul class="survey_personality1 survey_list">
+											<li class="title"><b class="q_mark">Q1.</b>자네가 노트북을 구매한 이유는 무엇인가?</li>
+											<li class="content wrapped_flex"><span class="left">언제 어디서나 사용하기 위해</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">온라인 강의 수강을 위해</span><span class="right">100</span></li>
+											<li class="content wrapped_flex"><span class="left">취미생활을 위해</span><span class="right">100</span></li>
+											<li class="content wrapped_flex"><span class="left">게임 및 그래픽 작업을 위해</span><span class="right">100</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+										<!-- Q 설문지 ul -->
+										<ul class="survey_personality2 survey_list">
+											<li class="title"><b class="q_mark">Q2.</b>노꾸(노트북 꾸미기)로 자네의 개성을 표현한다면, 어떤 것을 고를 것인가?</li>
+											<li class="content wrapped_flex"><span class="left">언제 어디서나 사용하기 위해</span><span class="right">100</span></li>
+											<li class="content wrapped_flex"><span class="left">온라인 강의 수강을 위해</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">취미생활을 위해</span><span class="right">100</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+										<!-- Q 설문지 ul -->
+										<ul class="survey_personality3 survey_list">
+											<li class="title"><b class="q_mark">Q3.</b>새로운 노트북으로 구매하고 싶은 유형은 어떤 것인가?</li>
+											<li class="content wrapped_flex"><span class="left">언제 어디서나 사용하기 위해</span><span class="right">100</span></li>
+											<li class="content wrapped_flex"><span class="left">온라인 강의 수강을 위해</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">취미생활을 위해</span><span class="right">100</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+									</div>
+								</div>
+								<!-- dropdownFull 펼쳐지는 내용 -->
+							</div>
+							<!-- 닫힌 dropdown 컨텐츠 end -->
+						</li>
+						<!-- // data_list li end -->
+					</ul>
+				</div>
+				<!-- 개성고침 코너 사전문답 데이터 end -->
+				<!-- 스타일고침 코너 사전문답 데이터 -->
+				<div class="style_data data_wrap">
+					<ul class="data_list">
+						<!-- data_list li -->
+						<li>
+							<!-- 닫힌 dropdown 컨텐츠 -->
+							<div class="adm_dropdown">
+								<button onclick="return dropdown_open(this);" class="dropdownLink more_open">
+									<div class="admdata_title wrapped_flex">
+										<div class="left"><h3 class="qna_title">[스타일고침 코-너] 사전문답 데이터</h3></div>
+										<div class="right">
+											<!-- 전체 데이터 수 -->
+											<span class="total_num">100</span>
+											<img src="../images/icn_surveydrop.svg" alt="">
+										</div>
+									</div>
+								</button>
+								<!-- dropdownFull 펼쳐지는 내용 -->
+								<div class="dropdownFull">
+									<div class="admdata_contents">
+										<!-- Q 설문지 ul -->
+										<ul class="survey_style1 survey_list">
+											<li class="title"><b class="q_mark">Q1.</b>자네가 옷을 관리할 때 가장 신경 쓰는 부분은 무엇인가?</li>
+											<li class="content wrapped_flex"><span class="left">건조</span><span class="right">25</span></li>
+											<li class="content wrapped_flex"><span class="left">살균</span><span class="right">20</span></li>
+											<li class="content wrapped_flex"><span class="left">탈취</span><span class="right">5</span></li>
+											<li class="content wrapped_flex"><span class="left">구김 제거</span><span class="right">50</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+										<!-- Q 설문지 ul -->
+										<ul class="survey_style2 survey_list">
+											<li class="title"><b class="q_mark">Q2.</b>다음 중 자네가 가장 좋아하는 색은 무엇인가?</li>
+											<li class="content wrapped_flex"><span class="left">블랙 틴트 미러</span><span class="right">20</span></li>
+											<li class="content wrapped_flex"><span class="left">크림 화이트</span><span class="right">20</span></li>
+											<li class="content wrapped_flex"><span class="left">미스트 핑크</span><span class="right">60</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+										<!-- Q 설문지 ul -->
+										<ul class="survey_style3 survey_list">
+											<li class="title"><b class="q_mark">Q3.</b>다음 중 자네가 즐겨 입는 의류의 종류는 무엇인가?</li>
+											<li class="content wrapped_flex"><span class="left">실크 블라우스</span><span class="right">20</span></li>
+											<li class="content wrapped_flex"><span class="left">면 셔츠</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">청 자켓</span><span class="right">60</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+									</div>
+								</div>
+								<!-- dropdownFull 펼쳐지는 내용 -->
+							</div>
+							<!-- 닫힌 dropdown 컨텐츠 end -->
+						</li>
+						<!-- // data_list li end -->
+					</ul>
+				</div>
+				<!-- 스타일고침 코너 사전문답 데이터 end -->
+				<!-- 기분고침 코너 사전문답 데이터 -->
+				<div class="mind_data data_wrap">
+					<ul class="data_list">
+						<!-- data_list li -->
+						<li>
+							<!-- 닫힌 dropdown 컨텐츠 -->
+							<div class="adm_dropdown">
+								<button onclick="return dropdown_open(this);" class="dropdownLink more_open">
+									<div class="admdata_title wrapped_flex">
+										<div class="left"><h3 class="qna_title">[기분고침 코-너] 사전문답 데이터</h3></div>
+										<div class="right">
+											<!-- 전체 데이터 수 -->
+											<span class="total_num">600</span>
+											<img src="../images/icn_surveydrop.svg" alt="">
+										</div>
+									</div>
+								</button>
+								<!-- dropdownFull 펼쳐지는 내용 -->
+								<div class="dropdownFull">
+									<div class="admdata_contents">
+										<!-- Q 설문지 ul -->
+										<ul class="survey_mind1 survey_list">
+											<li class="title"><b class="q_mark">Q1.</b>자네가 TV를 구매한다면 어떤 제품을 구매하겠는가?</li>
+											<li class="content wrapped_flex"><span class="left">세계 판매 1위 제품</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">선명한 화질과 우수한 디자인</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">장시간 보아도 눈이 편안한 제품</span><span class="right">100</span></li>
+											<li class="content wrapped_flex"><span class="left">환경을 생각한 친환경 제품</span><span class="right">100</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+										<!-- Q 설문지 ul -->
+										<ul class="survey_mind2 survey_list">
+											<li class="title"><b class="q_mark">Q2.</b>자네는 평소에 TV를 어떻게 사용하는가?</li>
+											<li class="content wrapped_flex"><span class="left">영화 감상</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">스포츠 관람</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">게임 플레이</span><span class="right">200</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+										<!-- Q 설문지 ul -->
+										<ul class="survey_mind3 survey_list">
+											<li class="title"><b class="q_mark">Q3.</b>가장 선호하는 LG OLED의 장점은 무엇인가?</li>
+											<li class="content wrapped_flex"><span class="left">선명한 화질</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">매끄러운 화면 전환</span><span class="right">200</span></li>
+											<li class="content wrapped_flex"><span class="left">빠른 응답속도</span><span class="right">200</span></li>
+										</ul>
+										<!-- Q 설문지 ul end -->
+									</div>
+								</div>
+								<!-- dropdownFull 펼쳐지는 내용 -->
+							</div>
+							<!-- 닫힌 dropdown 컨텐츠 end -->
+						</li>
+						<!-- // data_list li end -->
+					</ul>
+				</div>
+				<!-- 기분고침 코너 사전문답 데이터 end -->
+				<style>
+					.data_wrap {    padding: 0 20px 0px 20px;}
+					.data_wrap .dropdownLink {
+						width: 100%;
+					}
+					.adm_dropdown {}
+					.admdata_title {
+						display: flex;
+						padding-bottom: 20px;
+						justify-content: space-between;
+					}
+					.admdata_title .left {
+						width: 80%;
+						text-align: left;
+					}
+					.admdata_title .qna_title {
+						font-size: 22px;
+						color: var(--lg-primary);
+					}
+					.admdata_title .total_num {
+						font-size: 20px;
+						color: var(--lg-primary);
+						text-align: right;
+						margin-right: 20px;
+						font-weight: 700;
+					}
+					.admdata_title .right {width: 20%; display: inline-flex; align-items: center; justify-content: flex-end;}
+					.admdata_title .right img {display: block; width: 24px; height: 24px; transform: rotate(180deg);}
+					.dropdownLink.more_open .admdata_title .right img {transform: rotate(0deg);}
+					.admdata_contents {}
+					.dropdownFull .survey_list {padding-bottom: 40px;}
+					.survey_list .title {
+						display: flex;
+						padding: 12px 20px;
+						gap: 10px;
+						background: var(--bg);
+						border: 1 solid #ddd;
+						border-radius: 8px;
+						font-size: 20px; 
+						font-weight: 500;
+						color: var(--black);
+						line-height: 30px;
+					}
+					.survey_list .title .q_mark {
+						font-weight: 800;
+					}
+					.survey_list .content {
+						border-bottom: 1px solid #ddd;
+						padding: 25px 20px;
+					}
+					.survey_list .content .left {
+						font-weight: 700;
+						font-size: 20px;
+						line-height: 30px;
+						text-align: left;
+					}
+					.survey_list .content .right {
+						font-weight: 500;
+						font-size: 20px;
+						line-height: 30px;
+						text-align: right;
+						color: #232323;
+					}
+				</style>
+			</div>
+		</section>
+		
+	</main>
+	<script>
+		/* 드롭다운 추가 */
+		function dropdown_open(el){
+			var moreBtn = $(el).closest(".adm_dropdown").find(".dropdownLink");
+			var fullCon = $(el).closest(".adm_dropdown").find(".dropdownFull");
+			
+			if(moreBtn.hasClass("more_open")) {
+				$(el).closest(".adm_dropdown").parent().find(".dropdownLink").removeClass("more_open");
+				$(el).closest(".adm_dropdown").parent().find(".dropdownFull").slideUp();
+			} else {
+				$(el).closest(".adm_dropdown").parent().find(".dropdownLink").addClass("more_open");
+				$(el).closest(".adm_dropdown").parent().find(".dropdownFull").slideDown();
+			}
+			return false;
+		};
+	</script>
+</body>
+</html>

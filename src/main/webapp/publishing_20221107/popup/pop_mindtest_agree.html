@@ -1,0 +1,65 @@
+<!-- 2022-11-03 신규 팝업 추가 : 사전문답 최초 참여시 추가되는 약관동의 화면 팝업이 추가되었습니다.
+어느 사전문답이든 최초 참여시에만 나타납니다. -->
+<!-- pop_booking2 popup start -->
+<section id="pop_booking2" class="pop_agree pop_mini modal">
+	<div class="popBg">
+		<div class="popContent">
+			<div class="popTitle_wrap">
+				<h2>사전문답 참여하기</h2>
+				<button onClick="popClose()" class="popup_close"></button>
+			</div>
+			<div class="con_store">
+				<div class="pop_agree_title">
+					<h3>개인정보 수집 이용 동의</h3>
+					<p>귀하께서는 본 동의를 거절하실 수 있습니다. 단, 거절하신 경우 참여가 제한될 수 있습니다.</p>
+				</div>
+				<div class="booking_wrap">
+					<div class="booking_agree">
+						<div class="agree_wrap">
+							<ul class="pop_agree_table pc_view">
+								<li class="title">
+									<span>목적</span>
+									<span>항목</span>
+									<span>보유기간</span>
+								</li>
+								<li class="content">
+									<span>제품관련 문답 <br />
+										데이터 수집</span>
+									<span>문답 결과 값</span>
+									<span>5년</span>
+								</li>
+							</ul>
+							<ul class="pop_agree_table mo_view">
+								<li class="title">
+									<span>목적</span>
+								</li>
+								<li class="content">
+									<span>제품관련 문답 
+										데이터 수집</span>
+								</li>
+								<li class="title">
+									<span>항목</span>
+								</li>
+								<li class="content">
+									<span>문답 결과 값</span>
+								</li>
+								<li class="title">
+									<span>보유기간</span>
+								</li>
+								<li class="content">
+									<span>5년</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn_wrap w100per tac">
+				<button onclick="popClose()" class="btn_pop_s btn_lightgray btn">동의하지 않습니다</button>
+				<button onclick="javascript:$('.pop_store').fadeOut('.pop_store');$('#pop_mindTest1').show();" class="btn_agree_ok btn_pop_s btn_primary btn">동의합니다</button>
+			</div>
+		</div>
+	</div>
+	<div class="dim"></div>
+</section>
+<!-- popup end -->

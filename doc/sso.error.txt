@@ -1,0 +1,20 @@
+{
+datetime={date=Sat, 17 Dec 2022 07:05:09 +0000, timestamp=1671260709}, 
+tokenParams={
+sign=/oauth/1.0/oauth2/token?code=null&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fgoldstar.lge.co.kr%2Fsso%2Fsign%2Fin%2Faction.do
+ Sat, 17 Dec 2022 07:05:09 +0000, 
+ code=null, 
+ grant_type=authorization_code, 
+ redirect_uri=https%3A%2F%2Fgoldstar.lge.co.kr%2Fsso%2Fsign%2Fin%2Faction.do
+ 
+ }, 
+ token={
+ error={request=/oauth/1.0/oauth2/token, code=LG.OAUTH.EC.2105, service=oauth, message=Signature doesn't match request.}}, 
+ userProfile={error={code=LG.OAUTH.EC.2004, message=User token is not Found., request=/oauth/1.0/users/profile, service=oauth}}}
+ 
+ 
+ 
+ {
+ 
+ state=[9qjOqh8jl3GFO/v4WQY IQ2MMauf6xFe2CxXNtRK 38=, 9qjOqh8jl3GFO/v4WQY IQ2MMauf6xFe2CxXNtRK 38=], mobileCertYn=Y, redirectUri=https://goldstar.lge.co.kr/sso/sign/in/action.do, pinkey=, trid=, dupIdYn=Y, emailYn=, memNo=, clientId=lge-main-integration, siteGbnCd=07, unifyId=, authorizeKey=, dorYn=Y, terms=, chatbot=, itgAddDiv=, itgLgeId=, lgeIdDiv=, snsLoginType=NAV, snsAccessToken=AAAAOcUSdgDN8vikbpOMk4fx07_wFBp0gcDgOK5-Of2kAPET4Xwck-XLUeI_cFrL8nTrtXYaZyReS1VEbXpsxx9FF8g, snsSerial=7068031, snsEmail=dowoomics@naver.com, snsRedirectUrl=, snsEmpOnlyJoin=Y, snsEqualCi=N, hdn_terms=[A_MEM:20220607002_KR:ko-KR, A_MEM_PRV:20220107001_KR:ko-KR, A_MEM_PRV_GDPR:20220607001_KR:ko-KR, A_ITG_TOU:20221111001_KR:ko-KR, A_ITG_ECM:20210928017_KR:ko-KR, A_ITG_CUP_LGCOM:20221124006_KR:ko-KR, A_ITG_CUP_LGCOM_BEST:20221124007_KR:ko-KR, A_ITG_CUP_LGCOM_MBR:20221124008_KR:ko-KR], hdn_terms_opt=[A_ITG_MKT:20210414011_KR:ko-KR, LBS_LGCOM_KR:20220930001_KR:ko-KR], empMbrClear=N, datetime={date=Sat, 17 Dec 2022 10:54:58 +0000, timestamp=1671274498}, tokenParams={sign=/oauth/1.0/oauth2/token?code=null&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fgoldstar.lge.co.kr%2Fsso%2Fsign%2Fin%2Faction.do
+ Sat, 17 Dec 2022 10:54:58 +0000, code=null, grant_type=authorization_code, redirect_uri=https%3A%2F%2Fgoldstar.lge.co.kr%2Fsso%2Fsign%2Fin%2Faction.do}, token={error={request=/oauth/1.0/oauth2/token, code=LG.OAUTH.EC.2105, service=oauth, message=Signature doesn't match request.}}, userProfile={error={code=LG.OAUTH.EC.2004, message=User token is not Found., request=/oauth/1.0/users/profile, service=oauth}}}

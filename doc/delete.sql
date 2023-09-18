@@ -1,0 +1,10 @@
+delete FROM tb_indiv_member;
+delete FROM tb_indiv_part;
+delete FROM tb_mind_member;
+delete FROM tb_mind_part;
+delete FROM tb_style_member;
+delete FROM tb_style_part;
+delete FROM tb_mood_member;
+delete FROM tb_mood_part;
+delete FROM tb_refresh_part;
+delete FROM tb_sign;

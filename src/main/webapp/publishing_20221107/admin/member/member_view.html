@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LG 금성전파사 관리자</title>
+	<!-- 홈페이지와 공통공유 css -->
+	<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../css/utility.css" />
+	<!-- admin에서만 사용 css -->
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/slick.css" />
+	<link rel="stylesheet" type="text/css" href="../css/unit.css" />
+	<link rel="stylesheet" type="text/css" href="../css/admin.css" />
+	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/slick.min.js"></script>
+	<script src="../js/admin.js"></script>
+</head>
+<body>
+	<!-- left GNB -->
+	<header class="adm_gnb">
+		<h1 class="adm_logo"><a href="../index.html"><img src="../../admin/images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
+		<ul class="adm_menulist">
+			<li><a href="../index.html" class="menu_link01">대시보드</a></li>
+			<li><a href="./member_list.html" class="active menu_link02">회원리스트</a></li>
+			<li>
+				<!-- 2022-12-19 수정 : 사전문답 하위메뉴 추가 -->
+				<a href="../survey/survey_list.html" class="menu_link03">사전문답 관리</a>
+				<ul class="adm_menulist_sub">
+					<li><a href="../survey/survey_list.html" class="menu_link031">사전문답 리스트</a></li>
+					<li><a href="../survey/survey_data.html" class="menu_link032">사전문답 데이터</a></li>
+				</ul>
+			</li>
+			<li><a href="../event/event_list.html" class="menu_link04">이벤트 관리</a></li>
+			<li><a href="../faq/faq_list.html" class="menu_link05">FAQ 관리</a></li>
+			<li><a href="../board/notice_list.html" class="menu_link06">공지사항 관리</a></li>
+			<li>
+				<a href="../escape/escape_list.html" class="menu_link07">방탈출 관리</a>
+				
+				<ul class="adm_menulist_sub">
+					<li><a href="../escape/escape_list.html" class="menu_link071">예약 확정 리스트</a></li>
+					<li><a href="../escape/escape_draw.html" class="menu_link072">주말 응모 리스트</a></li>
+				</ul>
+			</li>
+		<!-- 2022-11-21 수정 : 새로고침 코-너 관리 삭제
+			<li><a href="../refresh/refresh_list.html" class="menu_link08">새로고침 코-너 관리</a></li> -->
+			<li><a href="../admpeople/admpeople_list.html" class="menu_link09">관리자 관리</a></li>
+		</ul>
+		<div class="gnb_login_info">
+			<figure class="profile_img" style="background-image:'';"></figure>
+			<div class="profile_info">
+				<h3 class="profile_name">KKKKKKK</h3>
+				<a href="mainto:KKKKKKK@sample.com;" class="profile_mail">KKKKKKK@sample.com</a>
+			</div>
+		</div>
+	</header>
+	<!-- left GNB end -->
+	<main>
+		<!-- top Menu -->
+		<section class="adm_top_section wrapped_flex">
+			<div class="left">
+				<ul class="top_nav_list">
+					<li class="prev_nav">
+						<a href="./member_list.html">회원리스트</a>
+					</li>
+					<li class="current_nav">
+						<h2>회원상세페이지</h2>
+					</li>
+				</ul>
+			</div>
+			<div class="right">
+				<p class="top_profile_text"><strong>KKKKKKKK 님</strong> 안녕하세요.</p>
+				<button onClick="location.href='../login.html'" class="btn_top btn_primary btn">로그아웃</button>
+			</div>
+		</section>
+		<!-- top Menu end -->
+		<!-- contents start -->
+		<section class="member_section adm_section">
+			<!-- topsch_area : 어드민 상단 검색 : 1줄일때 -->
+			<div class="topsch_area topsch1 wrapped_flex">
+				<div class="left">
+					<h3 class="adm_title">회원가입 고객<span class="adm_title_after">274명</span></h3>
+				</div>
+				<div class="topsch_name inputBox sch_wrap"><input type="search" name="" id="" placeholder="이름 검색"></div>
+				<div class="topsch_phone inputBox sch_wrap"><input type="search" name="" id="" placeholder="휴대폰 번호 검색"></div>
+				<div class="date_sch_wrap">
+					<input type="datetime" name="" id="dash_date1" class="input_date" placeholder="날짜 선택">
+					<span class="date_during">~</span>
+					<input type="datetime" name="" id="dash_date2" class="input_date" placeholder="날짜 선택">
+					<button class="btn_date btn_gray btn">검색</button>
+				</div>
+			</div>
+			<!-- topsch_area end -->
+			<div class="adm_con_full roundbox">
+				<div class="adm_con_back left"><button onClick="location.href='./member_list.html'" class="btn_back btn_line btn">돌아가기</button></div>
+				<!-- member_profile -->
+				<div class="member_profile adm_part">
+					<h3 class="adm_title">고객정보</h3>
+					<ul class="list_num5 adm_list">
+						<li class="adm_list_title">
+							<div class="list_con01">닉네임</div>
+							<div class="list_con02">이름</div>
+							<div class="list_con03">휴대폰 번호</div>
+							<div class="list_con04">최초 방문일자</div>
+							<div class="list_con05">방문 횟수</div>
+							<div class="list_con06">체험 횟수</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<div class="list_con01">가전고고</div>
+							<div class="list_con02">변*나</div>
+							<div class="list_con03">010****0000</div>
+							<div class="list_con04">2022-12-30</div>
+							<div class="list_con05">5</div>
+							<div class="list_con06">20</div>
+						</li>
+					</ul>
+				</div>
+				<!-- member_profile end -->
+				<!-- member_worry -->
+				<div class="member_worry adm_part">
+					<h3 class="adm_title">고민</h3>
+					<ul class="worry_list">
+						<!-- 체크박스 형태로만 만들고 동작하지 않게 만들었습니다. 각 회원 데이터에 따라 선택된 고민이 있는 경우 체크박스가 checked 됩니다. -->
+						<li><label for="worry1" class="worrylabel customCheck"><input type="checkbox" name="" id="worry1" class="worrycheck" disabled /><span class="worry_img"></span></label></li>
+						<li><label for="worry2" class="worrylabel customCheck"><input type="checkbox" name="" id="worry2" class="worrycheck" disabled /><span class="worry_img"></span></label></li>
+						<li><label for="worry3" class="worrylabel customCheck"><input type="checkbox" name="" id="worry3" class="worrycheck" checked="checked" disabled /><span class="worry_img"></span></label></li>
+						<li><label for="worry4" class="worrylabel customCheck"><input type="checkbox" name="" id="worry4" class="worrycheck" disabled /><span class="worry_img"></span></label></li>
+						<li><label for="worry5" class="worrylabel customCheck"><input type="checkbox" name="" id="worry5" class="worrycheck" disabled /><span class="worry_img"></span></label></li>
+						<li><label for="worry6" class="worrylabel customCheck"><input type="checkbox" name="" id="worry6" class="worrycheck" disabled /><span class="worry_img"></span></label></li>
+					</ul>
+				</div>
+				<!-- member_worry end -->
+				<!-- member_solution -->
+				<div class="member_solution adm_part">
+					<h3 class="adm_title">새로고침 솔루션</h3>
+					<!-- adm_list -->
+					<ul class="list_num5 adm_list">
+						<li class="adm_list_title">
+							<div class="list_con01">체험존</div>
+							<div class="list_con02">사전 문답</div>
+							<div class="list_con03">추천 리워드</div>
+							<div class="list_con04">스텝 체크</div>
+							<div class="list_con05">체험 상태</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<div class="list_con01">마음고침 코-너</div>
+							<div class="list_con02">종료</div>
+							<div class="list_con03">엽채류</div>
+							<div class="list_con04 list_con_select">
+								<select name="" id="">
+									<option value="증정">증정</option>
+									<option value="미증정">미증정</option>
+								</select>
+							</div>
+							<div class="list_con05">완료</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<div class="list_con01">개성고침 코-너</div>
+							<div class="list_con02">종료</div>
+							<div class="list_con03">클래식</div>
+							<div class="list_con04 list_con_select">
+								<select name="" id="">
+									<option value="미증정">미증정</option>
+									<option value="증정">증정</option>
+								</select>
+							</div>
+							<div class="list_con05">사전 문답</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<div class="list_con01">스타일고침 코-너</div>
+							<div class="list_con02">미체험</div>
+							<div class="list_con03">미체험</div>
+							<div class="list_con04 list_con_select">
+								<select name="" id="">
+									<option value="미증정">미증정</option>
+									<option value="증정">증정</option>
+								</select>
+							</div>
+							<div class="list_con05">미체험</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<div class="list_con01">기분고침 코-너<br />(금성오락실)</div>
+							<div class="list_con02">종료</div>
+							<div class="list_con03">-</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05">완료</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<div class="list_con01">고민탈출 코-너<br />(ThinQ 방탈출)</div>
+							<div class="list_con02">-</div>
+							<div class="list_con03">-</div>
+							<div class="list_con04 list_con_select">
+								<select name="" id="">
+									<option value="체험 전">체험 전</option>
+									<option value="체험 완료">체험 완료</option>
+								</select>
+							</div>
+							<div class="list_con05">미체험</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<div class="list_con01">새로고침 코-너</div>
+							<div class="list_con02">-</div>
+							<div class="list_con03">-</div>
+							<div class="list_con04 list_con_select">-</div>
+							<div class="list_con05">미체험</div>
+						</li>
+					</ul>
+					<!-- adm_list end -->
+					<!-- 2022-11-25 수정 : 보증서 보기 버튼삭제
+					<div class="t_right mt40"><button onClick="window.open('../../experience/mypage/certificate.html')" class="btn_m btn_gray btn">보증서 보기</button></div>. -->
+				</div>
+				<!-- member_solution end -->
+				<!-- member_jammy -->
+				<div class="member_jammy adm_part">
+					<h3 class="adm_title"><span class="font-mon">JAMMY</span> 포인트 지급 (개성고침 코-너)</h3>
+					<!-- adm_list -->
+					<ul class="list_num1 adm_list">
+						<li class="adm_list_title">
+							<div class="list_con01">개성고침 코-너 방문</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<!-- 2022-11-18 수정 : 발급 받은 경우와 안받은 경우 분리 -->
+							<!-- 발급 받았을 경우
+							<div class="list_con01">
+								<p>발급 완료</p>
+								<p>(05HA221KAH)</p>
+							</div>
+							-->
+							<!-- 발급받지 않았을 경우 -->
+							<div class="list_con01">
+								<button onClick="" class="btn_m btn_primary btn">2000g 발급하기</button>
+							</div>
+						</li>
+					</ul>
+					<!-- adm_list end -->
+				</div>
+				<!-- member_jammy end -->
+				<!-- member_history -->
+				<div class="member_history adm_part">
+					<h3 class="adm_title">지난 체험 이력</h3>
+					<!-- adm_list -->
+					<ul class="list_num5 adm_list">
+						<li class="adm_list_title">
+							<div class="list_con01">방문 일자</div>
+							<div class="list_con02">닉네임</div>
+							<div class="list_con03">고민</div>
+							<div class="list_con04">체험 코-너</div>
+							<div class="list_con05">체험 여부</div>
+						</li>
+						<li class="adm_list_con list_line">
+							<!-- 2022-11-25 수정 : 날짜 구조 통일 2022-11-22 이런 형태로 전부 통일 부탁드립니다. -->
+							<div class="list_con01">2022-11-17</div>
+							<div class="list_con02">산토끼</div>
+							<!-- 2023-04-07 수정 구조 문제가 있어 수정했습니다 -->
+							<div class="list_con03">-</div>
+							<div class="list_con04 list_parts">
+								<span class="parts">마음고침 코-너</span><span class="parts">스타일고침 코-너</span><span class="parts">개성고침 코-너</span><span class="parts">기분고침 코-너 (금성오락실)</span><span class="parts">고민탈출 코-너 (ThinQ 방탈출)</span><span class="parts">새로고침 코-너</span>
+							</div>
+							<div class="list_con05 list_parts">
+								<span class="complete parts">완료</span><span class="complete parts">완료</span><span class="complete parts">완료</span><span class="parts">미체험</span><span class="parts">미체험</span><span class="parts">미체험</span>
+							</div>
+						</li>
+					</ul>
+					<!-- adm_list end -->
+				</div>
+				<!-- member_history end -->
+			</div>
+		</section>
+		
+	</main>
+	<script>
+	</script>
+</body>
+</html>
