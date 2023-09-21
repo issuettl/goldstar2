@@ -24,16 +24,18 @@
 </head>
 <body>
 	<header class="adm_gnb">
-		<h1 class="adm_logo"><a href="./index.html"><img src="../admin/images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
+		<h1 class="adm_logo"><a href="./index.html"><img src="./images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
 		<ul class="adm_menulist">
 			<li><a href="./index.html" class="active menu_link01">대시보드</a></li>
 			<li><a href="./member/member_list.html" class="menu_link02">회원리스트</a></li>
+			<!-- 2023 수정 : 사전문답 관리 삭제 -> 설문조사관리 신규 추가 -->
 			<li>
-				<!-- 2022-12-19 수정 : 사전문답 하위메뉴 추가 -->
-				<a href="./survey/survey_list.html" class="menu_link03">사전문답 관리</a>
+				<a href="./survey/customer_type.html" class="menu_link03">설문 조사 관리</a>
 				<ul class="adm_menulist_sub">
-					<li><a href="./survey/survey_list.html" class="menu_link031">사전문답 리스트</a></li>
-					<li><a href="./survey/survey_data.html" class="menu_link032">사전문답 데이터</a></li>
+					<li><a href="./survey/customer_type.html" class="menu_link031">고객 유형 문답 관리</a></li>
+					<li><a href="./survey/management_type.html" class="menu_link032">내부 활용 문답 관리</a></li>
+					<li><a href="./survey/types_products.html" class="menu_link033">추천 제품 관리</a></li>
+					<li><a href="./survey/used_products.html" class="menu_link034">체험 제품 관리</a></li>
 				</ul>
 			</li>
 			<li><a href="./event/event_list.html" class="menu_link04">이벤트 관리</a></li>
@@ -46,8 +48,6 @@
 					<li><a href="./escape/escape_draw.html" class="menu_link072">주말 응모 리스트</a></li>
 				</ul>
 			</li>
-			<!-- 2022-11-21 수정 : 새로고침 코-너 관리 삭제
-			<li><a href="./refresh/refresh_list.html" class="menu_link08">새로고침 코-너 관리</a></li> -->
 			<li><a href="./admpeople/admpeople_list.html" class="menu_link09">관리자 관리</a></li>
 		</ul>
 		<div class="gnb_login_info">
@@ -81,54 +81,53 @@
 					<input type="datetime" name="" id="dash_date2" class="input_date" placeholder="날짜 선택">
 					<button class="btn_date btn_gray btn">검색</button>
 				</div>
+				<!-- 2023-08 엑셀다운로드 추가 -->
+				<div class="adm_right"><button class="btn_excel btn_gray btn">엑셀 다운로드</button></div>
 			</div>
-			<!-- 2023-01-06 관리자 통계 인원 추가 및 조정 -->
-			<div class="dash_today_row">
-				<ul class="dash_today_list2">
-					<li>
-						<div class="today_total roundbox">
-							<figure><img src="../admin/images/img_idx_sad.svg" alt=""></figure>
-							<div class="total_info"><span class="today">TODAY</span><span>고민 등록 인원</span><strong>56</strong></div>
+			<ul class="dash_list_2023">
+				<li>
+					<div class="today_total">
+						<div class="total_info roundbox">
+							<span class="today date">TODAY</span>
+							<span class="people">고민 등록 인원</span>
+							<strong class="count">56</strong>
 						</div>
-					</li>
-					<li>
-						<div class="today_total roundbox">
-							<figure><img src="../admin/images/img_idx_sad.svg" alt=""></figure>
-							<div class="total_info"><span class="total">TOTAL</span><span>고민 등록 인원</span><strong>2731</strong></div>
+						<div class="total_info roundbox">
+							<span class="all date">TOTAL</span>
+							<span class="people">고민 등록 인원</span>
+							<strong class="count">2731</strong>
 						</div>
-					</li>
-					
-				</ul>
-				<ul class="dash_today_list2">
-					<li>
-						<div class="today_total roundbox">
-							<figure><img src="../admin/images/img_idx_happy.svg" alt=""></figure>
-							<div class="total_info"><span class="today">TODAY</span><span>체험 인원</span><strong>13</strong></div>
+					</div>
+				</li>
+				<li>
+					<div class="today_total">
+						<div class="total_info roundbox">
+							<span class="today date">TODAY</span>
+							<span class="people">체험 인원</span>
+							<strong class="count">13</strong>
 						</div>
-					</li>
-					<li>
-						<div class="today_total roundbox">
-							<figure><img src="../admin/images/img_idx_happy.svg" alt=""></figure>
-							<div class="total_info"><span class="total">TOTAL</span><span>체험 인원</span><strong>578</strong></div>
+						<div class="total_info roundbox">
+							<span class="all date">TOTAL</span>
+							<span class="people">체험 인원</span>
+							<strong class="count">578</strong>
 						</div>
-					</li>
-				</ul>
-				<ul class="dash_today_list2">
-					<li>
-						<div class="today_total roundbox">
-							<figure><img src="../admin/images/img_idx_happy.svg" alt=""></figure>
-							<div class="total_info"><span class="today">TODAY</span><span>체험 완료 인원</span><strong>578</strong></div>
+					</div>
+				</li>
+				<li>
+					<div class="today_total">
+						<div class="total_info roundbox">
+							<span class="today date">TODAY</span>
+							<span class="people">체험 완료 횟수</span>
+							<strong class="count">578</strong>
 						</div>
-					</li>
-					<li>
-						<div class="today_total roundbox">
-							<figure><img src="../admin/images/img_idx_happy.svg" alt=""></figure>
-							<div class="total_info"><span class="total">TOTAL</span><span>체험 완료 인원</span><strong>578987</strong></div>
+						<div class="total_info roundbox">
+							<span class="all date">TOTAL</span>
+							<span class="people">체험 완료 횟수</span>
+							<strong class="count">578987</strong>
 						</div>
-					</li>
-				</ul>
-			</div>
-			<!-- 2023-01-06 관리자 통계 인원 추가 및 조정 end -->
+					</div>
+				</li>
+			</ul>
 			<div class="dash_ratio">
 				<div class="worry_ratio roundbox">
 					<h3 class="adm_title tac">통계 기간</h3>
@@ -225,18 +224,19 @@
 		
 	</main>
 	<script>
-
+		/* 2023-08 고민 유형에 따라 7가지로 변경 */
 		const labels = [
-			['잃어버린 꿈에 대한 고민'], 
-			['믿음과 신뢰의 고민'],
-			['치열한 일상의 고민'],
-			['건강한 삶에 대한 고민'],
-			['미래에 대한 고민'],
-			['도전과 용기에 대한 고민'],
+			['소박함'], 
+			['편안함'],
+			['아늑함'],
+			['안정감'],
+			['화려함'],
+			['독창성'],
+			['실용성'],
 		];
 
 		const defaultData = [
-			25, 30, 10, 17, 8, 10
+			20, 20, 10, 13, 20, 10, 7
 		]
 
 		let realLable =[]
@@ -246,7 +246,7 @@
 		// });
 
 		const data = {
-			labels: [[''],[''],[''],[''],[''],['']],
+			labels: [[''],[''],[''],[''],[''],[''],['']],
 			datasets: [{
 				backgroundColor: 'rgba(218, 15, 71, .5)',
 				borderColor: 'rgba(218, 15, 71, 1)',

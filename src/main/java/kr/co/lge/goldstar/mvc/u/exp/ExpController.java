@@ -3,6 +3,8 @@
  */
 package kr.co.lge.goldstar.mvc.u.exp;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,8 +23,11 @@ import kr.co.lge.goldstar.mvc.u.indiv.service.IndivService;
 import kr.co.lge.goldstar.mvc.u.life.service.LifeService;
 import kr.co.lge.goldstar.mvc.u.mind.service.MindService;
 import kr.co.lge.goldstar.mvc.u.mood.service.MoodService;
+import kr.co.lge.goldstar.mvc.u.product.service.ProductService;
+import kr.co.lge.goldstar.mvc.u.pursue.service.PursueService;
 import kr.co.lge.goldstar.mvc.u.sign.service.SignService;
 import kr.co.lge.goldstar.mvc.u.style.service.StyleService;
+import kr.co.lge.goldstar.mvc.u.survey.service.SurveyService;
 import kr.co.lge.goldstar.orm.jpa.entity.AgeType;
 import kr.co.lge.goldstar.orm.jpa.entity.GenderType;
 import kr.co.lge.goldstar.orm.jpa.entity.LifeStatus;
@@ -33,8 +38,11 @@ import kr.co.lge.goldstar.orm.jpa.entity.member.MemberEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.member.SignEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.mind.MindPartEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.mood.MoodPartEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.pursue.PursueEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.refresh.RefreshPartEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.style.StylePartEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyPartEntity;
 import kr.co.rebel9.core.utils.DateUtils;
 
 /**
@@ -65,6 +73,15 @@ public class ExpController {
 
 	@Resource(name = "u.LifeService")
 	private LifeService lifeService;
+
+	@Resource(name = "u.PursueService")
+	private PursueService pursueService;
+
+	@Resource(name = "u.SurveyService")
+	private SurveyService surveyService;
+
+	@Resource(name = "u.ProductService")
+	private ProductService productService;
 	
 	@Autowired
 	private ExpService expService;
@@ -79,6 +96,15 @@ public class ExpController {
 		map.put("content", systemDomain + "/m/sign/qr/" + signEntity.getId().getMemberSn() + "/" + signEntity.getId().getCreated() + ".do");
 		
 		return new ModelAndView("QrCodeView");
+	}
+	
+	@RequestMapping(value = "qr/big.do")
+	public ModelAndView qrBig(HttpServletRequest request, ModelMap map) {
+		
+		SignEntity signEntity = this.signService.getSignIn();
+		map.put("content", systemDomain + "/m/sign/qr/" + signEntity.getId().getMemberSn() + "/" + signEntity.getId().getCreated() + ".do");
+		
+		return new ModelAndView("QrCodeBigView");
 	}
 	
 	@RequestMapping(value = "qr/page.do")
@@ -124,10 +150,10 @@ public class ExpController {
 	}
 	
 	@RequestMapping(value = "worry.do")
-	public String worry() {
+	public String worry(ModelMap model) {
 		
 		//로그인정보
-		SignEntity signEntity = this.signService.getSignIn();
+		SignEntity signEntity = this.signService.getSignEntity();
 		MemberEntity member = this.signService.getMemberIn();
 		
 		//성별
@@ -147,10 +173,13 @@ public class ExpController {
 		else if(StringUtils.isNotEmpty(member.getUpdatedAge()) && !member.getUpdatedAge().substring(0, 4).equals(DateUtils.getToday("yyyy"))) {
 			return "redirect:"  + systemDomain +  "/u/exp/age.do";
 		}
-		
-		if(!ObjectUtils.isEmpty(signEntity.getWorryType())) {
+
+		if(!ObjectUtils.isEmpty(signEntity.getPursueType())) {
 			return "redirect:"  + systemDomain +  "/u/exp/corner.do";
 		}
+		
+		List<PursueEntity> questions = this.pursueService.getQuestions();
+		model.put("questions", questions);
 		
 		return "u/exp/worry";
 	}
@@ -190,6 +219,12 @@ public class ExpController {
 		else if(StringUtils.isNotEmpty(member.getUpdatedAge()) && !member.getUpdatedAge().substring(0, 4).equals(DateUtils.getToday("yyyy"))) {
 			return "redirect:"  + systemDomain +  "/u/exp/age.do";
 		}
+
+		//로그인정보
+		SignEntity signEntity = this.signService.getSignEntity();
+		if(ObjectUtils.isEmpty(signEntity.getPursueType())) {
+			return "redirect:"  + systemDomain +  "/u/exp/worry.do";
+		}
 		
 		MindPartEntity mind = this.mindService.getMindPart();
 		StylePartEntity style = this.styleService.getStylePart();
@@ -197,12 +232,14 @@ public class ExpController {
 		MoodPartEntity mood = this.moodService.getMoodPart();
 		RefreshPartEntity refresh = this.refreshService.getRefreshPart();
 		LifePartEntity life = this.lifeService.getLifePart();
+		SurveyPartEntity survey = this.surveyService.getSurveyPart();
 		map.put("mind", mind);
 		map.put("style", style);
 		map.put("indiv", indiv);
 		map.put("mood", mood);
 		map.put("refresh", refresh);
 		map.put("life", life);
+		map.put("survey", survey);
 		
 		boolean isPart = false;
 		isPart = isPart || (!ObjectUtils.isEmpty(mind) && StaffCheck.present.equals(mind.getStaffCheck()));
@@ -212,6 +249,11 @@ public class ExpController {
 		isPart = isPart || (!ObjectUtils.isEmpty(refresh) && StaffCheck.present.equals(refresh.getStaffCheck()));
 		isPart = isPart || (!ObjectUtils.isEmpty(life) && LifeStatus.status4.equals(life.getStatus()));
 		map.put("isPart", isPart);
+		
+		map.put("products", this.productService.products(signEntity.getPursueType()));
+		
+		List<SurveyEntity> questions = this.surveyService.getQuestions();
+		map.put("questions", questions);
 		
 		return "u/exp/corner";
 	}

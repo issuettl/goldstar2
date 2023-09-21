@@ -22,16 +22,18 @@
 <body>
 	<!-- left GNB -->
 	<header class="adm_gnb">
-		<h1 class="adm_logo"><a href="../index.html"><img src="../../admin/images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
+		<h1 class="adm_logo"><a href="../index.html"><img src="../images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
 		<ul class="adm_menulist">
 			<li><a href="../index.html" class="menu_link01">대시보드</a></li>
 			<li><a href="./member_list.html" class="active menu_link02">회원리스트</a></li>
+			<!-- 2023 수정 : 사전문답 관리 삭제 -> 설문조사관리 신규 추가 -->
 			<li>
-				<!-- 2022-12-19 수정 : 사전문답 하위메뉴 추가 -->
-				<a href="../survey/survey_list.html" class="menu_link03">사전문답 관리</a>
+				<a href="../survey/customer_type.html" class="menu_link03">설문 조사 관리</a>
 				<ul class="adm_menulist_sub">
-					<li><a href="../survey/survey_list.html" class="menu_link031">사전문답 리스트</a></li>
-					<li><a href="../survey/survey_data.html" class="menu_link032">사전문답 데이터</a></li>
+					<li><a href="../survey/customer_type.html" class="menu_link031">고객 유형 문답 관리</a></li>
+					<li><a href="../survey/management_type.html" class="menu_link032">내부 활용 문답 관리</a></li>
+					<li><a href="../survey/types_products.html" class="menu_link033">추천 제품 관리</a></li>
+					<li><a href="../survey/used_products.html" class="menu_link034">체험 제품 관리</a></li>
 				</ul>
 			</li>
 			<li><a href="../event/event_list.html" class="menu_link04">이벤트 관리</a></li>
@@ -45,8 +47,6 @@
 					<li><a href="../escape/escape_draw.html" class="menu_link072">주말 응모 리스트</a></li>
 				</ul>
 			</li>
-		<!-- 2022-11-21 수정 : 새로고침 코-너 관리 삭제
-			<li><a href="../refresh/refresh_list.html" class="menu_link08">새로고침 코-너 관리</a></li> -->
 			<li><a href="../admpeople/admpeople_list.html" class="menu_link09">관리자 관리</a></li>
 		</ul>
 		<div class="gnb_login_info">
@@ -91,6 +91,7 @@
 					<span class="date_during">~</span>
 					<input type="datetime" name="" id="dash_date2" class="input_date" placeholder="날짜 선택">
 					<button class="btn_date btn_gray btn">검색</button>
+					<button class="btn_excel btn_gray btn">엑셀 다운로드</button>
 				</div>
 			</div>
 			<!-- topsch_area end -->
@@ -103,18 +104,27 @@
 						<li class="adm_list_title">
 							<div class="list_con01">닉네임</div>
 							<div class="list_con02">이름</div>
-							<div class="list_con03">휴대폰 번호</div>
-							<div class="list_con04">최초 방문일자</div>
-							<div class="list_con05">방문 횟수</div>
-							<div class="list_con06">체험 횟수</div>
+							<div class="list_con03">최초 방문 일자</div>
+							<div class="list_con04">휴대폰 번호</div>
+							<div class="list_con05">최종 방문 일자</div>
+							<div class="list_con06">방문 횟수</div>
+							<div class="list_con07">체험 횟수</div>
+							<div class="list_con08">재미포인트</div>
 						</li>
 						<li class="adm_list_con list_line">
 							<div class="list_con01">가전고고</div>
 							<div class="list_con02">변*나</div>
-							<div class="list_con03">010****0000</div>
-							<div class="list_con04">2022-12-30</div>
-							<div class="list_con05">5</div>
-							<div class="list_con06">20</div>
+							<div class="list_con03">2022-09-30</div>
+							<div class="list_con04">010****0000</div>
+							<div class="list_con05">2022-11-16</div>
+							<div class="list_con06">5</div>
+							<div class="list_con07">3</div>
+							<div class="list_con08">
+								<!-- 재미포인트 있을때
+								<img src="../images/li_o.svg" alt="있음"> -->
+								<!-- 재미포인트 없을때 -->
+								<img src="../images/li_x.svg" alt="없음">
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -130,6 +140,7 @@
 						<li><label for="worry4" class="worrylabel customCheck"><input type="checkbox" name="" id="worry4" class="worrycheck" disabled /><span class="worry_img"></span></label></li>
 						<li><label for="worry5" class="worrylabel customCheck"><input type="checkbox" name="" id="worry5" class="worrycheck" disabled /><span class="worry_img"></span></label></li>
 						<li><label for="worry6" class="worrylabel customCheck"><input type="checkbox" name="" id="worry6" class="worrycheck" disabled /><span class="worry_img"></span></label></li>
+						<li><label for="worry7" class="worrylabel customCheck"><input type="checkbox" name="" id="worry7" class="worrycheck" disabled /><span class="worry_img"></span></label></li>
 					</ul>
 				</div>
 				<!-- member_worry end -->
@@ -140,15 +151,15 @@
 					<ul class="list_num5 adm_list">
 						<li class="adm_list_title">
 							<div class="list_con01">체험존</div>
-							<div class="list_con02">사전 문답</div>
-							<div class="list_con03">추천 리워드</div>
+							<div class="list_con02">추천제품 선택</div>
+							<div class="list_con03">체험제품 선택</div>
 							<div class="list_con04">스텝 체크</div>
 							<div class="list_con05">체험 상태</div>
 						</li>
 						<li class="adm_list_con list_line">
 							<div class="list_con01">마음고침 코-너</div>
-							<div class="list_con02">종료</div>
-							<div class="list_con03">엽채류</div>
+							<div class="list_con02">LG 엑스붐 360</div>
+							<div class="list_con03">LG 울트라 PC</div>
 							<div class="list_con04 list_con_select">
 								<select name="" id="">
 									<option value="증정">증정</option>
@@ -159,42 +170,42 @@
 						</li>
 						<li class="adm_list_con list_line">
 							<div class="list_con01">개성고침 코-너</div>
-							<div class="list_con02">종료</div>
-							<div class="list_con03">클래식</div>
+							<div class="list_con02">LG 엑스붐 360</div>
+							<div class="list_con03">LG 울트라 PC</div>
 							<div class="list_con04 list_con_select">
 								<select name="" id="">
-									<option value="미증정">미증정</option>
-									<option value="증정">증정</option>
+									<option value="미체험">미체험</option>
+									<option value="체험 완료">체험 완료</option>
 								</select>
 							</div>
-							<div class="list_con05">사전 문답</div>
+							<div class="list_con05">미체험</div>
 						</li>
 						<li class="adm_list_con list_line">
 							<div class="list_con01">스타일고침 코-너</div>
-							<div class="list_con02">미체험</div>
-							<div class="list_con03">미체험</div>
+							<div class="list_con02">LG 엑스붐 360</div>
+							<div class="list_con03">LG 울트라 PC</div>
 							<div class="list_con04 list_con_select">
 								<select name="" id="">
-									<option value="미증정">미증정</option>
-									<option value="증정">증정</option>
+									<option value="미체험">미체험</option>
+									<option value="체험 완료">체험 완료</option>
 								</select>
 							</div>
 							<div class="list_con05">미체험</div>
 						</li>
 						<li class="adm_list_con list_line">
 							<div class="list_con01">기분고침 코-너<br />(금성오락실)</div>
-							<div class="list_con02">종료</div>
-							<div class="list_con03">-</div>
+							<div class="list_con02">LG 엑스붐 360</div>
+							<div class="list_con03">LG 울트라 PC</div>
 							<div class="list_con04 list_con_select">-</div>
-							<div class="list_con05">완료</div>
+							<div class="list_con05">미체험</div>
 						</li>
 						<li class="adm_list_con list_line">
 							<div class="list_con01">고민탈출 코-너<br />(ThinQ 방탈출)</div>
-							<div class="list_con02">-</div>
-							<div class="list_con03">-</div>
+							<div class="list_con02">LG 엑스붐 360</div>
+							<div class="list_con03">LG 울트라 PC</div>
 							<div class="list_con04 list_con_select">
 								<select name="" id="">
-									<option value="체험 전">체험 전</option>
+									<option value="미체험">미체험</option>
 									<option value="체험 완료">체험 완료</option>
 								</select>
 							</div>
@@ -202,8 +213,8 @@
 						</li>
 						<li class="adm_list_con list_line">
 							<div class="list_con01">새로고침 코-너</div>
-							<div class="list_con02">-</div>
-							<div class="list_con03">-</div>
+							<div class="list_con02">LG 엑스붐 360</div>
+							<div class="list_con03">LG 울트라 PC</div>
 							<div class="list_con04 list_con_select">-</div>
 							<div class="list_con05">미체험</div>
 						</li>
@@ -230,7 +241,7 @@
 							</div>
 							-->
 							<!-- 발급받지 않았을 경우 -->
-							<div class="list_con01">
+							<div class="list_con02">
 								<button onClick="" class="btn_m btn_primary btn">2000g 발급하기</button>
 							</div>
 						</li>
@@ -246,16 +257,16 @@
 						<li class="adm_list_title">
 							<div class="list_con01">방문 일자</div>
 							<div class="list_con02">닉네임</div>
-							<div class="list_con03">고민</div>
+							<!-- 2023-08 7가지 유형으로 변경 -->
+							<div class="list_con03">유형</div>
 							<div class="list_con04">체험 코-너</div>
 							<div class="list_con05">체험 여부</div>
 						</li>
 						<li class="adm_list_con list_line">
-							<!-- 2022-11-25 수정 : 날짜 구조 통일 2022-11-22 이런 형태로 전부 통일 부탁드립니다. -->
 							<div class="list_con01">2022-11-17</div>
 							<div class="list_con02">산토끼</div>
-							<!-- 2023-04-07 수정 구조 문제가 있어 수정했습니다 -->
-							<div class="list_con03">-</div>
+							<!-- 2023-08 7가지 유형으로 변경 -->
+							<div class="list_con03">아늑함</div>
 							<div class="list_con04 list_parts">
 								<span class="parts">마음고침 코-너</span><span class="parts">스타일고침 코-너</span><span class="parts">개성고침 코-너</span><span class="parts">기분고침 코-너 (금성오락실)</span><span class="parts">고민탈출 코-너 (ThinQ 방탈출)</span><span class="parts">새로고침 코-너</span>
 							</div>

@@ -23,16 +23,18 @@
 <body>
 	<!-- left GNB -->
 	<header class="adm_gnb">
-		<h1 class="adm_logo"><a href="../index.html"><img src="../../admin/images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
+		<h1 class="adm_logo"><a href="../index.html"><img src="../images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
 		<ul class="adm_menulist">
 			<li><a href="../index.html" class="menu_link01">대시보드</a></li>
 			<li><a href="../member/member_list.html" class="menu_link02">회원리스트</a></li>
+			<!-- 2023 수정 : 사전문답 관리 삭제 -> 설문조사관리 신규 추가 -->
 			<li>
-				<!-- 2022-12-19 수정 : 사전문답 하위메뉴 추가 -->
-				<a href="../survey/survey_list.html" class="menu_link03">사전문답 관리</a>
+				<a href="../survey/customer_type.html" class="menu_link03">설문 조사 관리</a>
 				<ul class="adm_menulist_sub">
-					<li><a href="../survey/survey_list.html" class="menu_link031">사전문답 리스트</a></li>
-					<li><a href="../survey/survey_data.html" class="menu_link032">사전문답 데이터</a></li>
+					<li><a href="../survey/customer_type.html" class="menu_link031">고객 유형 문답 관리</a></li>
+					<li><a href="../survey/management_type.html" class="menu_link032">내부 활용 문답 관리</a></li>
+					<li><a href="../survey/types_products.html" class="menu_link033">추천 제품 관리</a></li>
+					<li><a href="../survey/used_products.html" class="menu_link034">체험 제품 관리</a></li>
 				</ul>
 			</li>
 			<li><a href="../event/event_list.html" class="menu_link04">이벤트 관리</a></li>
@@ -46,8 +48,6 @@
 					<li><a href="./escape_draw.html" class="active menu_link072">주말 응모 리스트</a></li>
 				</ul>
 			</li>
-			<!-- 2022-11-21 수정 : 새로고침 코-너 관리 삭제
-			<li><a href="../refresh/refresh_list.html" class="menu_link08">새로고침 코-너 관리</a></li> -->
 			<li><a href="../admpeople/admpeople_list.html" class="menu_link09">관리자 관리</a></li>
 		</ul>
 		<div class="gnb_login_info">
@@ -168,6 +168,7 @@
 					</label>
 				</div>
 				<button class="btn_date btn_gray btn">검색</button>
+				<button class="btn_excel btn_gray btn">엑셀 다운로드</button>
 			</div>
 			<!-- topsch_area end -->
 			<div class="adm_con_page roundbox">

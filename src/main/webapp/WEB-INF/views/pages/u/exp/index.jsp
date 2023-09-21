@@ -12,7 +12,7 @@
         <c:import url="/WEB-INF/views/layouts/u/gnb-sub.jsp" />
         <c:import url="/WEB-INF/views/layouts/u/top-exp.jsp" />
         
-        <section class="exper_page sub_section">
+        <section class="regi2023 exper_page sub_section">
             <figure></figure>
             <div class="m_container">
                 <!-- 새로고침 공통 타이틀 -->
@@ -40,7 +40,7 @@
                             </c:choose>
                         </c:when>
                         <c:otherwise>
-                            <button onClick="document.location.href='<c:url value="/sso/account/in.do?state=/u/exp/index.do"/>'" class="large_btn_black btn_ex btn">오늘의 고민 접수 시작</button>
+                            <button onClick="document.location.href='<c:url value="/sso/account/in.do?state=/u/exp/index.do"/>'" class="large_btn_black btn_ex btn">로그인</button>
                         </c:otherwise>
                     </c:choose>
                     <c:choose>
@@ -55,7 +55,6 @@
                             </c:choose>
                         </c:when>
                         <c:otherwise>
-                            <button onClick="document.location.href='<c:url value="/sso/account/in.do?state=/u/exp/index.do"/>'" class="btn_ex btn_pass btn">이미 고민을 선택했어요</button>
                         </c:otherwise>
                     </c:choose>
                 </div>

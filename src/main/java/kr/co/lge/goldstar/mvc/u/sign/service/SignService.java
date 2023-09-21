@@ -78,6 +78,12 @@ public interface SignService {
 	DataMap saveWorry(SignEntity signEntity);
 
 	/**
+	 * @param signEntity
+	 * @return
+	 */
+	DataMap savePursue(SignEntity signEntity);
+
+	/**
 	 * @return
 	 */
 	SignEntity getSignEntity();

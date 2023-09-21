@@ -128,3 +128,14 @@ function popCloseYoutube(){
     //document.getElementsByClassName("ytp-play-button")[0].click();
     $("iframe")[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 }
+
+/* 질문 다음, 이전 이동 2023년도 통일 */
+function toggleSlide(current, next) {
+    if($(next).css('display') == 'block') {
+        $(next).hide();
+        $(current).fadeIn();
+    } else {
+        $(current).hide();
+        $(next).fadeIn();
+    }
+}

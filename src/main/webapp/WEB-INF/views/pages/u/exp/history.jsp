@@ -17,7 +17,7 @@
         </section>
         <section class="subTop_section">
         </section>
-        <section class="exper_page sub_section">
+        <section class="regi2023 exper_page sub_section">
             <figure></figure>
             <div class="container">
                 <!-- 새로고침 공통 타이틀 변형 -->

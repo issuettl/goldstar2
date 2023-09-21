@@ -23,6 +23,9 @@ function popupOpen(targetId) {
     }); */
     $('#'+targetId).fadeIn(100);
 	$('body').css('padding-right','17px');
+	if(targetId === "pop_survey" && window.innerWidth > 767){
+		initSlick();
+	}
 };
 function popupSmallOpen() {
     $('.popupSmall').css("display", "flex");

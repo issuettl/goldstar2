@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +21,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
+import kr.co.lge.goldstar.orm.jpa.entity.PursueAnswerType;
 import kr.co.lge.goldstar.orm.jpa.entity.member.SignEntity;
 import lombok.Data;
 
@@ -51,6 +54,10 @@ public class PursuePartEntity implements Serializable {
     
 	@Column(name = "created")
 	private String created;
+    
+    @Column(name = "ty")
+    @Enumerated(EnumType.STRING)
+    private PursueAnswerType type;
     
     @Column(name = "sign_member_sn")
     private int signMemberSn;

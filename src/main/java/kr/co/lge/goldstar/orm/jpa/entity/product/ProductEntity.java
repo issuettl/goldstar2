@@ -55,8 +55,14 @@ public class ProductEntity implements Serializable {
     @Column(name = "ordinal")
     private int ordinal;
     
-    @Column(name = "image")
-    private String image;
+    @Column(name = "image_list")
+    private String imageList;
+    
+    @Column(name = "image_view")
+    private String imageView;
+    
+    @Column(name = "sj")
+    private String subject;
     
     @Column(name = "cn")
     private String contents;

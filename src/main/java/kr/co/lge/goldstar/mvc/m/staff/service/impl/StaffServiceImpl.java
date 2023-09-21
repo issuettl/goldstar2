@@ -467,12 +467,17 @@ public class StaffServiceImpl implements StaffService {
 		MindPartEntity mindPart = this.mindService.getMindPart(signId.getMemberSn(), signId.getCreated());
 		
 		if(ObjectUtils.isEmpty(mindPart)) {
-			DataMap result = new DataMap(false);
+			/*DataMap result = new DataMap(false);
 			result.put("reason", "정보를 찾을수 없습니다.");
 			result.put("code", 404);
-			return result;
+			return result;*/
+			
+			mindPart = new MindPartEntity();
+			mindPart.setSignMemberSn(signId.getMemberSn());
+			mindPart.setSignCreated(signId.getCreated());
+			mindPart.setCreated(DateUtils.getToday("yyyyMMddHHmmss"));
 		}
-		
+		mindPart.setStaffCreated(DateUtils.getToday("yyyyMMddHHmmss"));
 		mindPart.setStaffCheck(staffCheck);
 		this.mindService.save(mindPart);
 		
@@ -497,12 +502,17 @@ public class StaffServiceImpl implements StaffService {
 		IndivPartEntity indivPart = this.indivService.getIndivPart(signId.getMemberSn(), signId.getCreated());
 		
 		if(ObjectUtils.isEmpty(indivPart)) {
-			DataMap result = new DataMap(false);
+			/*DataMap result = new DataMap(false);
 			result.put("reason", "정보를 찾을수 없습니다.");
 			result.put("code", 404);
-			return result;
+			return result;*/
+
+			indivPart = new IndivPartEntity();
+			indivPart.setSignMemberSn(signId.getMemberSn());
+			indivPart.setSignCreated(signId.getCreated());
+			indivPart.setCreated(DateUtils.getToday("yyyyMMddHHmmss"));
 		}
-		
+		indivPart.setStaffCreated(DateUtils.getToday("yyyyMMddHHmmss"));
 		indivPart.setStaffCheck(staffCheck);
 		this.indivService.save(indivPart);
 		
@@ -527,12 +537,17 @@ public class StaffServiceImpl implements StaffService {
 		StylePartEntity stylePart = this.styleService.getStylePart(signId.getMemberSn(), signId.getCreated());
 		
 		if(ObjectUtils.isEmpty(stylePart)) {
-			DataMap result = new DataMap(false);
+			/*DataMap result = new DataMap(false);
 			result.put("reason", "정보를 찾을수 없습니다.");
 			result.put("code", 404);
-			return result;
+			return result;*/
+			
+			stylePart = new StylePartEntity();
+			stylePart.setSignMemberSn(signId.getMemberSn());
+			stylePart.setSignCreated(signId.getCreated());
+			stylePart.setCreated(DateUtils.getToday("yyyyMMddHHmmss"));
 		}
-		
+		stylePart.setStaffCreated(DateUtils.getToday("yyyyMMddHHmmss"));
 		stylePart.setStaffCheck(staffCheck);
 		this.styleService.save(stylePart);
 		

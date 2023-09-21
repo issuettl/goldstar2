@@ -1,41 +1,60 @@
 $(function(){
-    $("input[name='worry_radio1']").on({
-        "click" : function(){
-            $("input[name='worry_radio1']").prop("checked", false);
-            $(this).prop("checked", true);
+
+});
+
+function pursueNext(index){
+    var prev = index;
+    var next = index + 1;
+    toggleSlide('.exper_Q' + prev, '.exper_Q' + next);
+};
+function pursuePrev(index){
+    var prev = index;
+    var next = index + 1;
+    toggleSlide('.exper_Q' + next, '.exper_Q' + prev);
+};
+function pursueSave(){
+
+    var names = $("ul.worry_list_2023");
+    var isSuccessAnswers = true;
+    var data = new Array();
+    names.each(function(){
+        var name = $(this).data("name");
+        
+        if(isSuccessAnswers && $("input[name='" + name + "']:checked").length == 0){
+            alert("모든 문답을 진행해주세요.");
+            isSuccessAnswers = false;
         }
+        
+        data.push($("input[name='" + name + "']:checked").val());
     });
     
-    //코너 추천받기
-    $(".btn_round_m").on({
-        "click" : function(){
-            var type = $("input[name='worry_radio1']:checked").val();
-            
-            if(!type){
-                alert("코너를 선택해주세요.");
-                return;
-            }
-            
-            var data = {worryType:type};
-            $.ajax({
-                url: contextPath + "u/sign/worry/action.do",
-                data: JSON.stringify(data),
-                method: "POST",
-                contentType: "application/json",
-                dataType: "json"
-            })
-            .done(function(json) {
-                console.log(json);
-                if(json["result"] == "SUCCESS"){
-                    document.location.href = contextPath + "u/exp/corner.do";
-                }
-                else {
-                    alert(json["reason"]);
-                }
-            })
-            .fail(function(xhr, status, errorThrown) {
-                alert(status);
-            });
+    if(!isSuccessAnswers){
+        return;
+    }
+    
+    $.ajax({
+        url: contextPath + "u/pursue/answer/action.do",
+        data: JSON.stringify(data),
+        method: "POST",
+        contentType: "application/json",
+        dataType: "json"
+    })
+    .done(function(json) {
+        if(json["result"] == "SUCCESS"){
+            document.location.href = contextPath + "u/exp/corner.do";
         }
+        else {
+            alert(json["reason"]);
+            if(json["code"] && json.code == 9999){
+                document.location.href = contextPath + "sso/sign/in.do?state=/u/exp/worry.do";
+            }
+        }
+        
+        isSendData = true;
+    })
+    .fail(function(xhr, status, errorThrown) {
+        alert(status);
+        
+        isSendData = true;
     });
-});
+};

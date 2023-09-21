@@ -62,7 +62,10 @@ public class SignServiceImpl implements SignService {
 		
 		HttpSession session = RequestUtils.getRequest().getSession();
 		
+		System.out.println(session.getId());
+		
 		MemberEntity memberEntity = (MemberEntity)session.getAttribute(MEMBER_KEY); 
+		System.out.println(memberEntity);
 		if(ObjectUtils.isEmpty(memberEntity)) {
 			return false;
 		}
@@ -133,7 +136,7 @@ public class SignServiceImpl implements SignService {
 			member.setName(name);
 			member.setPhone(phone);
 			member.setUpdated(DateUtils.getToday("yyyyMMddHHmmss"));
-			
+
 			this.memberRepository.save(member);
  
 			member.setNameDec(data.getAsString("mbrNm"));
@@ -149,6 +152,7 @@ public class SignServiceImpl implements SignService {
 			member.setOauth2BackendUri(params.getAsString("oauth2BackendUri"));
 			
 			session.setAttribute(MEMBER_KEY, member);
+			
 		} catch (Exception e) {
 			params.put("signInMemberException", e.getMessage());
 		}
@@ -282,6 +286,29 @@ public class SignServiceImpl implements SignService {
 		
 		SignEntity saved = signSaved.get();
 		saved.setWorryType(signEntity.getWorryType());
+		
+		this.signRepository.save(saved);
+		saved.getMember();
+		
+		signInSession(saved);
+		
+		return new DataMap(true);
+	}
+
+	@Override
+	public DataMap savePursue(SignEntity signEntity) {
+		
+		SignEntity signIn = getSignIn();
+		
+		Optional<SignEntity> signSaved = this.signRepository.findById(signIn.getId());
+		if(signSaved.isEmpty()) {
+			DataMap result = new DataMap(false);
+			result.put("reason", "닉네임 정보를 찾을 수 없습니다.");
+			return result;
+		}
+		
+		SignEntity saved = signSaved.get();
+		saved.setPursueType(signEntity.getPursueType());
 		
 		this.signRepository.save(saved);
 		saved.getMember();

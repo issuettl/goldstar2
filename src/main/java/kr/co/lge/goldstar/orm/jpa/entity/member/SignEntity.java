@@ -19,6 +19,7 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import kr.co.lge.goldstar.orm.jpa.entity.PursueAnswerType;
 import kr.co.lge.goldstar.orm.jpa.entity.WorryType;
 import lombok.Data;
 
@@ -58,6 +59,10 @@ public class SignEntity implements Serializable {
     @Column(name = "worry_ty")
     @Enumerated(EnumType.STRING)
     private WorryType worryType;
+    
+    @Column(name = "pursue_ty")
+    @Enumerated(EnumType.STRING)
+    private PursueAnswerType pursueType;
 	
 	@Column(name = "added")
 	private String added;

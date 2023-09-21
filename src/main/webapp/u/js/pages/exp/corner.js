@@ -145,3 +145,61 @@ var showQuestion = function(target, position){
         isSendData = true;
     });
 };
+
+
+function surveyNext(index){
+    var prev = index;
+    var next = index + 1;
+    toggleSlide('.survey_Q' + prev, '.survey_Q' + next);
+};
+function surveyPrev(index){
+    var prev = index;
+    var next = index + 1;
+    toggleSlide('.survey_Q' + next, '.survey_Q' + prev);
+};
+function surveySave(){
+    var names = $("div.survey_q");
+    var isSuccessAnswers = true;
+    var data = new Array();
+    names.each(function(){
+        var name = $(this).data("name");
+        
+        if(isSuccessAnswers && $("input[name='" + name + "']:checked").length == 0){
+            alert("모든 문답을 진행해주세요.");
+            isSuccessAnswers = false;
+        }
+        
+        data.push($("input[name='" + name + "']:checked").val());
+    });
+    
+    if(!isSuccessAnswers){
+        return;
+    }
+    
+    $.ajax({
+        url: contextPath + "u/survey/answer/action.do",
+        data: JSON.stringify(data),
+        method: "POST",
+        contentType: "application/json",
+        dataType: "json"
+    })
+    .done(function(json) {
+        if(json["result"] == "SUCCESS"){
+            popClose();
+            popupOpen('pop_survey_end');
+        }
+        else {
+            alert(json["reason"]);
+            if(json["code"] && json.code == 9999){
+                document.location.href = contextPath + "sso/sign/in.do?state=/u/exp/corner.do";
+            }
+        }
+        
+        isSendData = true;
+    })
+    .fail(function(xhr, status, errorThrown) {
+        alert(status);
+        
+        isSendData = true;
+    });
+};

@@ -13,14 +13,13 @@
         <c:import url="/WEB-INF/views/layouts/u/gnb-sub.jsp" />
         <section class="subTop_section">
         </section>
-        <section class="exper_page sub_section">
+        <section class="regi2023 exper_page sub_section">
             <figure></figure>
             <div class="container">
                 <!-- 새로고침 공통 타이틀 변형 -->
                 <div class="tal exper_chatTitle">
                     <!-- 2022-11-03 수정 -->
-                    <p class="tac">‘<c:out value="${sign.worryType.desc}"/> 고민’을 가진 <br />
-                        <c:out value="${sign.nickDec}"/>의 새로고침 솔루션
+                    <p class="tac">‘<c:out value="${sign.pursueType.title}"/> 고민’을 추구하는<br /><c:out value="${sign.nickDec}"/>의 새로고침 솔루션
                     </p>
                 </div>
                 <div class="exper_person"></div>
@@ -32,11 +31,12 @@
                     <div class="subTitle_wrap">
                         <h1 class="subTitle subTitle_mypage">선물함</h1>
                     </div>
+                    <!-- 
                     <ul class="round_tablist">
                         <li><button class="changeLi active" data-type="jca">전체</button></li>
                         <li><button class="changeLi" data-type="jammy">Jammy</button></li>
                         <li><button class="changeLi" data-type="corner">코-너</button></li>
-                    </ul>
+                    </ul> -->
                     <div class="gift_histroy_wrap">
                         <!-- Jammy에만 해당 roundShadow_box start -->
                         <div class="roundShadow_box jc jammy jca">
@@ -60,7 +60,7 @@
                                 </c:if>
                             </div>
                         </div>
-                        
+                        <% /* %>
                         <c:if test="${mind.staffCheck.name eq 'notyet'}">
                         <!-- 각 코너 roundShadow_box start -->
                         <div class="roundShadow_box jc corner jca">
@@ -306,6 +306,7 @@
                         </div>
                         <!-- roundShadow_box end -->
                         </c:if>
+                        <% */ %>
                     </div>
                 </div>
             </div>

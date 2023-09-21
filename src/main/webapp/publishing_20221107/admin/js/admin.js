@@ -79,17 +79,3 @@ $(function () {
 		};
 	})
 })
-/* 2022-12-21 현장예약고객 추가 스크립트 */
-// 직접입력하기 눌렀을때 input type이 text에서 search로 변경하는 식으로 바꿨습니다.
-$(function () {
-	$("#excape_addcustom").change(function () {
-		if ($("#excape_addcustom").is(':checked')) {
-			$('#pop_addpeople_name1').prop("type", "text");
-			$('#pop_addpeople_phone1').prop("type", "text");
-		} else {
-			$('#pop_addpeople_name1').prop("type", "search");
-			$('#pop_addpeople_phone1').prop("type", "search");
-		}
-		return false;
-	});
-})

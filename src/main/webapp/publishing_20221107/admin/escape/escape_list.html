@@ -23,16 +23,18 @@
 <body>
 	<!-- left GNB -->
 	<header class="adm_gnb">
-		<h1 class="adm_logo"><a href="../index.html"><img src="../../admin/images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
+		<h1 class="adm_logo"><a href="../index.html"><img src="../images/logo_primary.svg" alt="lG 금성전파사"></a></h1>
 		<ul class="adm_menulist">
 			<li><a href="../index.html" class="menu_link01">대시보드</a></li>
 			<li><a href="../member/member_list.html" class="menu_link02">회원리스트</a></li>
+			<!-- 2023 수정 : 사전문답 관리 삭제 -> 설문조사관리 신규 추가 -->
 			<li>
-				<!-- 2022-12-19 수정 : 사전문답 하위메뉴 추가 -->
-				<a href="../survey/survey_list.html" class="menu_link03">사전문답 관리</a>
+				<a href="../survey/customer_type.html" class="menu_link03">설문 조사 관리</a>
 				<ul class="adm_menulist_sub">
-					<li><a href="../survey/survey_list.html" class="menu_link031">사전문답 리스트</a></li>
-					<li><a href="../survey/survey_data.html" class="menu_link032">사전문답 데이터</a></li>
+					<li><a href="../survey/customer_type.html" class="menu_link031">고객 유형 문답 관리</a></li>
+					<li><a href="../survey/management_type.html" class="menu_link032">내부 활용 문답 관리</a></li>
+					<li><a href="../survey/types_products.html" class="menu_link033">추천 제품 관리</a></li>
+					<li><a href="../survey/used_products.html" class="menu_link034">체험 제품 관리</a></li>
 				</ul>
 			</li>
 			<li><a href="../event/event_list.html" class="menu_link04">이벤트 관리</a></li>
@@ -46,8 +48,6 @@
 					<li><a href="./escape_draw.html" class="menu_link072">주말 응모 리스트</a></li>
 				</ul>
 			</li>
-			<!-- 2022-11-21 수정 : 새로고침 코-너 관리 삭제
-			<li><a href="../refresh/refresh_list.html" class="menu_link08">새로고침 코-너 관리</a></li> -->
 			<li><a href="../admpeople/admpeople_list.html" class="menu_link09">관리자 관리</a></li>
 		</ul>
 		<div class="gnb_login_info">
@@ -144,6 +144,7 @@
 					</label>
 				</div>
 				<button class="btn_date btn_gray btn">검색</button>
+				<button class="btn_excel btn_gray btn">엑셀 다운로드</button>
 			</div>
 			<!-- topsch_area end -->
 			<div class="adm_con_page roundbox">
@@ -151,8 +152,6 @@
 					<!-- 2022-12-21 수정 : 타이틀 구조 변경 -->
 					<div class="adm_title_btns">
 						<h3 class="adm_title">예약자 리스트</h3>
-						<!-- 2022-12-21 현장 예약 고객 추가하기 버튼 추가 : 아래 버튼을 클릭하면 예약 고객 팝업이 추가되고 예약자로 등록됩니다. -->
-						<button onclick="javascript:$('#pop_addpeople').show();" class="btn_pluspeople btn_m btn_primary btn">현장 예약 고객 추가하기</button>
 					</div>
 					<!-- 2022-12-21 수정 : 타이틀 구조 변경 END -->
 					<ul class="list_num10 adm_list">
@@ -488,150 +487,10 @@
 		<div class="dim"></div>
 	</section>
 	<!-- popup end -->
-	<!-- 2022-12-21 수정 : 현장예약고객 팝업 신규 추가 -->
-	<!-- pop_addpeople popup -->
-	<section id="pop_addpeople" class="pop_addpeople modal" style="display: block;">
-		<div class="popBg">
-			<div class="popContent">
-				<div class="popTitle_wrap">
-					<h2>현장 예약 고객 추가</h2>
-					<button onClick="javascript:$('#pop_addpeople').hide();" class="popup_close"></button>
-				</div>
-				
-				<div class="pop_add_con">
-					<h3>예약일</h3>
-					<div class="row inputBox">
-						<input type="datetime" name="" id="event_add_date2" class="input_date line_input" placeholder="날짜 선택" />
-						<label for="excape_addperson" class="customCheck">
-							<input type="checkbox" name="excape_addperson" class="line_input pop_add_input" id="excape_addperson">
-							<span class="checkmark"></span>
-							<span class="checkText">당일</span>
-						</label>
-					</div>
-				</div>
-				<div class="pop_add_con">
-					<h3>시간</h3>
-					<div class="row inputBox mb10">
-						<label for="excape_add_time11" class="customCheck customCheck_round">
-							<input type="checkbox" name="excape_add_time" id="excape_add_time11">
-							<span class="checkmark"></span>
-							<span class="checkText">11:00</span>
-						</label>
-						<label for="excape_add_time12" class="customCheck customCheck_round">
-							<input type="checkbox" name="excape_add_time" id="excape_add_time12">
-							<span class="checkmark"></span>
-							<span class="checkText">12:00</span>
-						</label>
-						<label for="excape_add_time13" class="customCheck customCheck_round">
-							<input type="checkbox" name="excape_add_time" id="excape_add_time13">
-							<span class="checkmark"></span>
-							<span class="checkText">13:00</span>
-						</label>
-						<label for="excape_add_time14" class="customCheck customCheck_round">
-							<input type="checkbox" name="excape_add_time" id="excape_add_time14">
-							<span class="checkmark"></span>
-							<span class="checkText">14:00</span>
-						</label>
-					</div>
-					<div class="row inputBox">
-						<label for="excape_add_time15" class="customCheck customCheck_round">
-							<input type="checkbox" name="excape_add_time" id="excape_add_time15">
-							<span class="checkmark"></span>
-							<span class="checkText">15:00</span>
-						</label>
-						<label for="excape_add_time16" class="customCheck customCheck_round">
-							<input type="checkbox" name="excape_add_time" id="excape_add_time16">
-							<span class="checkmark"></span>
-							<span class="checkText">16:00</span>
-						</label>
-						<label for="excape_add_time17" class="customCheck customCheck_round">
-							<input type="checkbox" name="excape_add_time" id="excape_add_time17">
-							<span class="checkmark"></span>
-							<span class="checkText">17:00</span>
-						</label>
-						<label for="excape_add_time18" class="customCheck customCheck_round">
-							<input type="checkbox" name="excape_add_time" id="excape_add_time18">
-							<span class="checkmark"></span>
-							<span class="checkText">18:00</span>
-						</label>
-					</div>
-				</div>
-				<div class="pop_add_con">
-					<div class="wrapped_flex">
-						<h3>예약자 정보</h3>
-						<label for="excape_addcustom" class="customCheck">
-							<input type="checkbox" name="excape_addcustom" id="excape_addcustom" />
-							<span class="checkmark"></span>
-							<span class="checkText">직접 입력하기</span>
-						</label>
-					</div>
-					<!-- 초기값 div -->
-					<div id="pop_addpeople_search" class="pop_addpeople_info">
-						<div class="row inputBox">
-							<input type="search" name="" id="pop_addpeople_name1" class="line_input pop_add_input" placeholder="이름 검색">
-							<input type="search" name="" id="pop_addpeople_phone1" class="line_input pop_add_input" placeholder="휴대폰 번호 검색">
-						</div>
-						<div class="row inputBox">
-							<!-- 퍼블 확인용으로만 스크립트 넣었습니다. -->
-							<button onclick="javascript:$('#pop_addpeople_search_result').show();$('#pop_addpeople_search').css('display','none');" class="btn_popadd btn_gray btn">찾기</button>
-							<!-- 검색결과가 없을때나 오류가 있을때 나타나는 div 기획 확인용으로 오픈했습니다. -->
-							<div class="pop_addpeople_none">
-								<p>일치하는 회원정보가 없습니다</p>
-							</div>
-							<!-- 검색결과가 없을때나 오류가 있을때 나타나는 div end -->
-						</div>
-					</div>
-					<!-- 초기값 div -->
-					<!-- 검색결과 div. 여러명이 검색되었을때는 따로 언급없었습니다. 동현대리님한테 확인이 필요할듯합니다. -->
-					<div id="pop_addpeople_search_result" class="pop_addpeople_info" style="display: none;">
-						<div class="row inputBox">
-							<input type="search" name="" id="pop_addpeople_name2" class="line_input pop_add_input" value="김동현" disabled />
-							<input type="search" name="" id="pop_addpeople_phone2" class="line_input pop_add_input" value="01082250852" disabled />
-						</div>
-						<div class="row inputBox">
-							<!-- 퍼블 확인용으로 스크립트 넣었습니다. 
-							그리고 위에 pop_add_input에 값을 넣으면(이름, 전화번호 둘 다 아무텍스트 입력시) 아래 button의 class가 btn_gray가 btn_primary로 교체되어야하는데 이거때문에 제가 해결을 못했습니다ㅠ 이부분 스크립트 구현해주심 감사하겠습니다ㅠ -->
-							<button onclick="javascript:$('#pop_addpeople_search').show();$('#pop_addpeople_search_result').css('display','none');" class="btn_popadd btn_primary btn">초기화</button>
-						</div>
-					</div>
-					<!-- 초기값 div -->
-					<!-- 직접 입력하기 눌렀을때 예약자 정보를 text로 입력할수 있도록 스크립트 간단하게 짰습니다. /admin/js/admin.js 82번줄 부터 추가했습니다. -->
-				</div>
-				<div class="pop_add_con">
-					<h3>체험인원</h3>
-					<div class="row inputBox">
-						<label for="escape_people_num2" class="customCheck customCheck_round">
-							<input type="radio" name="escape_people_num" id="escape_people_num2">
-							<span class="checkmark"></span>
-							<span class="checkText">2명</span>
-						</label>
-						<label for="escape_people_num3" class="customCheck customCheck_round">
-							<input type="radio" name="escape_people_num" id="escape_people_num3">
-							<span class="checkmark"></span>
-							<span class="checkText">3명</span>
-						</label>
-						<label for="escape_people_num4" class="customCheck customCheck_round">
-							<input type="radio" name="escape_people_num" id="escape_people_num4">
-							<span class="checkmark"></span>
-							<span class="checkText">4명</span>
-						</label>
-						<label for="escape_people_num5" class="customCheck customCheck_round">
-							<input type="radio" name="escape_people_num" id="escape_people_num5">
-							<span class="checkmark"></span>
-							<span class="checkText">5명</span>
-						</label>
-					</div>
-				</div>
-				<div class="btn_wrap w100per tac">
-					<button onclick="javascript:$('#pop_addpeople').hide();" class="btn_pop_s btn_primary btn">추가하기</button>
-				</div>
-			</div>
-		</div>
-		<div class="dim"></div>
-	</section>
-	<!-- popup end -->
+	<!-- 현장예약고객 팝업 삭제 -->
 	<script>
 		/* 전체 선택 임시 제작 */
+		$('#pop_addpeople').hide();
 		$(function () {
 			$("#excape_check2_1").change(function () {
 				if ($("#excape_check2_1").prop('checked',true)) {

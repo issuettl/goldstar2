@@ -132,13 +132,15 @@ public class SsoAccountController {
 			if("local".equals(profile) || "cafe".equals(profile)) {
 				
 				DataMap member = new DataMap();
-				member.put("userNo", RequestUtils.getRequest().getSession().getId());
-				member.put("firstName", "홍길동" + (member.getAsString("userNo").substring(0,1)));
-				member.put("mblPhnNo", "0101111" + (member.getAsString("userNo").substring(0,4)));
-				/*
-				 * TODO
-				 * this.signService.signInMember(member, member.getAsString("mblPhnNo"));*/
-
+				
+				member.put("unifyId", RequestUtils.getRequest().getSession().getId());
+				member.put("mbrNm", "홍길동" + (member.getAsString("unifyId").substring(0,1)));
+				member.put("cphn", "0101111" + (member.getAsString("unifyId").substring(0,4)));
+				member.put("empMbrNo", "abc");
+				member.put("decrypt", new DataMap());
+				
+				this.signService.signInMember(member, member);
+				
 				if(StringUtils.hasText(state) && state.startsWith("/u/")) {
 					redirectView.setUrl(systemDomain + state);
 					return redirectView;
