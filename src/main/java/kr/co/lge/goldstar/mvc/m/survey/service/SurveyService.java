@@ -3,10 +3,7 @@
  */
 package kr.co.lge.goldstar.mvc.m.survey.service;
 
-import kr.co.lge.goldstar.orm.jpa.entity.indiv.IndivEntity;
-import kr.co.lge.goldstar.orm.jpa.entity.mind.MindEntity;
-import kr.co.lge.goldstar.orm.jpa.entity.mood.MoodEntity;
-import kr.co.lge.goldstar.orm.jpa.entity.style.StyleEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyEntity;
 import kr.co.rebel9.web.data.DataMap;
 
 /**
@@ -21,153 +18,39 @@ public interface SurveyService {
 	DataMap getSurvey();
 
 	/**
-	 * @param params 
+	 * @param surveyEntity
 	 * @return
 	 */
-	DataMap getAnswer(DataMap params);
+	DataMap save(SurveyEntity surveyEntity);
 
 	/**
-	 * @param mindEntity
+	 * @param surveyEntity
 	 * @return
 	 */
-	DataMap save(MindEntity mindEntity);
+	DataMap update(SurveyEntity surveyEntity);
 
 	/**
-	 * @param indivEntity
+	 * @param surveyEntity
 	 * @return
 	 */
-	DataMap save(IndivEntity indivEntity);
+	DataMap remove(SurveyEntity surveyEntity);
 
 	/**
-	 * @param styleEntity
+	 * @param surveyEntity
 	 * @return
 	 */
-	DataMap save(StyleEntity styleEntity);
+	DataMap status(SurveyEntity surveyEntity);
 
 	/**
-	 * @param moodEntity
+	 * @param surveyEntity
 	 * @return
 	 */
-	DataMap save(MoodEntity moodEntity);
-
-	/**
-	 * @param mindEntity
-	 * @return
-	 */
-	DataMap update(MindEntity mindEntity);
-
-	/**
-	 * @param indivEntity
-	 * @return
-	 */
-	DataMap update(IndivEntity indivEntity);
-
-	/**
-	 * @param styleEntity
-	 * @return
-	 */
-	DataMap update(StyleEntity styleEntity);
-
-	/**
-	 * @param moodEntity
-	 * @return
-	 */
-	DataMap update(MoodEntity moodEntity);
-
-	/**
-	 * @param mindEntity
-	 * @return
-	 */
-	DataMap remove(MindEntity mindEntity);
-
-	/**
-	 * @param indivEntity
-	 * @return
-	 */
-	DataMap remove(IndivEntity indivEntity);
-
-	/**
-	 * @param styleEntity
-	 * @return
-	 */
-	DataMap remove(StyleEntity styleEntity);
-
-	/**
-	 * @param moodEntity
-	 * @return
-	 */
-	DataMap remove(MoodEntity moodEntity);
-
-	/**
-	 * @param mindEntity
-	 * @return
-	 */
-	DataMap status(MindEntity mindEntity);
-
-	/**
-	 * @param indivEntity
-	 * @return
-	 */
-	DataMap status(IndivEntity indivEntity);
-
-	/**
-	 * @param styleEntity
-	 * @return
-	 */
-	DataMap status(StyleEntity styleEntity);
-
-	/**
-	 * @param moodEntity
-	 * @return
-	 */
-	DataMap status(MoodEntity moodEntity);
-
-	/**
-	 * @param mindEntity
-	 * @return
-	 */
-	DataMap get(MindEntity mindEntity);
-
-	/**
-	 * @param indivEntity
-	 * @return
-	 */
-	DataMap get(IndivEntity indivEntity);
-
-	/**
-	 * @param styleEntity
-	 * @return
-	 */
-	DataMap get(StyleEntity styleEntity);
-
-	/**
-	 * @param moodEntity
-	 * @return
-	 */
-	DataMap get(MoodEntity moodEntity);
+	DataMap get(SurveyEntity surveyEntity);
 
 	/**
 	 * @param params
 	 * @return
 	 */
-	DataMap mindSort(DataMap params);
-
-	/**
-	 * @param params
-	 * @return
-	 */
-	DataMap indivSort(DataMap params);
-
-	/**
-	 * @param params
-	 * @return
-	 */
-	DataMap styleSort(DataMap params);
-
-	/**
-	 * @param params
-	 * @return
-	 */
-	DataMap moodSort(DataMap params);
+	DataMap sort(DataMap params);
 
 }

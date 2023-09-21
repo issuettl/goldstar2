@@ -13,7 +13,7 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger name="kr.co.lge.goldstar" level="error" additivity="false">
+	<logger name="kr.co.lge.goldstar" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	 

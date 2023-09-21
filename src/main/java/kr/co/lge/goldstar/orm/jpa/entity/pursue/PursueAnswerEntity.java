@@ -69,6 +69,14 @@ public class PursueAnswerEntity implements Serializable {
     @Column(name = "ty2")
     @Enumerated(EnumType.STRING)
     private PursueAnswerType type2;
+    
+    public String getType1Title() {
+    	return this.type1.getTitle();
+    }
+    
+    public String getType2Title() {
+    	return this.type2.getTitle();
+    }
 
     @JsonIgnore
     @MapsId("pursueSn")

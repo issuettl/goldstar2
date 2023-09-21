@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.lge.goldstar.mvc.m.survey.service.SurveyService;
-import kr.co.lge.goldstar.orm.jpa.entity.indiv.IndivEntity;
-import kr.co.lge.goldstar.orm.jpa.entity.mind.MindEntity;
-import kr.co.lge.goldstar.orm.jpa.entity.mood.MoodEntity;
-import kr.co.lge.goldstar.orm.jpa.entity.style.StyleEntity;
+import kr.co.lge.goldstar.mvc.m.system.service.SystemService;
+import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.system.SystemEntity;
 import kr.co.rebel9.web.data.DataMap;
 import kr.co.rebel9.web.rest.result.ResultBuilder;
 import kr.co.rebel9.web.rest.result.ResultConst;
@@ -30,51 +29,15 @@ public class SurveyRestController {
 	
 	@Autowired
 	private SurveyService surveyService;
+	
+	@Autowired
+	private SystemService systemService;
 
-	@PostMapping(value = "mind/save.do")
-	public DataMap save(@RequestBody MindEntity mindEntity) {
+	@PostMapping(value = "save.do")
+	public DataMap save(@RequestBody SurveyEntity surveyEntity) {
 		
 		try {
-			return this.surveyService.save(mindEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "indiv/save.do")
-	public DataMap save(@RequestBody IndivEntity indivEntity) {
-		
-		try {
-			return this.surveyService.save(indivEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "style/save.do")
-	public DataMap save(@RequestBody StyleEntity styleEntity) {
-		
-		try {
-			return this.surveyService.save(styleEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "mood/save.do")
-	public DataMap save(@RequestBody MoodEntity moodEntity) {
-		
-		try {
-			return this.surveyService.save(moodEntity);
+			return this.surveyService.save(surveyEntity);
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -83,11 +46,11 @@ public class SurveyRestController {
 		}
 	}
 	
-	@PostMapping(value = "mind/update.do")
-	public DataMap update(@RequestBody MindEntity mindEntity) {
+	@PostMapping(value = "update.do")
+	public DataMap update(@RequestBody SurveyEntity surveyEntity) {
 		
 		try {
-			return this.surveyService.update(mindEntity);
+			return this.surveyService.update(surveyEntity);
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -96,37 +59,12 @@ public class SurveyRestController {
 		}
 	}
 
-	@PostMapping(value = "indiv/update.do")
-	public DataMap update(@RequestBody IndivEntity indivEntity) {
+	
+	@PostMapping(value = "remove.do")
+	public DataMap remove(@RequestBody SurveyEntity surveyEntity) {
 		
 		try {
-			return this.surveyService.update(indivEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "style/update.do")
-	public DataMap update(@RequestBody StyleEntity styleEntity) {
-		
-		try {
-			return this.surveyService.update(styleEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "mood/update.do")
-	public DataMap update(@RequestBody MoodEntity moodEntity) {
-		
-		try {
-			return this.surveyService.update(moodEntity);
+			return this.surveyService.remove(surveyEntity);
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -135,50 +73,11 @@ public class SurveyRestController {
 		}
 	}
 	
-	@PostMapping(value = "mind/remove.do")
-	public DataMap remove(@RequestBody MindEntity mindEntity) {
+	@PostMapping(value = "status.do")
+	public DataMap status(@RequestBody SurveyEntity surveyEntity) {
 		
 		try {
-			return this.surveyService.remove(mindEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "indiv/remove.do")
-	public DataMap remove(@RequestBody IndivEntity indivEntity) {
-		
-		try {
-			return this.surveyService.remove(indivEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "style/remove.do")
-	public DataMap remove(@RequestBody StyleEntity styleEntity) {
-		
-		try {
-			return this.surveyService.remove(styleEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "mood/remove.do")
-	public DataMap remove(@RequestBody MoodEntity moodEntity) {
-		
-		try {
-			return this.surveyService.remove(moodEntity);
+			return this.surveyService.status(surveyEntity);
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -187,11 +86,11 @@ public class SurveyRestController {
 		}
 	}
 	
-	@PostMapping(value = "mind/status.do")
-	public DataMap status(@RequestBody MindEntity mindEntity) {
+	@PostMapping(value = "system.do")
+	public DataMap system(@RequestBody SystemEntity systemEntity) {
 		
 		try {
-			return this.surveyService.status(mindEntity);
+			return this.systemService.survey(systemEntity);
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -200,11 +99,11 @@ public class SurveyRestController {
 		}
 	}
 
-	@PostMapping(value = "indiv/status.do")
-	public DataMap status(@RequestBody IndivEntity indivEntity) {
+	@PostMapping(value = "get.do")
+	public DataMap get(@RequestBody SurveyEntity surveyEntity) {
 		
 		try {
-			return this.surveyService.status(indivEntity);
+			return this.surveyService.get(surveyEntity);
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -213,128 +112,11 @@ public class SurveyRestController {
 		}
 	}
 
-	@PostMapping(value = "style/status.do")
-	public DataMap status(@RequestBody StyleEntity styleEntity) {
+	@PostMapping(value = "sort.do")
+	public DataMap SurveySort(@RequestParam MultiValueMap<String, Object> paramMap) {
 		
 		try {
-			return this.surveyService.status(styleEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "mood/status.do")
-	public DataMap status(@RequestBody MoodEntity moodEntity) {
-		
-		try {
-			return this.surveyService.status(moodEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "mind/get.do")
-	public DataMap get(@RequestBody MindEntity mindEntity) {
-		
-		try {
-			return this.surveyService.get(mindEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "indiv/get.do")
-	public DataMap get(@RequestBody IndivEntity indivEntity) {
-		
-		try {
-			return this.surveyService.get(indivEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "style/get.do")
-	public DataMap get(@RequestBody StyleEntity styleEntity) {
-		
-		try {
-			return this.surveyService.get(styleEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "mood/get.do")
-	public DataMap get(@RequestBody MoodEntity moodEntity) {
-		
-		try {
-			return this.surveyService.get(moodEntity);
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "mind/sort.do")
-	public DataMap mindSort(@RequestParam MultiValueMap<String, Object> paramMap) {
-		
-		try {
-			return this.surveyService.mindSort(new DataMap(paramMap));
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "indiv/sort.do")
-	public DataMap indivSort(@RequestParam MultiValueMap<String, Object> paramMap) {
-		
-		try {
-			return this.surveyService.indivSort(new DataMap(paramMap));
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "style/sort.do")
-	public DataMap styleSort(@RequestParam MultiValueMap<String, Object> paramMap) {
-		
-		try {
-			return this.surveyService.styleSort(new DataMap(paramMap));
-			
-		}catch(Exception e) {
-			DataMap result = new DataMap(false);
-			result.put(ResultConst.META, ResultBuilder.failure(e));
-			return result;
-		}
-	}
-
-	@PostMapping(value = "mood/sort.do")
-	public DataMap moodSort(@RequestParam MultiValueMap<String, Object> paramMap) {
-		
-		try {
-			return this.surveyService.moodSort(new DataMap(paramMap));
+			return this.surveyService.sort(new DataMap(paramMap));
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);

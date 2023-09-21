@@ -15,6 +15,13 @@
                     <li><a href="<c:url value="/m/survey/answer.do"/>" class="menu_link032<c:if test="${fn:startsWith(currentURI, '/m/survey/answer')}"> active</c:if>">사전문답 데이터</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="<c:url value="/m/survey/index.do"/>" class="menu_link03<c:if test="${fn:startsWith(currentURI, '/m/pursue/')}"> active</c:if>">설문 조사 관리</a>
+                <ul class="adm_menulist_sub">
+                    <li><a href="<c:url value="/m/pursue/index.do"/>" class="menu_link031<c:if test="${fn:startsWith(currentURI, '/m/pursue/index')}"> active</c:if>">고객 유형 문답 관리</a></li>
+                    <li><a href="<c:url value="/m/survey/answer.do"/>" class="menu_link032<c:if test="${fn:startsWith(currentURI, '/m/survey/answer')}"> active</c:if>">사전문답 데이터</a></li>
+                </ul>
+            </li>
             <li><a href="<c:url value="/m/event/list.do"/>" class="menu_link04<c:if test="${fn:startsWith(currentURI, '/m/event/')}"> active</c:if>">이벤트 관리</a></li>
             <li><a href="<c:url value="/m/board/1/list.do"/>" class="menu_link05<c:if test="${fn:startsWith(currentURI, '/m/board/1/')}"> active</c:if>">FAQ 관리</a></li>
             <li><a href="<c:url value="/m/board/2/list.do"/>" class="menu_link06<c:if test="${fn:startsWith(currentURI, '/m/board/2/')}"> active</c:if>">공지사항 관리</a></li>
