@@ -40,11 +40,13 @@ import kr.co.lge.goldstar.orm.jpa.repository.spring.MemberSsoRepository;
 import kr.co.rebel9.core.utils.DateUtils;
 import kr.co.rebel9.web.data.DataMap;
 import lge.ko.member.MemberCrypt;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author NEOFLOW
  *
  */
+@Slf4j
 @Service("SsoService")
 public class SsoServiceImpl implements SsoService {
 	
@@ -78,11 +80,20 @@ public class SsoServiceImpl implements SsoService {
 	@Value("${lge.sso.account.clientSecret}")
 	private String clientSecret;
 	
-	@Value("${lge.sso.account.getMember}")
-	private String accountGetMember;
+	@Value("${lge.sso.account.getSession}")
+	private String accountGetSession;
 	
 	@Value("${lge.sso.account.tokenConfirm}")
 	private String accountTokenConfirm;
+	
+	@Value("${lge.sso.account.tokenRefresh}")
+	private String accountTokenRefresh;
+	
+	@Value("${lge.sso.account.getMember}")
+	private String accountGetMember;
+	
+	@Value("${lge.sso.account.oauth2BackendUrl}")
+	private String oauth2BackendUrl;
 	
 	@Autowired
 	private MemberSsoRepository memberSsoRepository;
@@ -176,14 +187,14 @@ public class SsoServiceImpl implements SsoService {
 		 * 
 		 * 
 		 */
-		DataMap account = getMemberAccount(params, request);
+		DataMap account = getSessionAccount(params, request);
 		
 		if(ObjectUtils.isEmpty(account)) {
 			return params;
 		}
 		params.put("account", account);
 		
-		if("000".equals(account.getAsString("ResultCode"))) {
+		if("000".equals(account.getAsString("resultCode"))) {
 			DataMap data = getDecriptBody(account.getAsString("data"));
 			
 			params.put("encData", data);
@@ -197,7 +208,7 @@ public class SsoServiceImpl implements SsoService {
 	 * @param params
 	 * @return
 	 */
-	private DataMap getMemberAccount(DataMap params, HttpServletRequest request) {
+	private DataMap getSessionAccount(DataMap params, HttpServletRequest request) {
 		
 		DataMap encParams = new DataMap();
 		DataMap decrypt = params.getAsDataMap("decrypt");
@@ -217,6 +228,60 @@ public class SsoServiceImpl implements SsoService {
 		encParams.put("accessToken", decrypt.getAsString("accessToken"));
 		encParams.put("autoLoginYn", "N");
 		encParams.put("dvcTpCd", device);
+		
+		String body = getEncryptBody(encParams);
+		params.put("queryJson", body);
+		
+		HttpGet httpGet = new HttpGet(this.accountGetSession + "?" + body);
+		httpGet.setHeader("Accept", "application/json");
+		httpGet.setHeader("X_LG_CLIENT_ID", this.clientId);
+		httpGet.setHeader("X_LG_CLIENT_SECRET", this.clientSecret);
+		
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		String text = null;
+		
+		try {
+			CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
+			
+			InputStreamReader responseReader = new InputStreamReader(
+					httpResponse.getEntity().getContent());
+			
+			text = new BufferedReader(responseReader)
+				        .lines()
+				        .collect(Collectors.joining("\n"));
+			
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			DataMap response = gson.fromJson(text, DataMap.class);
+
+			response.put("httpURI", httpGet.getURI().toURL());
+			response.put("query", httpGet.getURI().getQuery());
+			
+			return response;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			DataMap response = new DataMap();
+			try {
+				response.put("httpURI", httpGet.getURI().toURL());
+				response.put("query", httpGet.getURI().getQuery());
+			} catch (MalformedURLException e1) {
+				e1.printStackTrace();
+			}
+			response.put("text", text);
+			return response;
+		}
+	}
+
+	/**
+	 * @param params
+	 * @return
+	 */
+	private DataMap getMemberAccount(DataMap params, HttpServletRequest request) {
+		
+		DataMap encParams = new DataMap();
+		DataMap decrypt = params.getAsDataMap("decrypt");
+		encParams.put("unifyId", decrypt.getAsString("unifyId"));
 		
 		String body = getEncryptBody(encParams);
 		params.put("queryJson", body);
@@ -264,7 +329,7 @@ public class SsoServiceImpl implements SsoService {
 
 	@Override
 	public void setAccountInfo(HttpServletRequest request, HttpServletResponse response) {
-		/*
+		
 		//토큰확인
 		Cookie[] cookies = request.getCookies();
 		String accessToken = null;
@@ -278,8 +343,13 @@ public class SsoServiceImpl implements SsoService {
 				if("REFRESH_TOKEN".equals(cookie.getName())) {
 					refreshToken = cookie.getValue();
 				}
+				log.debug("cookies : {} : {}", cookie.getName(), cookie.getValue());
 			}
 		}
+
+		log.debug("ACCESS_TOKEN : {}", accessToken);
+		log.debug("REFRESH_TOKEN : {}", refreshToken);
+		
 		
 		if(!StringUtils.hasText(accessToken) || !StringUtils.hasText(refreshToken)) {
 			
@@ -289,11 +359,13 @@ public class SsoServiceImpl implements SsoService {
 			return;
 		}
 		
-		MemberEntity singedMember = this.signService.getMemberIn();
-		
 		DataMap params = new DataMap();
-		params.put("accessToken", accessToken);
-		params.put("refreshToken", refreshToken);
+		try {
+			params.put("accessToken", MemberCrypt.front.encryptAES(accessToken));
+			params.put("refreshToken", MemberCrypt.front.encryptAES(refreshToken));
+		} catch (Exception e2) {
+			params.put(refreshToken, e2.getMessage());
+		}
 		
 		DataMap tokenConfirm = null;
 		try {
@@ -304,13 +376,16 @@ public class SsoServiceImpl implements SsoService {
 		if(ObjectUtils.isEmpty(tokenConfirm)) {
 			return;
 		}
+		
+		log.debug("tokenConfirm : {}", tokenConfirm);
+		
 		if(!"000".equals(tokenConfirm.getAsString("resultCode"))) {
 			return;
 		}
 		params.put("tokenConfirm", tokenConfirm);
 		
 		//body 디코딩
-		DataMap tokenConfirmData = getDecriptBody(params.getAsString("data"));
+		DataMap tokenConfirmData = getDecriptBody(tokenConfirm.getAsString("data"));
 		params.put("tokenConfirmData", tokenConfirmData);
 		
 		int expireTime = tokenConfirmData.getAsInt("expireTime");
@@ -329,92 +404,125 @@ public class SsoServiceImpl implements SsoService {
 			//로그아웃
 			this.signService.memberOut();
 			
-			DataMap account = null;
+			DataMap memberAccount = null;
 			try {
 				
 				DataMap decrypt = new DataMap();
 				params.put("decrypt", decrypt);
 				try {
-					decrypt.put("unifyId", MemberCrypt.front.decryptAES(params.getAsString("unifyId")));
-					decrypt.put("lgnCtfNo", MemberCrypt.front.decryptAES(params.getAsString("lgnCtfNo")));
+					decrypt.put("unifyId", tokenConfirmData.getAsString("unifyId"));
 					decrypt.put("accessToken", MemberCrypt.front.decryptAES(params.getAsString("accessToken")));
 					decrypt.put("refreshToken", MemberCrypt.front.decryptAES(params.getAsString("refreshToken")));
 				} catch (Exception e1) {
 					//e1.printStackTrace();
 				}
 				
-				params.put("unifyId", data.getAsString("unifyId"));
+				params.put("unifyId", MemberCrypt.front.encryptAES(tokenConfirmData.getAsString("unifyId")));
 				
-				account = getMemberAccount(params, request);
+				memberAccount = getMemberAccount(params, request);
 			} catch (SignatureException e) {
 				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			if(ObjectUtils.isEmpty(userProfile)) {
+			if(ObjectUtils.isEmpty(memberAccount)) {
 				return;
 			}
-			params.put("userProfile", userProfile);
+			if(!"000".equals(memberAccount.getAsString("resultCode"))) {
+				return;
+			}
+			params.put("memberAccount", memberAccount);
 			
-			DataMap account = userProfile.getAsDataMap("account");
-			if(!ObjectUtils.isEmpty(account)) {
-
-				account.put("access_token", accessToken);
-				account.put("refresh_token", refreshToken);
-				
-				this.signService.signInMember(account, "");
+			DataMap getMemberAccountData = getDecriptBody(memberAccount.getAsString("data"));
+			if(!ObjectUtils.isEmpty(getMemberAccountData)) {
+				this.signService.signInMember(params, getMemberAccountData);
 			}
 			
 			return;
 		}
 		
-		DataMap token = null;
+		DataMap tokenRefresh = null;
 		try {
-			token = getTokenRefresh(params);
+			tokenRefresh = getTokenRefresh(refreshToken);
 		} catch (SignatureException e) {
 			e.printStackTrace();
 		}
-		if(ObjectUtils.isEmpty(token)) {
+		if(ObjectUtils.isEmpty(tokenRefresh)) {
 			return;
 		}
-		params.put("token", token);
+		if(!"000".equals(tokenRefresh.getAsString("resultCode"))) {
+			return;
+		}
+		params.put("tokenRefresh", tokenRefresh);
+		
+		//body 디코딩
+		DataMap tokenRefreshData = getDecriptBody(tokenRefresh.getAsString("data"));
+		params.put("tokenRefreshData", tokenRefreshData);
+		
+		accessToken = tokenRefreshData.getAsString("accessToken");
+		refreshToken = tokenRefreshData.getAsString("refreshToken");
+		
+		try {
+			params.put("accessToken", MemberCrypt.front.encryptAES(accessToken));
+			params.put("refreshToken", MemberCrypt.front.encryptAES(refreshToken));
+		} catch (Exception e2) {
+			params.put(refreshToken, e2.getMessage());
+		}
 		
 		//로그아웃
 		this.signService.memberOut();
 		
 		//setCookie
-		Cookie cookie = new Cookie("ACCESS_TOKEN", token.getAsString("access_token"));
+		Cookie cookie = new Cookie("ACCESS_TOKEN", accessToken);
 		cookie.setDomain("lge.co.kr");
 		cookie.setPath("/");
 		cookie.setSecure(true);
-		cookie.setComment("access_token goldstar");
+		cookie.setComment("accessToken goldstar");
 		response.addCookie(cookie);
 		
-		cookie = new Cookie("REFRESH_TOKEN", params.getAsString("refresh_token"));
+		cookie = new Cookie("REFRESH_TOKEN", refreshToken);
 		cookie.setDomain("lge.co.kr");
 		cookie.setPath("/");
 		cookie.setSecure(true);
-		cookie.setComment("refresh_token goldstar");
+		cookie.setComment("refreshToken goldstar");
 		response.addCookie(cookie);
 		
-		DataMap userProfile = null;
+		//로그아웃
+		this.signService.memberOut();
+		
+		DataMap memberAccount = null;
 		try {
-			userProfile = getUserProfile(params);
+			
+			DataMap decrypt = new DataMap();
+			params.put("decrypt", decrypt);
+			try {
+				decrypt.put("unifyId", tokenRefreshData.getAsString("unifyId"));
+				decrypt.put("accessToken", MemberCrypt.front.decryptAES(params.getAsString("accessToken")));
+				decrypt.put("refreshToken", MemberCrypt.front.decryptAES(params.getAsString("refreshToken")));
+			} catch (Exception e1) {
+				//e1.printStackTrace();
+			}
+			
+			params.put("unifyId", MemberCrypt.front.encryptAES(tokenConfirmData.getAsString("unifyId")));
+			
+			memberAccount = getMemberAccount(params, request);
 		} catch (SignatureException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		if(ObjectUtils.isEmpty(userProfile)) {
+		if(ObjectUtils.isEmpty(memberAccount)) {
 			return;
 		}
-		params.put("userProfile", userProfile);
-		
-		DataMap account = userProfile.getAsDataMap("account");
-		if(!ObjectUtils.isEmpty(account)) {
-
-			account.put("access_token", token.getAsString("access_token"));
-			account.put("refresh_token", params.getAsString("refresh_token"));
-			
-			this.signService.signInMember(account, "");
+		if(!"000".equals(memberAccount.getAsString("resultCode"))) {
+			return;
 		}
-		*/
+		params.put("memberAccount", memberAccount);
+		
+		DataMap getMemberAccountData = getDecriptBody(memberAccount.getAsString("data"));
+		if(!ObjectUtils.isEmpty(getMemberAccountData)) {
+			this.signService.signInMember(params, getMemberAccountData);
+		}
 	}
 
 	private DataMap getDecriptBody(String encData) {
@@ -456,11 +564,68 @@ public class SsoServiceImpl implements SsoService {
 	 */
 	private DataMap getTokenConfirm(String accessToken) throws SignatureException {
 		
-		MemberEntity signedMember = this.signService.getMemberIn();
-		
 		DataMap encParams = new DataMap();
 		encParams.put("accessToken", accessToken);
-		encParams.put("oauth2BackendUrl", signedMember.getOauth2BackendUri());
+		encParams.put("oauth2BackendUrl", this.oauth2BackendUrl);
+		
+		String body = getEncryptBody(encParams);
+		
+		HttpPost httpPost = new HttpPost(this.accountTokenConfirm);
+		httpPost.setHeader("Accept", "application/json");
+		httpPost.setHeader("X_LG_CLIENT_ID", this.clientId);
+		httpPost.setHeader("X_LG_CLIENT_SECRET", this.clientSecret);
+		
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		String text = null;
+		
+		try {
+			
+			httpPost.setEntity(new StringEntity(body));
+			
+			CloseableHttpResponse httpResponse = httpClient.execute(httpPost);
+			
+			InputStreamReader responseReader = new InputStreamReader(
+					httpResponse.getEntity().getContent());
+			
+			text = new BufferedReader(responseReader)
+				        .lines()
+				        .collect(Collectors.joining("\n"));
+			
+			log.debug("getTokenConfirm text : {}", text);
+			
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			DataMap response = gson.fromJson(text, DataMap.class);
+
+			response.put("httpURI", httpPost.getURI().toURL());
+			response.put("query", httpPost.getURI().getQuery());
+			
+			return response;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			DataMap response = new DataMap();
+			try {
+				response.put("httpURI", httpPost.getURI().toURL());
+				response.put("query", httpPost.getURI().getQuery());
+			} catch (MalformedURLException e1) {
+				e1.printStackTrace();
+			}
+			response.put("text", text);
+			return response;
+		}
+	}
+
+	/**
+	 * @param params
+	 * @return
+	 * @throws SignatureException 
+	 */
+	private DataMap getTokenRefresh(String refreshToken) throws SignatureException {
+		
+		DataMap encParams = new DataMap();
+		encParams.put("refreshToken", refreshToken);
+		encParams.put("oauth2BackendUrl", this.oauthHost);
 		
 		String body = getEncryptBody(encParams);
 		
