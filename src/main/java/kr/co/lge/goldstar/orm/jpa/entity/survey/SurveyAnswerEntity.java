@@ -54,6 +54,9 @@ public class SurveyAnswerEntity implements Serializable {
     @Column(name = "survey_sn")
     private int surveySn;
     
+    @Column(name = "ordinal")
+    private int ordinal;
+    
     @Column(name = "delete_at")
     @Enumerated(EnumType.STRING)
     private YesOrNo deleted;

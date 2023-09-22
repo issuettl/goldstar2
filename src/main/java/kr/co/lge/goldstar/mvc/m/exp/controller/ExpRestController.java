@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.co.lge.goldstar.mvc.m.product.service.ProductService;
-import kr.co.lge.goldstar.orm.jpa.entity.product.ProductEntity;
+import kr.co.lge.goldstar.mvc.m.exp.service.ExpService;
+import kr.co.lge.goldstar.mvc.m.system.service.SystemService;
+import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyAnswerEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.system.SystemEntity;
 import kr.co.rebel9.web.data.DataMap;
 import kr.co.rebel9.web.rest.result.ResultBuilder;
 import kr.co.rebel9.web.rest.result.ResultConst;
@@ -27,13 +29,16 @@ import kr.co.rebel9.web.rest.result.ResultConst;
 public class ExpRestController {
 	
 	@Autowired
-	private ProductService productService;
+	private ExpService expService;
+	
+	@Autowired
+	private SystemService systemService;
 
 	@PostMapping(value = "save.do")
-	public DataMap save(MultipartFile listFile, MultipartFile viewFile, @RequestParam MultiValueMap<String, Object> params) {
+	public DataMap save(MultipartFile imageFile, @RequestParam MultiValueMap<String, Object> params) {
 		
 		try {
-			return this.productService.save(listFile, viewFile, new DataMap(params));
+			return this.expService.save(imageFile, new DataMap(params));
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -43,10 +48,10 @@ public class ExpRestController {
 	}
 	
 	@PostMapping(value = "update.do")
-	public DataMap update(MultipartFile listFile, MultipartFile viewFile, @RequestParam MultiValueMap<String, Object> params) {
+	public DataMap update(MultipartFile imageFile, @RequestParam MultiValueMap<String, Object> params) {
 		
 		try {
-			return this.productService.update(listFile, viewFile, new DataMap(params));
+			return this.expService.update(imageFile, new DataMap(params));
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -57,10 +62,10 @@ public class ExpRestController {
 
 	
 	@PostMapping(value = "remove.do")
-	public DataMap remove(@RequestBody ProductEntity productEntity) {
+	public DataMap remove(@RequestBody SurveyAnswerEntity surveyAnswerEntity) {
 		
 		try {
-			return this.productService.remove(productEntity);
+			return this.expService.remove(surveyAnswerEntity);
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -70,10 +75,10 @@ public class ExpRestController {
 	}
 
 	@PostMapping(value = "get.do")
-	public DataMap get(@RequestBody ProductEntity productEntity) {
+	public DataMap get(@RequestBody SurveyAnswerEntity surveyAnswerEntity) {
 		
 		try {
-			return this.productService.get(productEntity);
+			return this.expService.get(surveyAnswerEntity);
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);
@@ -86,7 +91,20 @@ public class ExpRestController {
 	public DataMap sort(@RequestParam MultiValueMap<String, Object> paramMap) {
 		
 		try {
-			return this.productService.sort(new DataMap(paramMap));
+			return this.expService.sort(new DataMap(paramMap));
+			
+		}catch(Exception e) {
+			DataMap result = new DataMap(false);
+			result.put(ResultConst.META, ResultBuilder.failure(e));
+			return result;
+		}
+	}
+	
+	@PostMapping(value = "system.do")
+	public DataMap system(@RequestBody SystemEntity systemEntity) {
+		
+		try {
+			return this.systemService.product(systemEntity);
 			
 		}catch(Exception e) {
 			DataMap result = new DataMap(false);

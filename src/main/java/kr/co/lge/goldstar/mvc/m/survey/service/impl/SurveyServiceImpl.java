@@ -72,8 +72,10 @@ public class SurveyServiceImpl implements SurveyService{
 		
 		this.surveyRepository.save(surveyEntity);
 		
+		int[] index = {0};
 		answers.forEach(item -> {
 			item.setSurveySn(surveyEntity.getSn());
+			item.setOrdinal(++index[0]);
 			item.setDeleted(YesOrNo.N);
 		});
 		
@@ -100,11 +102,13 @@ public class SurveyServiceImpl implements SurveyService{
 		}
 		
 		List<SurveyAnswerEntity> answers = new ArrayList<>();
+		int[] index = {0};
 		surveyEntity.getAnswers().forEach(item -> {
 			Optional<SurveyAnswerEntity> savedAnswer = this.surveyAnswerRepository.findById(item.getSn());
 			if(saved.isPresent()) {
 				
 				SurveyAnswerEntity answerEntity = savedAnswer.get();
+				answerEntity.setOrdinal(++index[0]);
 				answerEntity.setName(item.getName());
 				answers.add(answerEntity);
 			}

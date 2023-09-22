@@ -1,11 +1,27 @@
 package kr.co.lge.goldstar.mvc.m.exp.service.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.lge.goldstar.mvc.m.exp.service.ExpService;
+import kr.co.lge.goldstar.orm.jpa.entity.YesOrNo;
+import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyAnswerEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyEntity;
+import kr.co.lge.goldstar.orm.jpa.repository.spring.SurveyAnswerRepository;
 import kr.co.lge.goldstar.orm.jpa.repository.spring.SurveyRepository;
+import kr.co.rebel9.core.utils.FileUtils;
 import kr.co.rebel9.web.data.DataMap;
 
 @Service("ExpService")
@@ -13,6 +29,9 @@ public class ExpServiceImpl implements ExpService {
 
 	@Autowired
 	private SurveyRepository surveyRepository;
+
+	@Autowired
+	private SurveyAnswerRepository surveyAnswerRepository;
     
     @Value("${multipart.path.survey}")
     private String expPath;
@@ -25,62 +44,60 @@ public class ExpServiceImpl implements ExpService {
 		
 		return result;
 	}
-/*
+
 	@Override
-	public DataMap save(MultipartFile listFile, MultipartFile viewFile, DataMap params) {
+	public DataMap save(MultipartFile imageFile, DataMap params) {
 		
-		if(ObjectUtils.isEmpty(listFile)){
+		if(ObjectUtils.isEmpty(imageFile)){
 			DataMap result = new DataMap(false);
-			result.put("reason", "목록 파일을 찾을 수 없습니다.");
-			return result;
-        }
-		if(ObjectUtils.isEmpty(viewFile)){
-			DataMap result = new DataMap(false);
-			result.put("reason", "상세 파일을 찾을 수 없습니다.");
+			result.put("reason", "이미지 파일을 찾을 수 없습니다.");
 			return result;
         }
 		
         UUID uuid = UUID.randomUUID();
         String dateDir = FileUtils.getDateDir();
-        String listPath = new StringBuilder(dateDir).append(uuid).append("_l").toString();
-        String viewPath = new StringBuilder(dateDir).append(uuid).append("_v").toString();
+        String imagePath = new StringBuilder(dateDir).append(uuid).append("_i").toString();
 
         try {
 			org.apache.commons.io.FileUtils.writeByteArrayToFile(
-			        new File(new StringBuilder(this.productPath).append(listPath).toString()), 
-			        listFile.getBytes());
-			org.apache.commons.io.FileUtils.writeByteArrayToFile(
-			        new File(new StringBuilder(this.productPath).append(viewPath).toString()), 
-			        viewFile.getBytes());
+			        new File(new StringBuilder(this.expPath).append(imagePath).toString()), 
+			        imageFile.getBytes());
 		} catch (IOException e) {
 			DataMap result = new DataMap(false);
 			result.put("reason", e.getMessage());
 			return result;
 		}
+        
+        int surveySn = 1;
+        
+        Optional<SurveyEntity> savedSurvey = this.surveyRepository.findById(surveySn);
+		if(!savedSurvey.isPresent()) {
+			DataMap result = new DataMap(false);
+			result.put("reason", "체험 제품 마스터 정보를 찾을 수 없습니다.");
+			return result;
+		}
 		
-		ProductEntity product = new ProductEntity();
+		SurveyAnswerEntity answer = new SurveyAnswerEntity();
 
-		product.setName(params.getAsString("name"));
-		product.setOrdinal(this.productRepository.maxOrdinal(YesOrNo.N).intValue());
-		product.setSubject(params.getAsString("subject"));
-		product.setContents(params.getAsString("contents"));
-		product.setUrl(params.getAsString("url"));
-		product.setType(PursueAnswerType.from(params.getAsString("type")));
-		product.setDeleted(YesOrNo.N);
+		answer.setSurveySn(surveySn);
+		answer.setName(params.getAsString("name"));
+		answer.setOrdinal(this.surveyAnswerRepository.maxOrdinal(surveySn, YesOrNo.N).intValue());
+		answer.setDeleted(YesOrNo.N);
+		answer.setSurvey(savedSurvey.get());
 
-		product.setImageList(listPath);
-		product.setImageView(viewPath);
+		answer.setImage(imagePath);
+		answer.setImageContentType(imageFile.getContentType());
 		
-		this.productRepository.save(product);
+		this.surveyAnswerRepository.save(answer);
 		
 		return new DataMap(true);
 	}
 
 	@Override
-	public DataMap update(MultipartFile listFile, MultipartFile viewFile, DataMap params) {
+	public DataMap update(MultipartFile imageFile, DataMap params) {
 		
-		ProductEntity product = this.productRepository.findBySnAndDeleted(params.getAsInt("sn"), YesOrNo.N);
-		if(ObjectUtils.isEmpty(product)) {
+		SurveyAnswerEntity answer = this.surveyAnswerRepository.findBySnAndDeleted(params.getAsInt("sn"), YesOrNo.N);
+		if(ObjectUtils.isEmpty(answer)) {
 			DataMap result = new DataMap(false);
 			result.put("reason", "데이터를 찾을 수 없습니다.");
 			return result;
@@ -90,24 +107,16 @@ public class ExpServiceImpl implements ExpService {
         String dateDir = FileUtils.getDateDir();
 
         try {
-        	if(!ObjectUtils.isEmpty(listFile)){
+        	if(!ObjectUtils.isEmpty(imageFile)){
         		
-                String listPath = new StringBuilder(dateDir).append(uuid).append("_l").toString();
+                String imagePath = new StringBuilder(dateDir).append(uuid).append("_i").toString();
 				org.apache.commons.io.FileUtils.writeByteArrayToFile(
-				        new File(new StringBuilder(this.productPath).append(listPath).toString()), 
-				        listFile.getBytes());
+				        new File(new StringBuilder(this.expPath).append(imagePath).toString()), 
+				        imageFile.getBytes());
 				
-				product.setImageList(listPath);
+				answer.setImage(imagePath);
+				answer.setImageContentType(imageFile.getContentType());
         	}
-    		if(!ObjectUtils.isEmpty(viewFile)){
-    			
-    	        String pcPath = new StringBuilder(dateDir).append(uuid).append("_p").toString();
-				org.apache.commons.io.FileUtils.writeByteArrayToFile(
-				        new File(new StringBuilder(this.productPath).append(pcPath).toString()), 
-				        viewFile.getBytes());
-				
-				product.setImageView(pcPath);
-    		}
 			
 		} catch (IOException e) {
 			DataMap result = new DataMap(false);
@@ -115,38 +124,35 @@ public class ExpServiceImpl implements ExpService {
 			return result;
 		}
 
-        product.setName(params.getAsString("name"));
-		product.setSubject(params.getAsString("subject"));
-		product.setContents(params.getAsString("contents"));
-		product.setUrl(params.getAsString("url"));
+        answer.setName(params.getAsString("name"));
 
-		this.productRepository.save(product);
+		this.surveyAnswerRepository.save(answer);
 		
 		return new DataMap(true);
 	}
 
 	@Override
-	public DataMap remove(ProductEntity productEntity) {
+	public DataMap remove(SurveyAnswerEntity answerEntity) {
 		
-		Optional<ProductEntity> saved = this.productRepository.findById(productEntity.getSn());
+		Optional<SurveyAnswerEntity> saved = this.surveyAnswerRepository.findById(answerEntity.getSn());
 		if(saved.isEmpty()) {
 			DataMap result = new DataMap(false);
 			result.put("reason", "질문 데이터를 찾을 수 없습니다.");
 			return result;
 		}
 		
-		ProductEntity savedEntity = saved.get();
+		SurveyAnswerEntity savedEntity = saved.get();
 		savedEntity.setDeleted(YesOrNo.Y);
-		this.productRepository.save(savedEntity);
+		this.surveyAnswerRepository.save(savedEntity);
 		
 		return new DataMap(true);
 	}
 
 	@Override
-	public DataMap get(ProductEntity productEntity) {
+	public DataMap get(SurveyAnswerEntity answerEntity) {
 		
 		DataMap result = new DataMap(true);
-		result.put("entity", this.productRepository.findById(productEntity.getSn()).get());
+		result.put("entity", this.surveyAnswerRepository.findById(answerEntity.getSn()).get());
 		
 		return result;
 	}
@@ -156,16 +162,16 @@ public class ExpServiceImpl implements ExpService {
 		
 		List<Integer> snList = params.getListAsInteger("snList[]");
 		
-		List<ProductEntity> productEntities = this.productRepository.findBySnIn(snList);
+		List<SurveyAnswerEntity> answerEntities = this.surveyAnswerRepository.findBySnIn(snList);
 		
-		if(CollectionUtils.isEmpty(productEntities)) {
+		if(CollectionUtils.isEmpty(answerEntities)) {
 			DataMap result = new DataMap(false);
 			result.put("reason", "데이터를 찾을 수 없습니다.");
 			return result;
 		}
 		
-		Map<Integer, ProductEntity> map = new HashMap<>();
-		productEntities.forEach(item -> {
+		Map<Integer, SurveyAnswerEntity> map = new HashMap<>();
+		answerEntities.forEach(item -> {
 			map.put(item.getSn(), item);
 		});
 		
@@ -174,9 +180,8 @@ public class ExpServiceImpl implements ExpService {
 			map.get(sn).setOrdinal(order++);
 		}
 		
-		this.productRepository.saveAll(productEntities);
+		this.surveyAnswerRepository.saveAll(answerEntities);
 		
 		return new DataMap(true);
 	}
-*/
 }

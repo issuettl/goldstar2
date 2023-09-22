@@ -163,7 +163,7 @@
             <!-- 2022-12-20 수정 : 디자인 자체가 바뀌어서 퍼블 다 수정했습니다 다 뜯어보셔야합니다.ㅠ -->
             <div class="popContent">
                 <div class="popTitle_wrap">
-                    <h2>추천 제품 등록</h2>
+                    <h2>추천 제품 수정</h2>
                     <button onClick="javascript:$('#pop_survey_mod1').hide();" class="popup_close"></button>
                 </div>
                 <div class="pop_delete_con">
@@ -181,7 +181,7 @@
                 <div class="pop_survey_con row">
                     <h3>목록 이미지</h3>
                     <div class="file_btn_col col">
-                        <label for="saveImageList" class="upload">
+                        <label for="updateImageList" class="upload">
                             <input class="customFile2 customFile" id="updateImageList" type="file" accept="image/png, image/gif, image/jpeg">
                             <p class="uploaded">파일 선택</p>
                         </label>
@@ -191,7 +191,7 @@
                 <div class="pop_survey_con row">
                     <h3>상세 이미지</h3>
                     <div class="file_btn_col col">
-                        <label for="saveImageView" class="upload">
+                        <label for="updateImageView" class="upload">
                             <input class="customFile2 customFile" id="updateImageView" type="file" accept="image/png, image/gif, image/jpeg">
                             <p class="uploaded">파일 선택</p>
                         </label>

@@ -263,6 +263,14 @@
                                         <label for="survey_radio<c:out value="${qIndex.count}_${aIndex.count}"/>" class="test_radio">
                                             <input type="radio" name="survey_radio<c:out value="${qIndex.count}"/>" id="survey_radio<c:out value="${qIndex.count}_${aIndex.count}"/>" value="<c:out value="${a.sn}"/>">
                                             <img src="<c:url value="/u${a.image}"/>" alt="">
+                                            <c:choose>
+		                                        <c:when test="${fn:startsWith(a.image, '/images')}">
+		                                            <img src="<c:url value="/u${a.image}"/>" alt="">
+		                                        </c:when>
+		                                        <c:otherwise>
+		                                            <img src="<c:url value="/u/survey/file/image/${item.sn}.do"/>" alt="">
+		                                        </c:otherwise>
+		                                    </c:choose>
                                             <span class="mindTest_option"><c:out value="${a.name}"/></span>
                                         </label>
                                     </div>

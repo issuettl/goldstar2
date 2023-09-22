@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lge.goldstar.mvc.m.refresh.service.RefreshService;
@@ -44,6 +46,7 @@ import kr.co.lge.goldstar.orm.jpa.entity.style.StylePartEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyPartEntity;
 import kr.co.rebel9.core.utils.DateUtils;
+import kr.co.rebel9.web.data.DataMap;
 
 /**
  * @author issuettl

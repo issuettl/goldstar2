@@ -36,7 +36,11 @@ var doActive = function(){
 
 	data["survey"] = isChecked ? "Y" : "N";
     
-    if(!confirm((isChecked ? "활성화" : "비활성화") + " 하시겠습니까?")){return;}
+    if(!confirm((isChecked ? "활성화" : "비활성화") + " 하시겠습니까?")){
+        $("#switch").prop("checked", !isChecked);
+        return;
+    }
+    
     $.ajax({
         url: contextPath + "m/survey/system.do",
         data: JSON.stringify(data),

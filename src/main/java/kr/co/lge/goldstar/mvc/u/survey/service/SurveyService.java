@@ -31,4 +31,10 @@ public interface SurveyService {
 	 */
 	SurveyPartEntity getSurveyPart();
 
+	/**
+	 * @param sn
+	 * @return
+	 */
+	DataMap getImageFile(int sn);
+
 }

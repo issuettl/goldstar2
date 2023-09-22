@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -14,6 +15,7 @@ import kr.co.lge.goldstar.mvc.u.sign.service.SignService;
 import kr.co.lge.goldstar.mvc.u.survey.service.SurveyService;
 import kr.co.lge.goldstar.orm.jpa.entity.YesOrNo;
 import kr.co.lge.goldstar.orm.jpa.entity.member.SignEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyAnswerEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyMemberEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyPartEntity;
@@ -45,6 +47,9 @@ public class SurveyServiceImpl implements SurveyService {
 	
 	@Autowired
 	private SignService signService;
+    
+    @Value("${multipart.path.survey}")
+    private String expPath;
 
 	@Override
 	public List<SurveyEntity> getQuestions() {
@@ -105,5 +110,23 @@ public class SurveyServiceImpl implements SurveyService {
 		SignEntity signEntity = this.signService.getSignIn();
 		
 		return this.surveyPartRepository.findBySignMemberSnAndSignCreated(signEntity.getId().getMemberSn(), signEntity.getId().getCreated());
+	}
+
+	@Override
+	public DataMap getImageFile(int sn) {
+		
+		SurveyAnswerEntity answerEntity = this.surveyAnswerRepository.findBySnAndDeleted(sn, YesOrNo.N);
+		if(ObjectUtils.isEmpty(answerEntity)) {
+			DataMap result = new DataMap(false);
+			result.put("reason", "데이터를 찾을 수 없습니다.");
+			return result;
+		}
+		
+		DataMap result = new DataMap();
+		result.put("defaultPath", this.expPath);
+		result.put("filePath", answerEntity.getImage());
+		result.put("contentType", answerEntity.getImageContentType());
+		
+		return result;
 	}
 }

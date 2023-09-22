@@ -20,6 +20,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Where;
+
 import kr.co.lge.goldstar.orm.jpa.entity.YesOrNo;
 import lombok.Data;
 
@@ -69,7 +71,8 @@ public class SurveyEntity implements Serializable {
             cascade = CascadeType.ALL,
             fetch=FetchType.LAZY,
             orphanRemoval = true)
-    @OrderBy("sn ASC")
+    @Where(clause = "delete_at = 'N'")
+    @OrderBy("ordinal ASC")
     private List<SurveyAnswerEntity> answers;
     
     @Transient
