@@ -4,82 +4,82 @@
 <!-- persistence.mapper DAO에 의존 -->
 <mapper namespace="kr.co.lge.goldstar.orm.dynamic.persistence.IndexMapper">
 
-	<select id="getTodayMemberCount" resultType="int" parameterType="DataMap">
-	    select count(a.sign_created) as today from (
-			select 
-			    sign_created, sign_member_sn
-			from tb_mind_part
-			where sign_created = #{today}
-			and staff_check = 'present'
-			union
-			select 
-			    sign_created, sign_member_sn
-			from tb_indiv_part
-			where sign_created = #{today}
-			and staff_check = 'present'
-			union
-			select 
-			    sign_created, sign_member_sn
-			from tb_style_part
-			where sign_created = #{today}
-			and staff_check = 'present'
-			union
-			select 
-			    sign_created, sign_member_sn
-			from tb_mood_part
-			where sign_created = #{today}
-			-- and staff_check = 'present'
-			union
-			select 
-			    sign_created, sign_member_sn
-			from tb_refresh_part
-			where sign_created = #{today}
-			and staff_check = 'present'
-			union
-			select 
-			    `date` as sign_created, member_sn as sign_member_sn
-			from tb_life_part
-			where `date` = #{today}
-			and `status` = 'status4'
-		) a
-	</select>
-	
+    <select id="getTodayMemberCount" resultType="int" parameterType="DataMap">
+        select count(a.sign_created) as today from (
+            select 
+                sign_created, sign_member_sn
+            from tb_mind_part
+            where sign_created = #{today}
+            and staff_check = 'present'
+            union
+            select 
+                sign_created, sign_member_sn
+            from tb_indiv_part
+            where sign_created = #{today}
+            and staff_check = 'present'
+            union
+            select 
+                sign_created, sign_member_sn
+            from tb_style_part
+            where sign_created = #{today}
+            and staff_check = 'present'
+            union
+            select 
+                sign_created, sign_member_sn
+            from tb_mood_part
+            where sign_created = #{today}
+            -- and staff_check = 'present'
+            union
+            select 
+                sign_created, sign_member_sn
+            from tb_refresh_part
+            where sign_created = #{today}
+            and staff_check = 'present'
+            union
+            select 
+                `date` as sign_created, member_sn as sign_member_sn
+            from tb_life_part
+            where `date` = #{today}
+            and `status` = 'status4'
+        ) a
+    </select>
+    
     <select id="getTotalMemberCount" resultType="int" parameterType="DataMap">
         select count(a.sign_created) as total from (
-			select 
-			    sign_created, sign_member_sn
-			from tb_mind_part
-			where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
-			and staff_check = 'present'
-			union
-			select 
-			    sign_created, sign_member_sn
-			from tb_indiv_part
-			where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
-			and staff_check = 'present'
-			union
-			select 
-			    sign_created, sign_member_sn
-			from tb_style_part
-			where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
-			and staff_check = 'present'
-			union
-			select 
-			    sign_created, sign_member_sn
-			from tb_mood_part
-			where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
-			union
-			select 
-			    sign_created, sign_member_sn
-			from tb_refresh_part
-			where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
-			and staff_check = 'present'
-			union
-			select 
-			    `date` as sign_created, member_sn as sign_member_sn
-			from tb_life_part
-			where `date` <![CDATA[<=]]> #{endDate} and `date` <![CDATA[>=]]> #{startDate}
-		and `status` = 'status4') a
+            select 
+                sign_created, sign_member_sn
+            from tb_mind_part
+            where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
+            and staff_check = 'present'
+            union
+            select 
+                sign_created, sign_member_sn
+            from tb_indiv_part
+            where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
+            and staff_check = 'present'
+            union
+            select 
+                sign_created, sign_member_sn
+            from tb_style_part
+            where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
+            and staff_check = 'present'
+            union
+            select 
+                sign_created, sign_member_sn
+            from tb_mood_part
+            where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
+            union
+            select 
+                sign_created, sign_member_sn
+            from tb_refresh_part
+            where sign_created <![CDATA[<=]]> #{endDate} and sign_created <![CDATA[>=]]> #{startDate}
+            and staff_check = 'present'
+            union
+            select 
+                `date` as sign_created, member_sn as sign_member_sn
+            from tb_life_part
+            where `date` <![CDATA[<=]]> #{endDate} and `date` <![CDATA[>=]]> #{startDate}
+        and `status` = 'status4') a
     </select>
     
 </mapper>
