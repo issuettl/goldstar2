@@ -23,7 +23,7 @@
                 <!-- 새로고침 공통 타이틀 변형 -->
                 <div class="tal exper_chatTitle">
                     <!-- 2022-11-03 수정 -->
-                    <p class="tac">‘<c:out value="${sign.pursueType.title}"/> 고민’을 추구하는<br /><c:out value="${sign.nickDec}"/>의 새로고침 솔루션
+                    <p class="tac">‘<c:out value="${sign.pursueType.title}"/>’을 추구하는<br /><c:out value="${sign.nickDec}"/>의 새로고침 솔루션
                     </p>
                 </div>
                 <div class="exper_person"></div>

@@ -194,9 +194,25 @@
                     <!-- pop_product_img -->
                     <div class="pop_product_img">
                         <!-- 쇼핑몰이미지 -->
-                        <figure onclick="window.open('<c:out value="${item.url}"/>')" style="background-image: url('<c:url value="/u${item.imageView}"/>');">
+                        <figure onclick="window.open('<c:out value="${item.url}"/>')"
+                            <c:choose>
+                                <c:when test="${fn:startsWith(item.imageView, '/images')}">
+                                    style="background-image: url('<c:url value="/u${item.imageView}"/>');"
+                                </c:when>
+                                <c:otherwise>
+                                    style="background-image: url('<c:url value="/u/product/file/view/${item.sn}.do"/>');"
+                                </c:otherwise>
+                            </c:choose>
+                         >
                             <div class="blur"></div>
-                            <img src="<c:url value="/u${item.imageView}"/>" alt="">
+                            <c:choose>
+                                <c:when test="${fn:startsWith(item.imageView, '/images')}">
+                                    <img src="<c:url value="/u${item.imageView}"/>" alt="">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="<c:url value="/u/product/file/view/${item.sn}.do"/>" alt="">
+                                </c:otherwise>
+                            </c:choose>
                             
                         </figure>
                         <p class="pop_product_subtxt">※ 구매를 원하시면 이미지를 클릭 해주세요</p>
@@ -205,7 +221,7 @@
                     <div class="mindTest_about">
                         <div class="test_about_right">
                             <h3><c:out value="${item.subject}"/></h3>
-                            <p><pre><c:out value="${item.contents}"/></pre></p>
+                            <p style="word-break: break-all;"><pre><c:out value="${item.contents}"/></pre></p>
                         </div>
                     </div>
                 </div>

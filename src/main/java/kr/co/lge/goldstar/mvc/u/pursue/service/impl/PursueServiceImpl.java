@@ -112,6 +112,7 @@ public class PursueServiceImpl implements PursueService {
 		
 		Collections.reverse(pursueMemberEntities);
 		pursueMemberEntities.forEach(item -> {
+			
 			if(count.containsKey(item.getAnswer().getType2())) {
 				count.put(item.getAnswer().getType2(), count.get(item.getAnswer().getType2()) + 1);
 			}
@@ -126,7 +127,6 @@ public class PursueServiceImpl implements PursueService {
 			}
 		});
 		
-		PursueAnswerType resultType = null;
 		Set<PursueAnswerType> keys = count.keySet();
 		
 		DataMap[] counts = new DataMap[keys.size()];
@@ -141,7 +141,8 @@ public class PursueServiceImpl implements PursueService {
 		}
 		
 		Arrays.sort(counts, typeSort);
-		
+
+		PursueAnswerType resultType = (PursueAnswerType) counts[counts.length - 1].get("type");
 		//마지막 질문에 대한 타입
 		if(resultType == null) {
 			resultType = pursueMemberEntities.get(pursueMemberEntities.size() - 1).getAnswer().getType2();
@@ -152,7 +153,7 @@ public class PursueServiceImpl implements PursueService {
 		
 		SignEntity signIn = this.signService.getSignIn();
 		signIn.setPursueType(resultType);
-		this.signService.savePursue(signEntity);		
+		this.signService.savePursue(signEntity);
 		
 		DataMap result = new DataMap(true);
 		result.put("title", resultType.getTitle());
