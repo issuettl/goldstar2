@@ -20,6 +20,7 @@ import kr.co.lge.goldstar.mvc.m.member.service.MemberService;
 import kr.co.lge.goldstar.mvc.m.sign.service.SignService;
 import kr.co.lge.goldstar.orm.jpa.entity.CornerType;
 import kr.co.lge.goldstar.orm.jpa.entity.LifeStatus;
+import kr.co.lge.goldstar.orm.jpa.entity.PursueAnswerType;
 import kr.co.lge.goldstar.orm.jpa.entity.StaffCheck;
 import kr.co.lge.goldstar.orm.jpa.entity.WorryType;
 import kr.co.lge.goldstar.orm.jpa.entity.indiv.IndivPartEntity;
@@ -114,7 +115,10 @@ public class MemberServiceImpl implements MemberService {
     		}
 			item.setNameDec(this.encryptService.maskingName(item.getNameDec()));
 			item.setPhoneDec(this.encryptService.maskingPhone(item.getPhoneDec()));
-        	item.setVisit(this.signRepository.countByIdMemberSnAndWorryTypeNotNull(item.getSn()));
+			
+			long worryTypeCount = this.signRepository.countByIdMemberSnAndWorryTypeNotNull(item.getSn());
+			long pursueTypeCount = this.signRepository.countByIdMemberSnAndPursueTypeNotNull(item.getSn());
+        	item.setVisit(worryTypeCount + pursueTypeCount);
 
         	long mind = this.mindPartRepository.countBySignMemberSnAndStaffCheck(item.getSn(), StaffCheck.present);
         	long indiv = this.indivPartRepository.countBySignMemberSnAndStaffCheck(item.getSn(), StaffCheck.present);
@@ -169,6 +173,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		result.put("sign", signEntity);
 		result.put("worryTypes", WorryType.values());
+		result.put("pursueAnswerTypes", PursueAnswerType.values());
 
 		MindPartEntity mindPart = this.mindPartRepository.findBySignMemberSnAndSignCreated(memberSn, today);
 		IndivPartEntity indivPart = this.indivPartRepository.findBySignMemberSnAndSignCreated(memberSn, today);

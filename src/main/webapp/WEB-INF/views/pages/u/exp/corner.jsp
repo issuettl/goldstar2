@@ -135,11 +135,13 @@
                             <c:when test="${isPart}">
                                 <button onClick="javascript:popupOpen('pop_survey');" class="large_btn_line btn_round_m btn_line btn">설문 참여</button>
                             </c:when>
+                            <c:when test="${empty questions or fn:length(questions) == 0}">
+                                <button onClick="javascript:popupOpen('pop_survey_empty');" class="large_btn_line btn_round_m btn_line btn">설문 참여</button>
+                            </c:when>
                             <c:otherwise>
                                 <button onClick="javascript:popupOpen('pop_survey_not');" class="large_btn_line btn_round_m btn_line btn">설문 참여</button>
                             </c:otherwise>
                         </c:choose>
-                        <button onClick="javascript:popupOpen('pop_survey');" class="large_btn_line btn_round_m btn_line btn">설문 참여</button>
                         <button onclick="location.href='<c:url value="/u/exp/history.do"/>'" class="mo_view btn_ex btn_pass btn">지난 체험 이력</button>
                     </div>
                     <!-- 2022-12-23 QR버튼 위치 조정(위치 전) -->
@@ -337,6 +339,20 @@
                 <div class="centerCon">
                     <p>설문 참여를 완료하였습니다. <br />
                         감사합니다.</p>
+                </div>
+                <div class="btn_wrap w100per tac">
+                    <button onclick="popClose()" class="btn_pop_s btn_primary btn">닫기</button>
+                </div>
+            </div>
+        </div>
+        <div class="dim"></div>
+    </section>
+    <section id="pop_survey_empty" class="pop_mini_2023 pop_mini modal">
+        <div class="popBg">
+            <div class="popContent">
+                <div class="centerCon">
+                    <p>지금은 설문 참여 <br />
+                        기간이 아닙니다.</p>
                 </div>
                 <div class="btn_wrap w100per tac">
                     <button onclick="popClose()" class="btn_pop_s btn_primary btn">닫기</button>

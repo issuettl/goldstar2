@@ -51,45 +51,45 @@
                     <ul class="list_num5 adm_list">
                         <li class="adm_list_title">
                             <!-- 2022-11-30 수정 : 기획서에 반영되지 않은 데이터 수정 -->
-                            <div class="list_con01">닉네임</div>
-                            <div class="list_con02">이름</div>
-                            <div class="list_con03">휴대폰 번호</div>
-	                        <div class="list_con08">성별</div>
-	                        <div class="list_con09">연령</div>
-                            <div class="list_con04">최초 방문일자</div>
-                            <div class="list_con05">방문 횟수</div>
-                            <div class="list_con06">체험 횟수</div>
+                            <div class="list_con01" style="width:15%">닉네임</div>
+                            <div class="list_con02" style="width:15%">이름</div>
+                            <div class="list_con03" style="width:15%">휴대폰 번호</div>
+	                        <div class="list_con08" style="width:10%">성별</div>
+	                        <div class="list_con09" style="width:10%">연령</div>
+                            <div class="list_con04" style="width:15%">최초 방문일자</div>
+                            <div class="list_con05" style="width:10%">방문 횟수</div>
+                            <div class="list_con06" style="width:10%">체험 횟수</div>
                         </li>
                         <li class="adm_list_con list_line">
-                            <div class="list_con01"><c:out value="${sign.nickDec}"/></div>
+                            <div class="list_con01" style="width:15%"><c:out value="${sign.nickDec}"/></div>
                             <div class="list_con02">
                                 <c:out value="${member.nameDec}"/>
                                 <c:if test="${empty member.nameDec }">
 	                                <c:out value="${member.name}"/>
 	                            </c:if>
                             </div>
-                            <div class="list_con08">
-	                            <c:if test="${not empty member.gender}">
-	                                <c:out value="${member.gender.title}"/>
-	                            </c:if>
-	                        </div>
-                            <div class="list_con04">
-                                <fmt:parseDate var="created" value="${member.created}" pattern="yyyyMMddHHmmss"/>
-                                <fmt:formatDate value="${created}" pattern="yyyy-MM-dd"/>
-                            </div>
-                            <div class="list_con09">
-                                <c:if test="${not empty member.age}">
-                                    <c:out value="${member.age.title}"/>
-                                </c:if>
-                            </div>
-                            <div class="list_con03">
+                            <div class="list_con03" style="width:15%">
                                 <c:out value="${member.phoneDec}"/>
                                 <c:if test="${empty member.phoneDec }">
                                     <c:out value="${member.phone}"/>
                                 </c:if>
                             </div>
-                            <div class="list_con05"><c:out value="${member.visit}"/></div>
-                            <div class="list_con06"><c:out value="${member.part}"/></div>
+                            <div class="list_con08" style="width:15%">
+	                            <c:if test="${not empty member.gender}">
+	                                <c:out value="${member.gender.title}"/>
+	                            </c:if>
+	                        </div>
+                            <div class="list_con09" style="width:10%">
+                                <c:if test="${not empty member.age}">
+                                    <c:out value="${member.age.title}"/>
+                                </c:if>
+                            </div>
+                            <div class="list_con04" style="width:15%">
+                                <fmt:parseDate var="created" value="${member.created}" pattern="yyyyMMddHHmmss"/>
+                                <fmt:formatDate value="${created}" pattern="yyyy-MM-dd"/>
+                            </div>
+                            <div class="list_con05" style="width:10%"><c:out value="${member.visit}"/></div>
+                            <div class="list_con06" style="width:10%"><c:out value="${member.part}"/></div>
                         </li>
                     </ul>
                 </div>
@@ -99,8 +99,8 @@
                     <h3 class="adm_title">고민</h3>
                     <ul class="worry_list">
                         <!-- 체크박스 형태로만 만들고 동작하지 않게 만들었습니다. 각 회원 데이터에 따라 선택된 고민이 있는 경우 체크박스가 checked 됩니다. -->
-                        <c:forEach items="${worryTypes}" var="item" varStatus="index">
-                            <li><label for="worry<c:out value="${index.count}"/>" class="worrylabel customCheck"><input type="checkbox" id="worry<c:out value="${index.count}"/>" class="worrycheck" disabled <c:if test="${item.name eq sign.worryType.name}">checked="checked"</c:if> /><span class="worry_img"></span></label></li>
+                        <c:forEach items="${pursueAnswerTypes}" var="item" varStatus="index">
+                            <li><label for="worry<c:out value="${index.count}"/>" class="worrylabel customCheck"><input type="checkbox" id="worry<c:out value="${index.count}"/>" class="worrycheck" disabled <c:if test="${item.name eq sign.pursueType.name}">checked="checked"</c:if> /><span class="worry_img"></span></label></li>
                         </c:forEach>
                     </ul>
                 </div>
@@ -112,15 +112,15 @@
                     <ul class="list_num5 adm_list">
                         <li class="adm_list_title">
                             <div class="list_con01">체험존</div>
-                            <div class="list_con02">사전 문답</div>
-                            <div class="list_con03">추천 리워드</div>
+                            <div class="list_con02"></div>
+                            <div class="list_con03"></div>
                             <div class="list_con04">스텝 체크</div>
                             <div class="list_con05">체험 상태</div>
                         </li>
                         <c:forEach items="${cornerTypes}" var="item">
                             <li class="adm_list_con list_line">
                                 <div class="list_con01"><c:out value="${item.zone}" escapeXml="false"/></div>
-                                <div class="list_con02">
+                                <div class="list_con02"><!-- 
                                    <c:choose>
                                        <c:when test="${item.name eq 'mind'}">
                                            <c:choose>
@@ -147,9 +147,9 @@
                                            </c:choose>
                                        </c:when>
                                        <c:otherwise>-</c:otherwise>
-                                   </c:choose>
+                                   </c:choose> -->
                                 </div>
-                                <div class="list_con03">
+                                <div class="list_con03"><!-- 
                                     <c:choose>
                                        <c:when test="${item.name eq 'mind'}">
                                            <c:choose>
@@ -170,7 +170,7 @@
                                            </c:choose>
                                        </c:when>
                                        <c:otherwise>-</c:otherwise>
-                                   </c:choose>
+                                   </c:choose> -->
                                 </div>
                                 <div class="list_con04 list_con_select">
                                     <c:choose>

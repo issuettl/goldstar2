@@ -8,41 +8,7 @@
     <c:import url="/WEB-INF/views/layouts/m/head.jsp" />
     <script type="text/javascript" src="<c:url value="/m/js/pages/index.js?v=${versionHtml}"/>"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-    .textlabel.text1 {
-        top: calc(1% - 20px);
-        left: 50%;
-        width: 170px;
-        margin-left: -80px;
-    }
-    .textlabel.text2 {
-        right:7%;
-        top: calc(27% - 20px);
-        width: 170px;
-        margin-left: -30px;
-    }
-    .textlabel.text3 {
-        right:7%;
-        bottom: calc(27% + 25px);
-        width: 170px;
-    }
-    .textlabel.text4 {
-        bottom: 7%;
-        left: 50%;
-        width: 170px;
-        margin-left: -80px;
-    }
-    .textlabel.text5 {
-        left: 5%;
-        bottom: calc(27% + 25px);
-        width: 170px;
-    }
-    .textlabel.text6 {
-        left: 5%;
-        top: calc(27% - 20px);
-        width: 170px;
-    }
-    </style>
+    
 </head>
 <body>
     <c:import url="/WEB-INF/views/layouts/m/gnb.jsp" />
@@ -231,7 +197,7 @@
         // });
 
         const data = {
-            labels: [[''],[''],[''],[''],[''],['']],
+            labels: [[''],[''],[''],[''],[''],[''],['']],
             datasets: [{
                 backgroundColor: 'rgba(218, 15, 71, .5)',
                 borderColor: 'rgba(218, 15, 71, 1)',

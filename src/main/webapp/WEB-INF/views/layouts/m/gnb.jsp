@@ -18,7 +18,7 @@
             </li>
              -->
             <li>
-                <a href="<c:url value="/m/survey/index.do"/>" class="menu_link03<c:if test="${fn:startsWith(currentURI, '/m/pursue/') or fn:startsWith(currentURI, '/m/survey/') or fn:startsWith(currentURI, '/m/product/') or fn:startsWith(currentURI, '/m/exp/')}"> active</c:if>">설문 조사 관리</a>
+                <a href="<c:url value="/m/pursue/index.do"/>" class="menu_link03<c:if test="${fn:startsWith(currentURI, '/m/pursue/') or fn:startsWith(currentURI, '/m/survey/') or fn:startsWith(currentURI, '/m/product/') or fn:startsWith(currentURI, '/m/exp/')}"> active</c:if>">설문 조사 관리</a>
                 <ul class="adm_menulist_sub">
                     <li><a href="<c:url value="/m/pursue/index.do"/>" class="menu_link031<c:if test="${fn:startsWith(currentURI, '/m/pursue/index')}"> active</c:if>">고객 유형 문답 관리</a></li>
                     <li><a href="<c:url value="/m/survey/index.do"/>" class="menu_link032<c:if test="${fn:startsWith(currentURI, '/m/survey/index')}"> active</c:if>">내부 활용 문답 관리</a></li>

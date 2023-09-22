@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import kr.co.lge.goldstar.orm.jpa.entity.PursueAnswerType;
 import kr.co.lge.goldstar.orm.jpa.entity.WorryType;
 import kr.co.lge.goldstar.orm.jpa.entity.member.SignEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.member.SignId;
@@ -41,6 +42,12 @@ public interface SignRepository extends JpaRepository<SignEntity, SignId> {
 	 * @param today
 	 * @return
 	 */
+	long countByIdCreatedAndPursueTypeNotNull(String today);
+
+	/**
+	 * @param today
+	 * @return
+	 */
 	long countByWorryTypeNotNull();
 
 	/**
@@ -51,10 +58,23 @@ public interface SignRepository extends JpaRepository<SignEntity, SignId> {
 	long countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryTypeNotNull(String startDate, String endDate);
 
 	/**
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
+	long countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueTypeNotNull(String startDate, String endDate);
+
+	/**
 	 * @param sn
 	 * @return
 	 */
 	long countByIdMemberSnAndWorryTypeNotNull(int sn);
+	
+	/**
+	 * @param sn
+	 * @return
+	 */
+	long countByIdMemberSnAndPursueTypeNotNull(int sn);
 
 	/**
 	 * @param startDate
@@ -64,6 +84,15 @@ public interface SignRepository extends JpaRepository<SignEntity, SignId> {
 	 */
 	long countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryType(String startDate, String endDate,
 			WorryType type);
+
+	/**
+	 * @param startDate
+	 * @param endDate
+	 * @param type
+	 * @return
+	 */
+	long countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueType(String startDate, String endDate,
+			PursueAnswerType type);
 
 
 }

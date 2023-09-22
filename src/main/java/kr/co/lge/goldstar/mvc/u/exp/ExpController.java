@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.lge.goldstar.mvc.m.refresh.service.RefreshService;
+import kr.co.lge.goldstar.mvc.m.system.service.SystemService;
 import kr.co.lge.goldstar.mvc.u.exp.service.ExpService;
 import kr.co.lge.goldstar.mvc.u.indiv.service.IndivService;
 import kr.co.lge.goldstar.mvc.u.life.service.LifeService;
@@ -45,6 +46,7 @@ import kr.co.lge.goldstar.orm.jpa.entity.refresh.RefreshPartEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.style.StylePartEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyPartEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.system.SystemEntity;
 import kr.co.rebel9.core.utils.DateUtils;
 import kr.co.rebel9.web.data.DataMap;
 
@@ -88,6 +90,9 @@ public class ExpController {
 	
 	@Autowired
 	private ExpService expService;
+	
+	@Autowired
+	private SystemService systemService;
 	
 	@Value("${system.domain}")
 	private String systemDomain;
@@ -257,6 +262,9 @@ public class ExpController {
 		
 		List<SurveyEntity> questions = this.surveyService.getQuestions();
 		map.put("questions", questions);
+		
+		SystemEntity systemInfo = this.systemService.getEntity(1);
+		map.put("systemInfo", systemInfo);
 		
 		return "u/exp/corner";
 	}

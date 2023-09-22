@@ -13,8 +13,8 @@ import kr.co.lge.goldstar.mvc.m.index.service.IndexService;
 import kr.co.lge.goldstar.mvc.m.manager.service.ManagerLogExecution;
 import kr.co.lge.goldstar.orm.dynamic.persistence.IndexMapper;
 import kr.co.lge.goldstar.orm.jpa.entity.LifeStatus;
+import kr.co.lge.goldstar.orm.jpa.entity.PursueAnswerType;
 import kr.co.lge.goldstar.orm.jpa.entity.StaffCheck;
-import kr.co.lge.goldstar.orm.jpa.entity.WorryType;
 import kr.co.lge.goldstar.orm.jpa.repository.spring.IndivPartRepository;
 import kr.co.lge.goldstar.orm.jpa.repository.spring.LifePartRepository;
 import kr.co.lge.goldstar.orm.jpa.repository.spring.MindPartRepository;
@@ -85,12 +85,13 @@ public class IndexServiceImpl implements IndexService {
 		}
 		
 		//오늘의 고민등록
-		long todayWorryCount = this.signRepository.countByIdCreatedAndWorryTypeNotNull(today);
+		long todayWorryCount = this.signRepository.countByIdCreatedAndPursueTypeNotNull(today);
 		result.put("todayWorryCount", todayWorryCount);
 		
 		//누적 고민등록
-		long totalWorryCount = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryTypeNotNull(startDate, endDate);
-		result.put("totalWorryCount", totalWorryCount);
+		long totalWorryCount1 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryTypeNotNull(startDate, endDate);
+		long totalWorryCount2 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueTypeNotNull(startDate, endDate);
+		result.put("totalWorryCount", totalWorryCount1 + totalWorryCount2);
 		
 		//오늘 체험인원
 		params.put("today", today);
@@ -138,18 +139,19 @@ public class IndexServiceImpl implements IndexService {
 		result.put("refresh", refresh);
 		result.put("life", life);
 
-		long type1 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryType(startDate, endDate, WorryType.type1);
-		long type2 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryType(startDate, endDate, WorryType.type2);
-		long type3 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryType(startDate, endDate, WorryType.type3);
-		long type4 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryType(startDate, endDate, WorryType.type4);
-		long type5 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryType(startDate, endDate, WorryType.type5);
-		long type6 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndWorryType(startDate, endDate, WorryType.type6);
+		long type1 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueType(startDate, endDate, PursueAnswerType.type1);
+		long type2 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueType(startDate, endDate, PursueAnswerType.type2);
+		long type3 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueType(startDate, endDate, PursueAnswerType.type3);
+		long type4 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueType(startDate, endDate, PursueAnswerType.type4);
+		long type5 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueType(startDate, endDate, PursueAnswerType.type5);
+		long type6 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueType(startDate, endDate, PursueAnswerType.type6);
+		long type7 = this.signRepository.countByIdCreatedGreaterThanEqualAndIdCreatedLessThanEqualAndPursueType(startDate, endDate, PursueAnswerType.type7);
 		
-		total = Double.valueOf(type1 + type2 + type3 + type4 + type5 + type6);
+		total = Double.valueOf(type1 + type2 + type3 + type4 + type5 + type6 + type6);
 		
-		Long[] worriesCount = new Long[] {type1, type2, type3, type4, type5, type6};
+		Long[] worriesCount = new Long[] {type1, type2, type3, type4, type5, type6, type7};
 		result.put("worriesCount", worriesCount);
-		result.put("worries", WorryType.values());
+		result.put("worries", PursueAnswerType.values());
 		
 		Integer[] worriesPercent = new Integer[] {
 				total == 0 ? 0 : Double.valueOf(Double.valueOf(type1 / total) * 100).intValue(), 
@@ -157,13 +159,14 @@ public class IndexServiceImpl implements IndexService {
 				total == 0 ? 0 : Double.valueOf(Double.valueOf(type3 / total) * 100).intValue(), 
 				total == 0 ? 0 : Double.valueOf(Double.valueOf(type4 / total) * 100).intValue(), 
 				total == 0 ? 0 : Double.valueOf(Double.valueOf(type5 / total) * 100).intValue(), 
-				total == 0 ? 0 : Double.valueOf(Double.valueOf(type6 / total) * 100).intValue()};
+				total == 0 ? 0 : Double.valueOf(Double.valueOf(type6 / total) * 100).intValue(), 
+				total == 0 ? 0 : Double.valueOf(Double.valueOf(type7 / total) * 100).intValue()};
 		result.put("worriesPercent", worriesPercent);
 		
 		List<String> worryLabels = new ArrayList<>();
 		int i = 0;
-		for(WorryType worry : WorryType.values()) {
-			worryLabels.add(worry.getDesc() + " (" + worriesCount[i++] + ")");
+		for(PursueAnswerType worry : PursueAnswerType.values()) {
+			worryLabels.add(worry.getTitle() + " (" + worriesCount[i++] + ")");
 		}
 		result.put("worryLabels", worryLabels);
 

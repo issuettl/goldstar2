@@ -9,8 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
+import kr.co.lge.goldstar.mvc.m.system.service.SystemService;
 import kr.co.lge.goldstar.mvc.u.sign.service.SignService;
 import kr.co.lge.goldstar.mvc.u.survey.service.SurveyService;
 import kr.co.lge.goldstar.orm.jpa.entity.YesOrNo;
@@ -19,6 +21,7 @@ import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyAnswerEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyMemberEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyPartEntity;
+import kr.co.lge.goldstar.orm.jpa.entity.system.SystemEntity;
 import kr.co.lge.goldstar.orm.jpa.repository.spring.SurveyAnswerRepository;
 import kr.co.lge.goldstar.orm.jpa.repository.spring.SurveyMemberRepository;
 import kr.co.lge.goldstar.orm.jpa.repository.spring.SurveyPartRepository;
@@ -47,13 +50,40 @@ public class SurveyServiceImpl implements SurveyService {
 	
 	@Autowired
 	private SignService signService;
+	
+	@Autowired
+	private SystemService systemService;
     
     @Value("${multipart.path.survey}")
     private String expPath;
 
 	@Override
 	public List<SurveyEntity> getQuestions() {
-		return this.surveyRepository.findByStatusAndDeletedOrderByOrdinalAsc(YesOrNo.Y, YesOrNo.N);
+		
+		List<SurveyEntity> surveyList = this.surveyRepository.findByStatusAndDeletedOrderByOrdinalAsc(YesOrNo.Y, YesOrNo.N);
+		
+		SystemEntity systemInfo = this.systemService.getEntity(1);
+		if(ObjectUtils.isEmpty(systemInfo)) {
+			return surveyList;
+		}
+		
+		if(CollectionUtils.isEmpty(surveyList)) {
+			return surveyList;
+		}
+		
+		List<SurveyEntity> surveySystem = new ArrayList<>();
+		for(SurveyEntity entity : surveyList) {
+			
+			if(YesOrNo.Y.equals(systemInfo.getProduct()) && entity.getSn() == 1) {
+				surveySystem.add(entity);
+			}
+			
+			if(YesOrNo.Y.equals(systemInfo.getSurvey()) && entity.getSn() != 1) {
+				surveySystem.add(entity);
+			}
+		}
+		
+		return surveySystem;
 	}
 
 	@Override
