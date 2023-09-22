@@ -138,8 +138,8 @@
                                 <figure style="background-image: url('<c:url value="/u/event/file/thumb/${item.sn}.do"/>');"></figure>
                                 <div class="mainEvent_content">
                                     <h3><c:out value="${item.subject}"/></h3>
-	                                <fmt:parseDate var="startDate" value="${item.startDate}" pattern="yyyyMMdd"/>
-	                                <fmt:parseDate var="endDate" value="${item.endDate}" pattern="yyyyMMdd"/>
+                                    <fmt:parseDate var="startDate" value="${item.startDate}" pattern="yyyyMMdd"/>
+                                    <fmt:parseDate var="endDate" value="${item.endDate}" pattern="yyyyMMdd"/>
                                     <p><span class="date"><fmt:formatDate value="${startDate}" pattern="yyyy.MM.dd"/></span><span class="dateline">~</span><span class="date"><fmt:formatDate value="${endDate}" pattern="yyyy.MM.dd"/></span></p>
                                 </div>
                                 
