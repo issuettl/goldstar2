@@ -2971,3 +2971,7 @@
       height: 200px;
    }
 }
+.survey_list .mindTest_option {
+   font-weight: bold;
+   position: unset;
+}
