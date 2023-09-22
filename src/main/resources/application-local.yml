@@ -15,7 +15,11 @@ spring:
 system:
   domain: http://localhost
 
-multipart.path.event: "c:/my-directory/event"
+multipart:
+  path:
+    event: "/Users/issuettl/my-directory/event"
+    product: "/Users/issuettl/my-directory/product"
+    survey: "/Users/issuettl/my-directory/survey"
   
 #server.servlet.context-path: /test
 

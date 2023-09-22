@@ -15,7 +15,10 @@ spring:
 system:
   domain: https://goldstar.lge.co.kr
 
-multipart.path.event: "/my-directory/event"
+multipart:
+  event: "/my-directory/event"
+  product: "/my-directory/product"
+  survey: "/my-directory/survey"
   
 lge:
   url:
