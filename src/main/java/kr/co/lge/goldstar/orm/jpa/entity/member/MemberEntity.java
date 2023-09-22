@@ -113,9 +113,6 @@ public class MemberEntity implements Serializable {
     @Transient
     private String unifyIdEnc;
     
-    @Transient
-    private String oauth2BackendUri;
-    
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
