@@ -70,9 +70,9 @@ $(function(){
 	});
 });/*팝업 딤 함수*/
 
-/* 파일 업로드 */
+/* 파일 업로드 - 이벤트용 */
 $(function () {
-	document.querySelectorAll(".customFile").forEach(ee => {
+	document.querySelectorAll(".w40per > .customFile").forEach(ee => {
 		ee.onchange = function(e) { 
 			ee.parentNode.childNodes[3].childNodes[1].innerText = ee.files[0].name;
 			ee.parentNode.childNodes[3].childNodes[1].className += 'uploaded';

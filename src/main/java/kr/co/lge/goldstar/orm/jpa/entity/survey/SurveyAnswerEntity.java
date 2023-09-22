@@ -63,6 +63,9 @@ public class SurveyAnswerEntity implements Serializable {
     
     @Column(name = "image")
     private String image;
+    
+    @Column(name = "image_ct")
+    private String imageContentType;
 
     @JsonIgnore
     @MapsId("surveySn")

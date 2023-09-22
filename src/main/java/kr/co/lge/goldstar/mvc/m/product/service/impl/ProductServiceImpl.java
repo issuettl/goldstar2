@@ -109,6 +109,8 @@ public class ProductServiceImpl implements ProductService {
 
 		product.setImageList(listPath);
 		product.setImageView(viewPath);
+		product.setListContentType(listFile.getContentType());
+		product.setViewContentType(viewFile.getContentType());
 		
 		this.productRepository.save(product);
 		
@@ -128,6 +130,9 @@ public class ProductServiceImpl implements ProductService {
 		UUID uuid = UUID.randomUUID();
         String dateDir = FileUtils.getDateDir();
 
+        System.out.println(listFile);
+        System.out.println(viewFile);
+        
         try {
         	if(!ObjectUtils.isEmpty(listFile)){
         		
@@ -137,15 +142,17 @@ public class ProductServiceImpl implements ProductService {
 				        listFile.getBytes());
 				
 				product.setImageList(listPath);
+				product.setListContentType(listFile.getContentType());
         	}
     		if(!ObjectUtils.isEmpty(viewFile)){
     			
-    	        String pcPath = new StringBuilder(dateDir).append(uuid).append("_p").toString();
+    	        String viewPath = new StringBuilder(dateDir).append(uuid).append("_v").toString();
 				org.apache.commons.io.FileUtils.writeByteArrayToFile(
-				        new File(new StringBuilder(this.productPath).append(pcPath).toString()), 
+				        new File(new StringBuilder(this.productPath).append(viewPath).toString()), 
 				        viewFile.getBytes());
 				
-				product.setImageView(pcPath);
+				product.setImageView(viewPath);
+				product.setViewContentType(viewFile.getContentType());
     		}
 			
 		} catch (IOException e) {
@@ -170,7 +177,7 @@ public class ProductServiceImpl implements ProductService {
 		Optional<ProductEntity> saved = this.productRepository.findById(productEntity.getSn());
 		if(saved.isEmpty()) {
 			DataMap result = new DataMap(false);
-			result.put("reason", "질문 데이터를 찾을 수 없습니다.");
+			result.put("reason", "추천 제품 데이터를 찾을 수 없습니다.");
 			return result;
 		}
 		

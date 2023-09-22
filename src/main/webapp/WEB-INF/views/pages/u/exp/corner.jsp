@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -35,7 +36,14 @@
                             <!-- 전시제품 -->
                             <div class="slide">
                                 <figure class="products" onClick="javascript:popupOpen('pop_products_<c:out value="${proIndex.count}"/>');">
-                                    <img src="<c:url value="/u${item.imageList}"/>" alt="">
+                                    <c:choose>
+                                        <c:when test="${fn:startsWith(item.imageList, '/images')}">
+                                            <img src="<c:url value="/u${item.imageList}"/>" alt="">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src="<c:url value="/u/product/file/list/${item.sn}.do"/>" alt="">
+                                        </c:otherwise>
+                                    </c:choose>
                                     <h3><c:out value="${item.name}"/></h3>
                                     <button onClick="javascript:popupOpen('pop_products_<c:out value="${proIndex.count}"/>');" class="large_btn_black btn">상세보기</button>
                                 </figure>
@@ -131,7 +139,7 @@
                                 <button onClick="javascript:popupOpen('pop_survey_not');" class="large_btn_line btn_round_m btn_line btn">설문 참여</button>
                             </c:otherwise>
                         </c:choose>
-<button onClick="javascript:popupOpen('pop_survey');" class="large_btn_line btn_round_m btn_line btn">설문 참여</button>
+                        <button onClick="javascript:popupOpen('pop_survey');" class="large_btn_line btn_round_m btn_line btn">설문 참여</button>
                         <button onclick="location.href='<c:url value="/u/exp/history.do"/>'" class="mo_view btn_ex btn_pass btn">지난 체험 이력</button>
                     </div>
                     <!-- 2022-12-23 QR버튼 위치 조정(위치 전) -->

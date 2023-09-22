@@ -17,9 +17,9 @@ system:
 
 multipart:
   path:
-    event: "/Users/issuettl/my-directory/event"
-    product: "/Users/issuettl/my-directory/product"
-    survey: "/Users/issuettl/my-directory/survey"
+    event: "c:/my-directory/event"
+    product: "c:/my-directory/product"
+    survey: "c:/my-directory/survey"
   
 #server.servlet.context-path: /test
 
