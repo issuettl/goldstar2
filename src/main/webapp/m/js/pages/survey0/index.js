@@ -1,6 +1,13 @@
 $(function(){
+    //검색
+    $(".checkbox_corner").find("input[type='radio']").on({
+        "click" : function(){
+            $(".saveAnswers").hide();
+            $("#" + $(this).val() + "SaveAnswers").show();
+        }
+    });
     
-    $("#saveAnswer").on({
+    $("#saveAnswers").on({
         "click" : doSave
     });
     
@@ -19,54 +26,21 @@ $(function(){
     $(".doUpdate").on({
         "click" : doUpdate
     });
-    
-    $(".addAnswer").on({
-        "click" : doAdd
-    });
-
-	$("#switch").on({
-        "change" : doActive
-    });
 });
 
-var doActive = function(){
-    var data = {};
-
-	var isChecked = $("#switch").prop("checked");
-
-	data["survey"] = isChecked ? "Y" : "N";
-    
-    if(!confirm((isChecked ? "활성화" : "비활성화") + " 하시겠습니까?")){return;}
-    $.ajax({
-        url: contextPath + "m/survey/system.do",
-        data: JSON.stringify(data),
-        method: "POST",
-        contentType: "application/json",
-        dataType: "json"
-    })
-    .done(function(json) {
-        if(json["result"] == "SUCCESS"){
-            document.location.reload();
-            return;
-        }
-        alert(json["reason"]);
-    })
-    .fail(function(xhr, status, errorThrown) {
-        alert(status);
-    });
-};
-
-var doAdd = function(){
-	$("#saveAnswers > span").append('<input type="text" name="eachAnswers" placeholder="답변을 입력해 주세요" />');
-};
-
+var $survey = {};
+$survey["title"] = {};
+$survey["title"]["mind"] = "마음고침 코-너";
+$survey["title"]["indiv"] = "개성고침 코-너";
+$survey["title"]["style"] = "스타일고침 코-너";
+$survey["title"]["mood"] = "기분고침 코-너";
 var doUpdate = function(){
     var type = $(this).data("type");
     var data = {};
     data["sn"] = $(this).data("sn");
 
     $.ajax({
-        url: contextPath + "m/survey/get.do",
+        url: contextPath + "m/survey/" + $(this).data("type") + "/get.do",
         data: JSON.stringify(data),
         method: "POST",
         contentType: "application/json",
@@ -74,11 +48,13 @@ var doUpdate = function(){
     })
     .done(function(json) {
         if(json["result"] == "SUCCESS"){
+            $("#updateTitle").html("[" + $survey.title[type] + "] 사전문답 수정");
+            $("#updateCorner").html($survey.title[type]);
             $("#updateQuestion").val(json["entity"]["question"]);
             $("#updateAnswers").html('<h3>답변</h3>');
             if(json["entity"]["answers"]){
                 json["entity"]["answers"].forEach(function(e, i){
-                     $("#updateAnswers").append('<div class="row inputBox"><input type="text" name="updateAnswers" data-sn="' + e.sn + '" class="w100per line_input" placeholder="" value="' + e.name + '" /></div>');
+                    $("#updateAnswers").append('<div class="row inputBox"><input type="text" name="updateAnswers" data-sn="' + e.sn + '" class="w100per line_input" placeholder="" value="' + e.name + '" /></div>');
                 });
             }
             $("#updateButton").unbind().on({
@@ -127,7 +103,7 @@ var doUpdateAction = function(sn, type){
     }
     
     $.ajax({
-        url: contextPath + "m/survey/update.do",
+        url: contextPath + "m/survey/" + type + "/update.do",
         data: JSON.stringify(data),
         method: "POST",
         contentType: "application/json",
@@ -150,7 +126,7 @@ var doRemove = function(){
     data["sn"] = $(this).data("sn");
 
     $.ajax({
-        url: contextPath + "m/survey/get.do",
+        url: contextPath + "m/survey/" + $(this).data("type") + "/get.do",
         data: JSON.stringify(data),
         method: "POST",
         contentType: "application/json",
@@ -158,6 +134,9 @@ var doRemove = function(){
     })
     .done(function(json) {
         if(json["result"] == "SUCCESS"){
+            //[개성고침 코-너] 사전문답 삭제
+            $("#removeTitle").html("[" + $survey.title[type] + "] 사전문답 삭제");
+            $("#removeCorner").html($survey.title[type]);
             $("#removeQuestion").html(json["entity"]["question"]);
             $("#removeAnswers").html('<h3 class="d_inline_block">답변</h3>')
                if(json["entity"]["answers"]){
@@ -191,7 +170,7 @@ var doRemoveAction = function(sn, type){
     data["sn"] = sn;
 
     $.ajax({
-        url: contextPath + "m/survey/remove.do",
+        url: contextPath + "m/survey/" + type + "/remove.do",
         data: JSON.stringify(data),
         method: "POST",
         contentType: "application/json",
@@ -212,13 +191,13 @@ var doRemoveAction = function(sn, type){
 var doSort = function(){
     var data = {};
     data["snList"] = new Array();
-    $(".sortQuestion").each(function(){
+    $(".sortQuestion." + $(this).data("type")).each(function(){
         data["snList"].push($(this).data("sn"));
     });
     
     if(!confirm("순서변경 하시겠습니까?")){return;}
     $.ajax({
-        url: contextPath + "m/survey/sort.do",
+        url: contextPath + "m/survey/" + $(this).data("type") + "/sort.do",
         data: data,
         method: "POST",
         contentType: "application/x-www-form-urlencoded",
@@ -242,7 +221,7 @@ var doStatus = function(){
     data["status"] = $(this).val();
 
     $.ajax({
-        url: contextPath + "m/survey/status.do",
+        url: contextPath + "m/survey/" + $(this).data("type") + "/status.do",
         data: JSON.stringify(data),
         method: "POST",
         contentType: "application/json",
@@ -261,9 +240,14 @@ var doStatus = function(){
 };
 
 var doSave = function(){
+    var target = $(".checkbox_corner").find("input[type='radio']:checked");
+    if(target.length == 0){
+        alert("코-너를 선택해주세요.");
+        return;
+    }
     
     var question = $("#saveQuestion");
-    var answers = $("input[name='eachAnswers']");
+    var answers = $("input[name='" + target.val() + "Answers']");
     
     var data = {};
     data["question"] = question.val();
@@ -277,6 +261,7 @@ var doSave = function(){
         
         data["answers"][i] = {};
         data["answers"][i]["name"] = $(this).val();
+        data["answers"][i]["type"] = $(this).data("type");
     });
     
     if(!data["question"]){alert("질문을 입력해주세요.");$("#saveQuestion").focus();return;}
@@ -289,7 +274,7 @@ var doSave = function(){
     }
     
     $.ajax({
-        url: contextPath + "m/survey/save.do",
+        url: contextPath + "m/survey/" + target.val() + "/save.do",
         data: JSON.stringify(data),
         method: "POST",
         contentType: "application/json",

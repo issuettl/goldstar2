@@ -42,6 +42,17 @@ public class SurveyServiceImpl implements SurveyService{
 		DataMap result = new DataMap();
 
 		List<SurveyEntity> surveyList = this.surveyRepository.findByDeletedOrderByOrdinalAsc(YesOrNo.N);
+		
+		SurveyEntity imageEntity = null;
+		for(SurveyEntity entity : surveyList) {
+			if(entity.getSn() == 1){
+				imageEntity = entity;
+			}
+		}
+		
+		if(imageEntity != null) {
+			surveyList.remove(imageEntity);
+		}
 
 		result.put("surveyList", surveyList);
 		
