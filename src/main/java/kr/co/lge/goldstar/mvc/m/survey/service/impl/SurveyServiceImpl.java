@@ -130,7 +130,7 @@ public class SurveyServiceImpl implements SurveyService{
 	}
 
 	@Override
-	@ManagerLogExecution(process = "surveySort(DataMap params)", menu="내부활용문답 리스트", button="정렬")
+	@ManagerLogExecution(process = "sort(DataMap params)", menu="내부활용문답 리스트", button="정렬")
 	public DataMap sort(DataMap params) {
 		
 		List<Integer> snList = params.getListAsInteger("snList[]");

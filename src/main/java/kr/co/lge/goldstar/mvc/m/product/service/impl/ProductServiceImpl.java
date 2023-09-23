@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.co.lge.goldstar.mvc.m.manager.service.ManagerLogExecution;
 import kr.co.lge.goldstar.mvc.m.product.service.ProductService;
 import kr.co.lge.goldstar.orm.jpa.entity.PursueAnswerType;
 import kr.co.lge.goldstar.orm.jpa.entity.YesOrNo;
@@ -34,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
     private String productPath;
 
 	@Override
+	@ManagerLogExecution(process = "getProducts()", menu="추천 제품 리스트", button="검색")
 	public DataMap getProducts() {
 		
 		List<ProductEntity> productEntities = this.productRepository.findByDeletedOrderByTypeAscOrdinalAsc(YesOrNo.N);
@@ -66,6 +68,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "save(MultipartFile listFile, MultipartFile viewFile, DataMap params)", menu="추천 제품 리스트", button="등록하기")
 	public DataMap save(MultipartFile listFile, MultipartFile viewFile, DataMap params) {
 		
 		if(ObjectUtils.isEmpty(listFile)){
@@ -118,6 +121,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "update(MultipartFile listFile, MultipartFile viewFile, DataMap params)", menu="추천 제품 리스트", button="수정하기")
 	public DataMap update(MultipartFile listFile, MultipartFile viewFile, DataMap params) {
 		
 		ProductEntity product = this.productRepository.findBySnAndDeleted(params.getAsInt("sn"), YesOrNo.N);
@@ -172,6 +176,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "remove(ProductEntity productEntity)", menu="추천 제품 리스트", button="삭제")
 	public DataMap remove(ProductEntity productEntity) {
 		
 		Optional<ProductEntity> saved = this.productRepository.findById(productEntity.getSn());
@@ -189,6 +194,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "get(ProductEntity productEntity)", menu="추천 제품 리스트", button="상세")
 	public DataMap get(ProductEntity productEntity) {
 		
 		DataMap result = new DataMap(true);
@@ -198,6 +204,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "sort(DataMap params)", menu="추천 제품 리스트", button="정렬")
 	public DataMap sort(DataMap params) {
 		
 		List<Integer> snList = params.getListAsInteger("snList[]");

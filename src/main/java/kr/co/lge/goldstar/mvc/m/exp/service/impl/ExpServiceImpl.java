@@ -16,6 +16,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.lge.goldstar.mvc.m.exp.service.ExpService;
+import kr.co.lge.goldstar.mvc.m.manager.service.ManagerLogExecution;
 import kr.co.lge.goldstar.orm.jpa.entity.YesOrNo;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyAnswerEntity;
 import kr.co.lge.goldstar.orm.jpa.entity.survey.SurveyEntity;
@@ -37,6 +38,7 @@ public class ExpServiceImpl implements ExpService {
     private String expPath;
 
 	@Override
+	@ManagerLogExecution(process = "getExps()", menu="체험제품 리스트", button="검색")
 	public DataMap getExps() {
 		
 		DataMap result = new DataMap(true);
@@ -46,6 +48,7 @@ public class ExpServiceImpl implements ExpService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "save(MultipartFile imageFile, DataMap params)", menu="체험제품 리스트", button="등록하기")
 	public DataMap save(MultipartFile imageFile, DataMap params) {
 		
 		if(ObjectUtils.isEmpty(imageFile)){
@@ -94,6 +97,7 @@ public class ExpServiceImpl implements ExpService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "update(MultipartFile imageFile, DataMap params)", menu="체험제품 리스트", button="수정하기")
 	public DataMap update(MultipartFile imageFile, DataMap params) {
 		
 		SurveyAnswerEntity answer = this.surveyAnswerRepository.findBySnAndDeleted(params.getAsInt("sn"), YesOrNo.N);
@@ -132,6 +136,7 @@ public class ExpServiceImpl implements ExpService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "remove(SurveyAnswerEntity answerEntity)", menu="체험제품 리스트", button="삭제")
 	public DataMap remove(SurveyAnswerEntity answerEntity) {
 		
 		Optional<SurveyAnswerEntity> saved = this.surveyAnswerRepository.findById(answerEntity.getSn());
@@ -149,6 +154,7 @@ public class ExpServiceImpl implements ExpService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "get(SurveyAnswerEntity answerEntity)", menu="체험제품 리스트", button="상세")
 	public DataMap get(SurveyAnswerEntity answerEntity) {
 		
 		DataMap result = new DataMap(true);
@@ -158,6 +164,7 @@ public class ExpServiceImpl implements ExpService {
 	}
 
 	@Override
+	@ManagerLogExecution(process = "sort(DataMap params)", menu="체험제품 리스트", button="정렬")
 	public DataMap sort(DataMap params) {
 		
 		List<Integer> snList = params.getListAsInteger("snList[]");
