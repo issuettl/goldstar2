@@ -132,7 +132,7 @@ public class StaffServiceImpl implements StaffService {
 			mind.put("status", "미체험");
 		} else {
 			mind.put("questions", "종료");
-			mind.put("recommend", mindPart.getType().getTitle());
+			mind.put("recommend", mindPart.getType() == null ? "-" : mindPart.getType().getTitle());
 			mind.put("check", mindPart.getStaffCheck().getTitle());
 			mind.put("checkValue", mindPart.getStaffCheck().getName());
 			
@@ -160,7 +160,7 @@ public class StaffServiceImpl implements StaffService {
 			indiv.put("status", "미체험");
 		} else {
 			indiv.put("questions", "종료");
-			indiv.put("recommend", indivPart.getType().getTitle());
+			indiv.put("recommend", indivPart.getType() == null ? "-" : indivPart.getType().getTitle());
 			indiv.put("check", indivPart.getStaffCheck().getTitle());
 			indiv.put("checkValue", indivPart.getStaffCheck().getName());
 			
@@ -188,7 +188,7 @@ public class StaffServiceImpl implements StaffService {
 			style.put("status", "미체험");
 		} else {
 			style.put("questions", "종료");
-			style.put("recommend", stylePart.getType().getTitle());
+			style.put("recommend", stylePart.getType() == null ? "-" : stylePart.getType().getTitle());
 			style.put("check", stylePart.getStaffCheck().getTitle());
 			style.put("checkValue", stylePart.getStaffCheck().getName());
 			
