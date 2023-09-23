@@ -16,6 +16,7 @@ import kr.co.lge.goldstar.orm.jpa.entity.member.SignId;
 import kr.co.lge.goldstar.orm.jpa.entity.mood.MoodPartEntity;
 import kr.co.lge.goldstar.orm.jpa.repository.spring.MoodPartRepository;
 import kr.co.lge.goldstar.orm.jpa.repository.spring.SignRepository;
+import kr.co.rebel9.core.utils.DateUtils;
 import kr.co.rebel9.web.data.DataMap;
 
 /**
@@ -43,20 +44,25 @@ public class MoodServiceImpl implements MoodService {
 			return result;
 		}
 		
-		MoodPartEntity saved = this.moodPartRepository.findBySignMemberSnAndSignCreated(signId.getMemberSn(), signId.getCreated());
-		if(ObjectUtils.isEmpty(saved)) {
-			DataMap result = new DataMap(false);
+		MoodPartEntity moodPart = this.moodPartRepository.findBySignMemberSnAndSignCreated(signId.getMemberSn(), signId.getCreated());
+		if(ObjectUtils.isEmpty(moodPart)) {
+			/*DataMap result = new DataMap(false);
 			result.put("reason", "사전 문답이 없습니다.");
 			result.put("code", 1002);
-			return result;
+			return result;*/
+			
+			moodPart = new MoodPartEntity();
+			moodPart.setSignMemberSn(signId.getMemberSn());
+			moodPart.setSignCreated(signId.getCreated());
+			moodPart.setCreated(DateUtils.getToday("yyyyMMddHHmmss"));
 		}
 		
-		saved.setStaffCreated(saved.getCreated());
-		saved.setStaffCheck(StaffCheck.present);
-		this.moodPartRepository.save(saved);
+		moodPart.setStaffCreated(DateUtils.getToday("yyyyMMddHHmmss"));
+		moodPart.setStaffCheck(StaffCheck.present);
+		this.moodPartRepository.save(moodPart);
 		
 		DataMap result = new DataMap(true);
-		result.put("saved", saved);
+		result.put("saved", moodPart);
 		
 		return result;
 	}
